@@ -54,6 +54,12 @@
             android:summary="@string/status_bar_battery_style_summary"
             android:fragment="com.mist.mistify.fragments.BatteryStyleSettings" />
 
+        <Preference
+            android:key="battery_bar_category"
+            android:title="@string/battery_bar_title"
+            android:summary="@string/battery_bar_summary"
+            android:fragment="com.mist.mistify.fragments.BatteryBar" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
