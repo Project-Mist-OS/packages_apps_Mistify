@@ -19,4 +19,8 @@
      <dimen name="alert_dialog_padding_material">20dp</dimen>
      <dimen name="color_preference_width">18dip</dimen>
      <dimen name="color_preference_height">18dip</dimen>
+
+    <!-- SwitchBar sub settings margin start / end -->
+    <dimen name="switchbar_subsettings_margin_start">72dp</dimen>
+    <dimen name="switchbar_subsettings_margin_end">16dp</dimen>
 </resources>

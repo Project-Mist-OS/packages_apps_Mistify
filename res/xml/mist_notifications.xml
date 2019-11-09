@@ -11,6 +11,18 @@
     <PreferenceCategory
     android:title="@string/general_category">
 
+        <com.mist.support.preferences.SystemSettingSwitchPreference
+            android:key="less_boring_heads_up"
+            android:title="@string/less_boring_heads_up_title"
+            android:summary="@string/less_boring_heads_up_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="heads_up_notifications"
+            android:summary="@string/heads_up_notifications_summary"
+            android:title="@string/heads_up_notifications"
+            android:fragment="com.mist.mistify.fragments.HeadsUpSettings"/>
+
     <Preference
         android:key="island_notification"
         android:title="@string/island_notification_title"
