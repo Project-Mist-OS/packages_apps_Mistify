@@ -69,4 +69,15 @@
             android:defaultValue="true" />
     </PreferenceCategory>
 
+    <!-- lockscreen album art customizations -->
+    <PreferenceCategory
+        android:title="@string/lockscreen_media" >
+
+          <Preference
+               android:key="pulse_settings"
+               android:fragment="com.mist.mistify.fragments.PulseSettings"
+               android:title="@string/pulse_settings"
+               android:summary="@string/pulse_settings_summary" />
+     </PreferenceCategory>
+
 </PreferenceScreen>
