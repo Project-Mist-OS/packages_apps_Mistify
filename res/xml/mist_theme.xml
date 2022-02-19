@@ -26,6 +26,13 @@
         android:summary="@string/theme_customization_icon_shape_summary"
         android:fragment="com.mist.mistify.fragments.IconShapes"/>
 
+    <!-- Navbar Style -->
+    <Preference
+        android:key="android.theme.customization.navbar"
+        android:title="@string/theme_customization_navbar_title"
+        android:summary="@string/theme_customization_navbar_summary"
+        android:fragment="com.mist.mistify.fragments.NavbarStyles"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -48,14 +55,14 @@
         android:key="android.theme.customization.signal_icon"
         android:title="@string/theme_customization_signal_icon_title"
         android:summary="@string/theme_customization_signal_icon_summary"
-        android:fragment="com.everest.basecamp.fragments.SignalIcons"/>
+        android:fragment="com.mist.mistify.fragments.SignalIcons"/>
 
     <!-- Wifi icon style -->
     <Preference
         android:key="android.theme.customization.wifi_icon"
         android:title="@string/theme_customization_wifi_icon_title"
         android:summary="@string/theme_customization_wifi_icon_summary"
-        android:fragment="com.everest.basecamp.fragments.WifiIcons"/>
+        android:fragment="com.mist.mistify.fragments.WifiIcons"/>
 
     </PreferenceCategory>
 
