@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022-2023 The mistOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+     <dimen name="mist_radius">28dp</dimen>
+     <dimen name="mist_radius_merge">5dp</dimen>
+     <dimen name="mist_pref_horizontal_padding">16dp</dimen>
+     <dimen name="mist_pref_horizontal_padding-negative">-16dp</dimen>
+</resources>
