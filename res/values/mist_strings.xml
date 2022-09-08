@@ -806,4 +806,10 @@
     <!-- Brightness slider styles -->
     <string name="theme_customization_brightness_slider_title">Brightness slider style</string>
     <string name="theme_customization_brightness_slider_summary">Set custom brightness slider style</string>
+
+    <!-- Annoying Notifications -->
+    <string name="notifications_category_title">Annoying notifications protection</string>
+    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
+    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for
+         notifications when screen is on</string>
 </resources>
