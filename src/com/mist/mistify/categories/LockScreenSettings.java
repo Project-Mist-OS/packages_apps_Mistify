@@ -25,10 +25,12 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -48,13 +50,21 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
+     private static final String CATEGORY_AMBIENT = "ambient_display";
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.mist_lockscreen);
         PreferenceScreen prefSet = getPreferenceScreen();
+
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceCategory ambientCat = (PreferenceCategory) prefScreen.findPreference(CATEGORY_AMBIENT);
+        if (TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.config_dozeDoubleTapSensorType)) &&
+                TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.config_dozeTapSensorType))) {
+            prefScreen.removePreference(ambientCat);
+        }
     }
 
     @Override
