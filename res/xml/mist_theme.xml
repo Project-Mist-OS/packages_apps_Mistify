@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022-2023 The EverestOS Project
+     Copyright (C) 2022-2023 The MistOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 
@@ -103,6 +103,21 @@
         android:title="@string/theme_customization_brightness_slider_title"
         android:summary="@string/theme_customization_brightness_slider_summary"
         android:fragment="com.mist.mistify.fragments.BrightnessSlider"/>
+
+    </PreferenceCategory>
+
+    <!-- UI Styles -->
+    <PreferenceCategory
+        android:key="ui_category"
+        android:title="@string/ui_category">
+
+
+        <!-- UI style -->
+        <Preference
+            android:key="android.theme.customization.style"
+            android:title="@string/theme_customization_ui_style_title"
+            android:summary="@string/theme_customization_ui_style_summary"
+            android:fragment="com.mist.mistify.fragments.ui.UIStyles"/>
 
     </PreferenceCategory>
 
