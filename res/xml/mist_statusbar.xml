@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022-2023 The EverestOS Project
+     Copyright (C) 2022-2023 The mistifyOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen
@@ -49,6 +49,12 @@
             android:title="@string/status_bar_clock_title"
             android:summary="@string/status_bar_clock_summary"
             android:fragment="com.mist.mistify.fragments.Clock" />
+            
+        <com.mistify.support.preferences.SystemSettingSwitchPreference
+            android:key="statusbar_clock_chip"
+            android:title="@string/statusbar_clock_chip_title"
+            android:summary="@string/statusbar_clock_chip_summary"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 </PreferenceScreen>
