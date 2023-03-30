@@ -74,4 +74,15 @@
             android:defaultValue="true" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/statusbar_notifications">
+
+        <com.mist.support.preferences.SystemSettingSwitchPreference
+            android:key="statusbar_colored_icons"
+            android:title="@string/statusbar_colored_icons_title"
+            android:summary="@string/statusbar_colored_icons_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
