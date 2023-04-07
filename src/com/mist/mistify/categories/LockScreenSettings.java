@@ -43,6 +43,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
+import com.mist.support.preferences.SecureSettingSwitchPreference;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,6 +59,11 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
 
     private PreferenceCategory mFingerprintCategory;
+
+     private static final String LOCKSCREEN_DOUBLE_LINE_CLOCK = "lockscreen_double_line_clock_switch";
+
+    	private SwitchPreferenceCompat mKGCustomClockColor;
+    	private SecureSettingSwitchPreference mDoubleLineClock;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -80,10 +87,24 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
             prefScreen.removePreference(mFingerprintCategory);
         }
+
+        mDoubleLineClock = (SecureSettingSwitchPreference ) findPreference(LOCKSCREEN_DOUBLE_LINE_CLOCK);
+        mDoubleLineClock.setChecked((Settings.Secure.getInt(getContentResolver(),
+             Settings.Secure.LOCKSCREEN_USE_DOUBLE_LINE_CLOCK, 1) != 0));
+        mDoubleLineClock.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+
+            if (preference == mDoubleLineClock) {
+        	boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.LOCKSCREEN_USE_DOUBLE_LINE_CLOCK, value ? 1 : 0);
+            return true; 
+        }
         return false;
     }  
 
