@@ -43,6 +43,12 @@
                android:summary="@string/wakeup_when_plugged_unplugged_summary"
                android:defaultValue="true" />
 
+         <com.mist.support.preferences.SecureSettingSwitchPreference
+               android:key="doze_on_charge"
+               android:defaultValue="false"
+               android:title="@string/doze_on_charge_title"
+               android:summary="@string/doze_on_charge_summary" />
+
      </PreferenceCategory>
 
     <PreferenceCategory
