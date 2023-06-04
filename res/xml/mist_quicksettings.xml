@@ -39,6 +39,12 @@
          settings:units="%"
          android:min="1" />
 
+    <com.mist.support.preferences.SystemSettingSwitchPreference
+         android:key="qs_dual_tone"
+         android:title="@string/qs_dual_tone_title"
+         android:summary="@string/qs_dual_tone_summary"
+         android:defaultValue="true" />
+
      </PreferenceCategory>
 
      <PreferenceCategory
