@@ -36,6 +36,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.mist.OmniJawsClient;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -62,6 +63,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
 
      private static final String LOCKSCREEN_DOUBLE_LINE_CLOCK = "lockscreen_double_line_clock_switch";
 
+    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
+
+    private Preference mWeather;
+    private OmniJawsClient mWeatherClient;
     	private SwitchPreferenceCompat mKGCustomClockColor;
     	private SecureSettingSwitchPreference mDoubleLineClock;
 
@@ -93,6 +98,9 @@ public class LockScreenSettings extends SettingsPreferenceFragment
              Settings.Secure.LOCKSCREEN_USE_DOUBLE_LINE_CLOCK, 1) != 0));
         mDoubleLineClock.setOnPreferenceChangeListener(this);
 
+        mWeather = (Preference) findPreference(KEY_WEATHER);
+        mWeatherClient = new OmniJawsClient(getContext());
+        updateWeatherSettings();
     }
 
     @Override
@@ -112,6 +120,21 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         ContentResolver resolver = mContext.getContentResolver();
         Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.DOZE_ON_CHARGE, 0, UserHandle.USER_CURRENT);
+    }
+
+    private void updateWeatherSettings() {
+        if (mWeatherClient == null || mWeather == null) return;
+
+        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
+        mWeather.setEnabled(weatherEnabled);
+        mWeather.setSummary(weatherEnabled ? R.string.lockscreen_weather_summary :
+            R.string.lockscreen_weather_enabled_info);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWeatherSettings();
     }
 
     @Override
