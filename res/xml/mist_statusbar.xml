@@ -42,6 +42,12 @@
             android:title="@string/show_fourg_icon_title"
             android:summary="@string/show_fourg_icon_summary"
             android:defaultValue="false"/>
+
+       <com.mist.support.preferences.SystemSettingSwitchPreference
+            android:key="wifi_standard_icon"
+            android:title="@string/wifi_standard_icon_title"
+            android:summary="@string/wifi_standard_icon_summary"
+            android:defaultValue="false"/>
             
     </PreferenceCategory>
 
