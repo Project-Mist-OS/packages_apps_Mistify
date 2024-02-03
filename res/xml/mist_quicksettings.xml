@@ -80,9 +80,9 @@
                android:defaultValue="true" />
 
           <com.mist.support.preferences.SystemSettingSwitchPreference
-               android:title="Brightness Percentage"
+               android:title="@string/brightness_percent_title"
                android:key="BRIGHTNESS_TEXTVIEW"
-               android:summary="show hide brightness percentage text"
+               android:summary="@string/brightness_percent_summary"
                android:defaultValue="false" />
 
      </PreferenceCategory>

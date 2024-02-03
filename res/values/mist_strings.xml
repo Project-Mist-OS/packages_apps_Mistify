@@ -606,4 +606,8 @@
     <string name="font_styles_summary">Change system font style</string>
     <string name="font_preview_text">The quick brown\nfox jumps over the\nlazy dog\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
     <string name="apply_button_text">Apply</string>    
+
+    <!-- Brightness TextView-->
+    <string name="brightness_percent_title">Brightness Percentage</string>
+    <string name="brightness_percent_summary">Show hide brightness percentage text</string> 
 </resources>
