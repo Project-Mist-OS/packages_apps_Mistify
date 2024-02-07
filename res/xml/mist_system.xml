@@ -17,6 +17,12 @@
         android:summary="@string/charging_animation_summary"
         android:defaultValue="true" />
 
+        <com.mist.support.preferences.GlobalSettingSwitchPreference
+            android:key="pm_downgrade_allowed"
+            android:title="@string/app_downgrade_title"
+            android:summary="@string/app_downgrade_summary"
+            android:defaultValue="false"/>
+    
     </PreferenceCategory>
 
     <PreferenceCategory
