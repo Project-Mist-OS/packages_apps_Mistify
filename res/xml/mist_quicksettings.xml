@@ -79,6 +79,13 @@
                android:summary="@string/qs_show_auto_brightness_summary"
                android:defaultValue="true" />
 
+        <!-- QS Bightness slider haptic feedback -->
+        <com.mist.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_brightness_slider_haptic_feedback"
+            android:title="@string/qs_brightness_slider_haptic_feedback_title"
+            android:summary="@string/qs_brightness_slider_haptic_summary"
+            android:defaultValue="false" />
+
           <com.mist.support.preferences.SystemSettingSwitchPreference
                android:title="@string/brightness_percent_title"
                android:key="BRIGHTNESS_TEXTVIEW"
