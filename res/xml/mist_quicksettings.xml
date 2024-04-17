@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022-2023 The EverestOS Project
+     Copyright (C) 2022-2023 The MistOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen
@@ -57,6 +57,12 @@
          android:title="@string/qs_dual_tone_title"
          android:summary="@string/qs_dual_tone_summary"
          android:defaultValue="true" />
+
+    <Preference
+         android:key="qs_tile_layout"
+         android:title="@string/qs_tile_layout_title"
+         android:summary="@string/qs_tile_layout_summary"
+         android:fragment="com.mist.mistify.fragments.QsTileLayoutSettings" />
 
      </PreferenceCategory>
 
