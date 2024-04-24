@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022-2023 The EverestOS Project
+     Copyright (C) 2022-2023 The MistOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen
@@ -58,5 +58,13 @@
             android:title="@string/use_photos_spoof_title"
             android:summary="@string/use_photos_spoof_summary"
             android:defaultValue="true" />
+
+        <!-- Component spoofing -->
+        <Preference
+            android:key="spoofing"
+            android:title="@string/spoofing_title"
+            android:summary="@string/spoofing_summary"
+            android:fragment="com.mist.mistify.fragments.Spoofing" />
     </PreferenceCategory>
+
 </PreferenceScreen>
