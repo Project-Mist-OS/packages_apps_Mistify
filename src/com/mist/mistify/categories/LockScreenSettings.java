@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -50,7 +51,12 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
-     private static final String CATEGORY_AMBIENT = "ambient_display";
+    private static final String CATEGORY_AMBIENT = "ambient_display";
+
+    private static final String KEY_FINGERPRINT_CATEGORY = "lock_screen_fingerprint_category";
+    private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
+
+    private PreferenceCategory mFingerprintCategory;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -64,6 +70,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         if (TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.config_dozeDoubleTapSensorType)) &&
                 TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.config_dozeTapSensorType))) {
             prefScreen.removePreference(ambientCat);
+        }
+
+        mFingerprintCategory = (PreferenceCategory) findPreference(KEY_FINGERPRINT_CATEGORY);
+
+        FingerprintManager fingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+
+        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+            prefScreen.removePreference(mFingerprintCategory);
         }
     }
 
@@ -89,6 +104,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     final List<String> keys = super.getNonIndexableKeys(context);
+
+                FingerprintManager fingerprintManager = (FingerprintManager)
+                    context.getSystemService(Context.FINGERPRINT_SERVICE);
+
+                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                    keys.add(KEY_RIPPLE_EFFECT);
+                }
                     return keys;
                 }
             };
