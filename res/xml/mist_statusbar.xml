@@ -43,6 +43,13 @@
             android:summary="@string/show_fourg_icon_summary"
             android:defaultValue="false"/>
 
+        <!-- Network traffic -->
+        <Preference
+            android:key="network_traffic_settings"
+            android:title="@string/network_traffic_settings_title"
+            android:summary="@string/network_traffic_settings_summary"
+            android:fragment="com.mist.mistify.fragments.statusbar.NetworkTrafficSettings" />
+
        <com.mist.support.preferences.SystemSettingSwitchPreference
             android:key="wifi_standard_icon"
             android:title="@string/wifi_standard_icon_title"
