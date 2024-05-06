@@ -37,6 +37,17 @@
      </PreferenceCategory>
 
      <PreferenceCategory
+        android:title="Depth Wallpaper">
+
+        <Preference
+            android:key="depth_wallpaper"
+            android:title="@string/dw_wallpaper_enabled_title"
+            android:summary="@string/dw_wallpaper_enabled_summary"
+            android:fragment="com.mist.mistify.fragments.WallpaperDepth" />
+
+     </PreferenceCategory>
+
+     <PreferenceCategory
         android:key="ambient_display"
         android:title="@string/ambient_display_category" >
 
