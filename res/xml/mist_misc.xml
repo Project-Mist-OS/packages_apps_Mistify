@@ -29,7 +29,7 @@
         android:summary="@string/show_clipboard_overlay_summary"
         android:defaultValue="true"/>
 
-     <com.mist.support.preferences.SecureSettingSwitchPreference
+    <com.mist.support.preferences.GlobalSettingSwitchPreference
             android:key="spoof_storage_encryption_status"
             android:title="@string/spoof_storage_encryption_status_title"
             android:summary="@string/spoof_storage_encryption_status_summary"
