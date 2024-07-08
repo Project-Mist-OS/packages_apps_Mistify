@@ -48,6 +48,13 @@
         android:key="spoofing_app_specific_category"
         android:title="@string/spoofing_app_specific_category">
 
+        <!-- Google Photos -->
+        <com.mist.support.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="false" />
+
         <!-- Games fps -->
         <com.mist.support.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.games"
