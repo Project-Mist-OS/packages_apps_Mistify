@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The EverestOS Project
+ * Copyright (C) 2023 The MistOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.everest.basecamp;
+package com.mist.mistify;
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -28,18 +28,18 @@ import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
 
-public class BaseCamp extends SettingsPreferenceFragment {
+public class Mistify extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        addPreferencesFromResource(R.xml.basecamp);
+        addPreferencesFromResource(R.xml.mistify);
     }
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.EVEREST;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     public static void lockCurrentOrientation(Activity activity) {

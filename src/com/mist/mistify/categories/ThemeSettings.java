@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The EverestOS Project
+ * Copyright (C) 2023 The EverestOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.everest.basecamp.categories;
+package com.mist.mistify.categories;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -45,13 +45,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class SystemSettings extends SettingsPreferenceFragment 
+public class ThemeSettings extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.everest_system);
+        addPreferencesFromResource(R.xml.mist_theme);
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
@@ -64,7 +64,7 @@ public class SystemSettings extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.EVEREST;
+        return MetricsProto.MetricsEvent.MIST;
     }
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
@@ -72,7 +72,7 @@ public class SystemSettings extends SettingsPreferenceFragment
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.everest_system;
+                    sir.xmlResId = R.xml.mist_theme;
                     return Arrays.asList(sir);
                 }
 

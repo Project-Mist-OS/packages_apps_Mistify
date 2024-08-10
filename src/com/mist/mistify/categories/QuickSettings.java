@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.everest.basecamp.categories;
+package com.mist.mistify.categories;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -45,13 +45,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class ButtonSettings extends SettingsPreferenceFragment 
+public class QuickSettings extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.everest_button);
+        addPreferencesFromResource(R.xml.mist_quicksettings);
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
@@ -64,7 +64,7 @@ public class ButtonSettings extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.EVEREST;
+        return MetricsProto.MetricsEvent.MIST;
     }
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
@@ -72,7 +72,7 @@ public class ButtonSettings extends SettingsPreferenceFragment
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.everest_button;
+                    sir.xmlResId = R.xml.mist_quicksettings;
                     return Arrays.asList(sir);
                 }
 
