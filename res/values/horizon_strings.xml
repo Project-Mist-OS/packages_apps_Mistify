@@ -25,8 +25,8 @@
     <string name="reset">Reset</string>
 
     <!-- HorizonLab -->
-    <string name="horizon_dashboard_title">HorizonLabs</string>
-    <string name="build_tweaks_summary_title">Be the Horizoners!</string>
+    <string name="mist_dashboard_title">Mistify</string>
+    <string name="build_tweaks_summary_title">Infinity exist everywhere!</string>
 
     <!-- Category: Statusbar -->
     <string name="category_statusbar_title">Statusbar</string>

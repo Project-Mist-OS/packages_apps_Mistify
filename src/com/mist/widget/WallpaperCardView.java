@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.horizon.widget;
+package com.mist.widget;
 
 import android.app.WallpaperManager;
 import android.content.Context;

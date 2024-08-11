@@ -16,7 +16,7 @@
         android:layout_marginBottom="14.0dip">
         <com.google.android.material.card.MaterialCardView
             android:background="@android:color/transparent"
-            android:id="@+id/hzn_about_card"
+            android:id="@+id/mist_about_card"
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -41,7 +41,7 @@
                 android:layout_height="fill_parent">
                 <ImageView
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_hzn_logo"
+                    android:src="@drawable/ic_mist_logo"
                     android:tint="?android:attr/textColorPrimary"
                     android:layout_width="50.0dip"
                     android:layout_height="50.0dip" />
@@ -66,7 +66,7 @@
             android:layout_marginStart="8.0dip">
             <LinearLayout
                 android:gravity="start|center"
-                android:background="@drawable/hzn_card_background_sin"
+                android:background="@drawable/mist_card_background_sin"
                 android:id="@+id/hzn_qspanel_card"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
@@ -107,7 +107,7 @@
             </LinearLayout>
             <LinearLayout
                 android:gravity="start|center"
-                android:background="@drawable/hzn_card_background_sin"
+                android:background="@drawable/mist_card_background_sin"
                 android:id="@+id/hzn_statusbar_card"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"

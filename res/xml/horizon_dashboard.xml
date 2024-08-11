@@ -20,7 +20,7 @@
     <com.android.settingslib.widget.LayoutPreference
         android:key="hzn_header"
         android:layout="@layout/hzn_labs_header"
-        settings:controller="com.horizon.lab.HorizonHeaderController" />
+        settings:controller="com.mist.mistify.MistHeaderController" />
     <PreferenceCategory
         android:title="Settings Features"
         settings:layout="@layout/hzn_labs_card_category">
@@ -30,7 +30,7 @@
             android:icon="@drawable/ic_hzn_themes"
             android:title="Themes"
             android:summary="Customize the system themes"
-            android:fragment="com.horizon.lab.category.Theme"
+            android:fragment="com.mist.mistify.category.Theme"
             settings:layout="@layout/hznlabs_card_left_top" />
             
         <!-- Notifications -->
@@ -38,7 +38,7 @@
             android:icon="@drawable/ic_hzn_notifications"
             android:title="Notifications"
             android:summary="Change the notifications area"
-            android:fragment="com.horizon.lab.category.Notif"
+            android:fragment="com.mist.mistify.category.Notif"
             settings:layout="@layout/hznlabs_card_right_top" />
             
         <!-- Lock Screen -->
@@ -46,7 +46,7 @@
             android:icon="@drawable/ic_hzn_lockscreen"
             android:title="Lock Screen"
             android:summary="Lockscreen extra feature"
-            android:fragment="com.horizon.lab.category.Lock"
+            android:fragment="com.mist.mistify.category.Lock"
             settings:layout="@layout/hznlabs_card_left_bot" />
             
         <!-- Miscellaneous -->
@@ -54,7 +54,7 @@
             android:icon="@drawable/ic_hzn_miscellaneous"
             android:title="Miscellaneous"
             android:summary="Some more extra stuff"
-            android:fragment="com.horizon.lab.category.Misc"
+            android:fragment="com.mist.mistify.category.Misc"
             settings:layout="@layout/hznlabs_card_right_bot" />
     </PreferenceCategory>
 </PreferenceScreen>

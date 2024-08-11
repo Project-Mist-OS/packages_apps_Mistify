@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.horizon.lab;
+package com.mist.mistify;
 
 import android.content.Context;
 

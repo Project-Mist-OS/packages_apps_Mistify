@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.horizon.lab.category;
+package com.mist.mistify.category;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -44,13 +44,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class Lock extends SettingsPreferenceFragment 
+public class Notif extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.category_lock);
+        addPreferencesFromResource(R.xml.category_notif);
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
@@ -63,7 +63,7 @@ public class Lock extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HORIZON;
+        return MetricsProto.MetricsEvent.MIST;
     }
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
@@ -71,7 +71,7 @@ public class Lock extends SettingsPreferenceFragment
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.category_lock;
+                    sir.xmlResId = R.xml.category_notif;
                     return Arrays.asList(sir);
                 }
 

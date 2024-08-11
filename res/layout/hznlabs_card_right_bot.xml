@@ -9,7 +9,7 @@
     <LinearLayout
         android:gravity="start"
         android:orientation="vertical"
-        android:background="@drawable/hzn_card_background_sin"
+        android:background="@drawable/mist_card_background_sin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:minHeight="190.0dip"

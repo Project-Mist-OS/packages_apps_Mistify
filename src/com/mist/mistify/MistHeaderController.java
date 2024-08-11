@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.horizon.lab;
+package com.mist.mistify;
 
 import android.content.*;
 import android.view.View;
@@ -29,7 +29,7 @@ import com.google.android.material.card.MaterialCardView;
 
 import com.android.settings.R;
 
-public class HorizonHeaderController extends BasePreferenceController implements View.OnClickListener {
+public class MistHeaderController extends BasePreferenceController implements View.OnClickListener {
 	
 	private LayoutPreference mPreference;
 	private MaterialCardView aboutCard;
@@ -48,7 +48,7 @@ public class HorizonHeaderController extends BasePreferenceController implements
 	public void displayPreference(PreferenceScreen screen) {
 		super.displayPreference(screen);
 		mPreference = screen.findPreference("hzn_header");
-		aboutCard = mPreference.findViewById(R.id.hzn_about_card);
+		aboutCard = mPreference.findViewById(R.id.mist_about_card);
 		quickSettingsCard = mPreference.findViewById(R.id.hzn_qspanel_card);
 		statusBarCard = mPreference.findViewById(R.id.hzn_statusbar_card);
 		

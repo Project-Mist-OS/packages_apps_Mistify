@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.horizon.lab.category;
+package com.mist.mistify.category;
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,19 +42,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class QuickSettings extends SettingsPreferenceFragment {
+public class Statusbar extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.category_quicksettings);
+        addPreferencesFromResource(R.xml.category_statusbar);
         PreferenceScreen prefSet = getPreferenceScreen();
 
     }
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HORIZON;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -63,7 +63,7 @@ public class QuickSettings extends SettingsPreferenceFragment {
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.category_quicksettings;
+                    sir.xmlResId = R.xml.category_statusbar;
                     return Arrays.asList(sir);
                 }
 
