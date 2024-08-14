@@ -28,7 +28,7 @@ import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
 
-public class Mistify extends SettingsPreferenceFragment {
+public class MistifySettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
