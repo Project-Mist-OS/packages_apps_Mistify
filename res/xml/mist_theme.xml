@@ -19,6 +19,12 @@
         android:summary="@string/monet_engine_summary"
         android:fragment="com.mist.mistify.fragments.ui.MonetEngine" />
     
+    <Preference
+            android:key="bootanimation_fragment"
+            android:title="@string/boot_animation_styles_title"
+            android:summary="@string/boot_animation_styles_summary"
+            android:fragment="com.mist.mistify.fragments.BootAnimationSettings" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

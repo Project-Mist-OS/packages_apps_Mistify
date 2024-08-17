@@ -954,4 +954,15 @@
     <!-- Unlimit screenrecord -->
     <string name="unlimit_screenrecord_title">Unlimit screenrecord</string>
     <string name="unlimit_screenrecord_summary">Remove the 15GiB file size limit\nMay result in a larger than needed output file</string>
+
+    <!-- BootAnimation Styles -->
+    <string name="boot_animation_styles_title">Bootanimation Styles</string>
+
+    <!-- Boot Animation Preview Strings -->
+    <string name="boot_animation_preview_desc">Preview of the selected boot animation</string>
+    <string name="boot_animation_preview_summary">Displays a preview of the currently selected boot animation</string>
+    <string name="boot_animation_preview_title">Boot Animation Preview</string>
+
+    <!-- Boot Animation Style Strings -->
+    <string name="boot_animation_styles_summary">Choose a style for your boot animation</string>
 </resources>
