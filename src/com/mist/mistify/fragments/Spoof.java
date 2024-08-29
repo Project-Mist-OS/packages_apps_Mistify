@@ -31,7 +31,7 @@ import android.provider.Settings;
 import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.internal.util.mist.SystemRestartUtils;
+import com.android.internal.util.mist.MistUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -223,7 +223,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
                 });
             }
             mHandler.postDelayed(() -> {
-                SystemRestartUtils.showSystemRestartDialog(getContext());
+                MistUtils.showSystemUiRestartDialog(getContext());
             }, 1250);
         }).start();
     }
@@ -246,7 +246,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             Log.e(TAG, "Error reading PIF JSON or setting properties", e);
         }
         mHandler.postDelayed(() -> {
-            SystemRestartUtils.showSystemRestartDialog(getContext());
+            MistUtils.showSystemUiRestartDialog(getContext());
         }, 1250);
     }
 
@@ -277,7 +277,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             Log.e(TAG, "Error reading Game Props JSON or setting properties", e);
         }
         mHandler.postDelayed(() -> {
-            SystemRestartUtils.showSystemRestartDialog(getContext());
+            MistUtils.showSystemUiRestartDialog(getContext());
         }, 1250);
     }
 
@@ -302,7 +302,7 @@ public class Spoof extends SettingsPreferenceFragment implements Preference.OnPr
             || preference == mGoogleSpoof
             || preference == mGphotosSpoof
             || preference == mGamePropsSpoof) {
-            SystemRestartUtils.showSystemRestartDialog(getContext());
+            MistUtils.showSystemUiRestartDialog(getContext());
             return true;
         }
         return false;
