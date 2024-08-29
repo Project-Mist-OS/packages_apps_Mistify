@@ -51,15 +51,5 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-    android:title="@string/spoofing_category">
-
-        <!-- Component spoofing -->
-        <Preference
-            android:key="spoofing"
-            android:title="@string/spoofing_title"
-            android:summary="@string/spoofing_summary"
-            android:fragment="com.mist.mistify.fragments.Spoofing" />
-    </PreferenceCategory>
 
 </PreferenceScreen>
