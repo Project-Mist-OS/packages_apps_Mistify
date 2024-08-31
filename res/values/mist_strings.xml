@@ -985,4 +985,10 @@
     <string name="show_pif_properties_title">Play Integrity Fix properties</string>
     <string name="show_pif_properties_summary">Show all currently set PIF properties</string>
     <string name="error_loading_properties">Error loading PIF properties</string>
+
+    <!-- Custom settings dashboard style -->
+    <string name="settings_dashboard_style_title">Settings Styles</string>
+    <string name="settings_dashboard_style_summary">Change the dashboard settings UI</string>
+    <string name="settings_dashboard_style_1">AOSP Style</string>
+    <string name="settings_dashboard_style_2">MistOS Style</string>
 </resources>

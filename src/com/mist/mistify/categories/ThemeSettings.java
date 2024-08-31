@@ -42,6 +42,9 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
+import com.android.internal.util.mist.MistUtils;
+import com.mist.support.preferences.SystemSettingListPreference;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +55,9 @@ public class ThemeSettings extends SettingsPreferenceFragment
 
     private static final String UDFPS_CATEGORY = "udfps_category";
 
+    private static final String SETTINGS_DASHBOARD_STYLE = "settings_dashboard_style";
+
+    private SystemSettingListPreference mSettingsDashBoardStyle;
     private PreferenceCategory mUdfpsCategory;
 
     @Override
@@ -62,21 +68,30 @@ public class ThemeSettings extends SettingsPreferenceFragment
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+        mSettingsDashBoardStyle = (SystemSettingListPreference) findPreference(SETTINGS_DASHBOARD_STYLE);
+        mSettingsDashBoardStyle.setOnPreferenceChangeListener(this);
+
         mUdfpsCategory = findPreference(UDFPS_CATEGORY);
         if (!CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
             prefScreen.removePreference(mUdfpsCategory);
         }
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        ContentResolver resolver = getActivity().getContentResolver();
+	if (preference == mSettingsDashBoardStyle){
+            MistUtils.showSystemUiRestartDialog(getContext());
+            return true;
+            }
         return false;
-    }  
+    }
 
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.MIST;
     }
+
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
                 @Override

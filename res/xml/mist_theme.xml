@@ -125,6 +125,14 @@
             android:summary="@string/theme_customization_ui_style_summary"
             android:fragment="com.mist.mistify.fragments.ui.UIStyles"/>
 
+        <com.mist.support.preferences.SystemSettingListPreference
+        android:key="settings_dashboard_style"
+        android:title="@string/settings_dashboard_style_title"
+        android:summary="@string/settings_dashboard_style_summary"
+        android:entries="@array/settings_dashboard_style_entries"
+        android:entryValues="@array/settings_dashboard_style_values"
+        android:defaultValue="0" />
+
     </PreferenceCategory>
 
     <!-- Udfps options -->
