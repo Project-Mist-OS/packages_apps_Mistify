@@ -977,6 +977,7 @@
 
     <!-- Boot Animation Style Strings -->
     <string name="boot_animation_styles_summary">Choose a style for your boot animation</string>
+    <string name="boot_animation_applied">Bootanimation applied</string>
 
     <!-- Spofing -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>

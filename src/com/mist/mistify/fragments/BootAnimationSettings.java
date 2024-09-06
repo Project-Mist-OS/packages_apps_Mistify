@@ -26,6 +26,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.documentfile.provider.DocumentFile;
 import androidx.preference.ListPreference;
@@ -129,6 +130,7 @@ public class BootAnimationSettings extends SettingsPreferenceFragment implements
             updateBootAnimationPreview();
             // Force the preference to update to the custom option
             mBootAnimationStyle.setValue("5"); // Set to the custom option
+            Toast.makeText(getContext(), R.string.boot_animation_applied, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e(TAG, "Error copying custom bootanimation", e);
         }
