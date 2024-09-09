@@ -41,9 +41,10 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
-
+import com.mist.support.preferences.GlobalSettingListPreference;
 import com.android.internal.util.mist.MistUtils;
 import com.mist.support.preferences.SystemSettingListPreference;
+import com.android.settings.utils.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,8 +58,14 @@ public class ThemeSettings extends SettingsPreferenceFragment
 
     private static final String SETTINGS_DASHBOARD_STYLE = "settings_dashboard_style";
 
+    private static final String KEY_LOCK_SOUND = "lock_sound";
+    private static final String KEY_UNLOCK_SOUND = "unlock_sound";
+
     private SystemSettingListPreference mSettingsDashBoardStyle;
     private PreferenceCategory mUdfpsCategory;
+
+    private GlobalSettingListPreference mLockSound;
+    private GlobalSettingListPreference mUnlockSound;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -70,6 +77,11 @@ public class ThemeSettings extends SettingsPreferenceFragment
 
         mSettingsDashBoardStyle = (SystemSettingListPreference) findPreference(SETTINGS_DASHBOARD_STYLE);
         mSettingsDashBoardStyle.setOnPreferenceChangeListener(this);
+
+        mLockSound = (GlobalSettingListPreference) findPreference(KEY_LOCK_SOUND);
+        mLockSound.setOnPreferenceChangeListener(this);
+        mUnlockSound = (GlobalSettingListPreference) findPreference(KEY_UNLOCK_SOUND);
+        mUnlockSound.setOnPreferenceChangeListener(this);
 
         mUdfpsCategory = findPreference(UDFPS_CATEGORY);
         if (!CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
@@ -83,7 +95,10 @@ public class ThemeSettings extends SettingsPreferenceFragment
 	if (preference == mSettingsDashBoardStyle){
             MistUtils.showSystemUiRestartDialog(getContext());
             return true;
-            }
+            } else if (preference == mLockSound || preference == mUnlockSound) {
+            MistUtils.showSystemUiRestartDialog(getContext());
+            return true;
+           }
         return false;
     }
 
