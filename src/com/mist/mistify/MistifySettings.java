@@ -23,9 +23,10 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Surface;
-import android.preference.Preference;
+import androidx.preference.*;
 import com.android.settings.R;
-
+import androidx.recyclerview.widget.*;
+import android.view.*;
 import com.android.settings.SettingsPreferenceFragment;
 
 public class MistifySettings extends SettingsPreferenceFragment {
@@ -41,6 +42,26 @@ public class MistifySettings extends SettingsPreferenceFragment {
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.MIST;
     }
+
+    @Override
+	public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup container, Bundle icicle) {
+		RecyclerView rcv = super.onCreateRecyclerView(inflater, container, icicle);
+		GridLayoutManager layoutG = new GridLayoutManager(getActivity(), 2);
+		layoutG.setSpanSizeLookup(new SpanSizeLookupG());
+		rcv.setLayoutManager(layoutG);
+		return rcv;
+	}
+
+	class SpanSizeLookupG extends GridLayoutManager.SpanSizeLookup {
+		@Override
+		public int getSpanSize(int position) {
+		    if (position == 0 || position == 1) {
+				return 2;
+			} else {
+				return 1;
+			}
+		}
+	}
 
     public static void lockCurrentOrientation(Activity activity) {
         int currentRotation = activity.getWindowManager().getDefaultDisplay().getRotation();
