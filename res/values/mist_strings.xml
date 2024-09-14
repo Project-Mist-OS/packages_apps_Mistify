@@ -1037,4 +1037,8 @@
     <string name="systemui_restart_message">For changes to take effect, a SystemUI restart is required. Restart SystemUI now?</string>
     <string name="systemui_restart_yes">Yes</string>
     <string name="systemui_restart_not_now">Not now</string>
+
+    <!-- Cache cleaner -->
+    <string name="cache_cleaner_title">Cache Cleaner</string>
+    <string name="cache_cleaner_summary">Enable the cache cleaner service to automatically clear app caches.</string>
 </resources>

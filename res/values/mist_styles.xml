@@ -105,4 +105,10 @@
 	<item name="cornerFamily">rounded</item>
 	<item name="cornerSize">100dp</item>
     </style>
+
+    <style name="declan_text_secondary">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:alpha">0.7</item>
+    </style>
 </resources>
