@@ -21,73 +21,80 @@
     <!-- About -->
         <Preference
             android:icon="@drawable/ic_settings_about"
-            settings:layout="@layout/top_level_preference_solo_card"
             android:title="@string/about_crdroid"
-            android:summary="@string/about_matrixx_summary"
+            android:summary="@string/about_mist_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
             android:fragment="com.crdroid.settings.fragments.About" />
-      <!-- Buttons -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_buttons"
-            settings:position="top"
-            android:title="@string/button_title"
-            android:summary="@string/buttons_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Buttons" />
-      <!-- Lockscreen -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_lockscreens"
-            settings:position="middle"
-            android:title="@string/lockscreen_title"
-            android:summary="@string/lockscreen_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.LockScreen" />
-            
-        <!-- Misc -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_miscs"
-            settings:position="bottom"
-            android:title="@string/misc_title"
-            android:summary="@string/misc_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Miscellaneous" />
-        <!-- Navigation -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_navigation"
-            settings:position="top"
-            android:title="@string/navigation_title"
-            android:summary="@string/nav_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Navigation" />
-        <!-- Notifications -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_bell_ring"
-            settings:position="middle"
-            android:title="@string/notifications_title"
-            android:summary="@string/notif_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Notifications" />
-        <!-- QuickSettings -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_quicksettings"
-            settings:position="bottom"
-            android:title="@string/quicksettings_title"
-            android:summary="@string/qs_tile_layout_summary"
-            android:fragment="com.crdroid.settings.fragments.QuickSettings" />
-        <!-- Sound -->
-        <com.android.settings.preferences.ui.AdaptivePreference
-            android:icon="@drawable/ic_settings_sound"
-            settings:position="top"
-            android:title="@string/sound_title"
-            android:summary="@string/sound_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.Sound" />   
-        <!-- Statusbar -->
-        <com.android.settings.preferences.ui.AdaptivePreference
+
+      <!-- Statusbar -->
+        <Preference
             android:icon="@drawable/ic_settings_statusbar"
-            settings:position="middle"
             android:title="@string/statusbar_title"
             android:summary="@string/sb_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
             android:fragment="com.crdroid.settings.fragments.StatusBar" />
- 
+
+        <!-- QuickSettings -->
+        <Preference
+            android:icon="@drawable/ic_settings_quicksettings"
+            android:title="@string/quicksettings_title"
+            android:summary="@string/qs_tile_layout_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.QuickSettings" />
+
+      <!-- Buttons -->
+        <Preference
+            android:icon="@drawable/ic_settings_buttons"
+            android:title="@string/button_title"
+            android:summary="@string/buttons_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.Buttons" />
+
+      <!-- Lockscreen -->
+        <Preference
+            android:icon="@drawable/ic_settings_lockscreens"
+            android:title="@string/lockscreen_title"
+            android:summary="@string/lockscreen_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.LockScreen" />
+            
+        <!-- Navigation -->
+        <Preference
+            android:icon="@drawable/ic_navigation"
+            android:title="@string/navigation_title"
+            android:summary="@string/nav_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.Navigation" />
+
+        <!-- Notifications -->
+        <Preference
+            android:icon="@drawable/ic_bell_ring"
+            android:title="@string/notifications_title"
+            android:summary="@string/notif_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.Notifications" />
+
+        <!-- Sound -->
+        <Preference
+            android:icon="@drawable/ic_settings_sound"
+            android:title="@string/sound_title"
+            android:summary="@string/sound_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.Sound" />
+   
         <!-- UserInterface -->
-        <com.android.settings.preferences.ui.AdaptivePreference
+        <Preference
             android:icon="@drawable/ic_color_bucket"
-            settings:position="bottom"
             android:title="@string/ui_title"
             android:summary="@string/ui_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
             android:fragment="com.crdroid.settings.fragments.UserInterface" />
+
+        <!-- Misc -->
+        <Preference
+            android:icon="@drawable/ic_settings_miscs"
+            android:title="@string/misc_title"
+            android:summary="@string/misc_settings_summary"
+            settings:layout="@layout/mist_dashboard_preference_single"
+            android:fragment="com.crdroid.settings.fragments.Miscellaneous" />
 </PreferenceScreen> 

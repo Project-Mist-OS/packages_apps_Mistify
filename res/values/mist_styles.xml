@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The mistOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Text Styles -->
+    <style name="mistTextPrimary">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    </style>
+    <style name="mistTextPrimaryMedium" parent="mistTextPrimary">
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+    <style name="mistTextSecondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <!-- Dashboard -->
+    <style name="mistDashboardPreferenceSingle" parent="mistPreferenceSingle">
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+    
+    <style name="mistDashboardPreferenceTop" parent="mistPreferenceTop">
+        <item name="android:layout_marginTop">@dimen/mist_pref_horizontal_padding</item>
+    </style>
+    <style name="mistDashboardPreferenceBottom" parent="mistPreferenceBottom">
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+    <style name="mistDashboardPreferenceFull" parent="mistPreferenceFull">
+        <item name="android:layout_marginTop">@dimen/mist_pref_horizontal_padding</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+    <style name="mistDashboardPreferenceFullAccent" parent="mistDashboardPreferenceFull">
+        <item name="android:background">@drawable/mist_preference_background_full_accent</item>
+    </style>
+    <style name="mistDashboardPreferencePhone" parent="mistDashboardPreferenceTop">
+        <item name="android:background">@drawable/mist_preference_background_phone</item>
+    </style>
+    <!-- General -->
+    <style name="mistPreferenceSingle" parent="mistPreferenceBase">
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/mist_preference_background_single</item>
+    </style>
+    
+    <style name="mistPreferenceBase">
+        <item name="android:layout_marginStart">@dimen/mist_pref_horizontal_padding</item>
+        <item name="android:layout_marginEnd">@dimen/mist_pref_horizontal_padding</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+    <style name="mistPreferenceTop" parent="mistPreferenceBase">
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:background">@drawable/mist_preference_background_top</item>
+    </style>
+    <style name="mistPreferenceMiddle" parent="mistPreferenceBase">
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:background">@drawable/mist_preference_background_middle</item>
+    </style>
+    <style name="mistPreferenceBottom" parent="mistPreferenceBase">
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/mist_preference_background_bottom</item>
+    </style>
+    <style name="mistPreferenceFull" parent="mistPreferenceBase">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/mist_preference_background_full</item>
+    </style>
+    <style name="mistPreferenceFullAccent" parent="mistPreferenceBase">
+        <item name="android:layout_marginTop">@dimen/mist_pref_horizontal_padding</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/mist_preference_background_full_accent</item>
+    </style>
+</resources>
