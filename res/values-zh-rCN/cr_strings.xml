@@ -1046,8 +1046,7 @@
     <!-- App lock -->
     <string name="app_lock_title">应用锁</string>
     <plurals name="app_lock_summary">
-        <item quantity="other"><xliff:g example="1" id="Number of applications">%1$d</xliff:g>应用程序已受到保护
-<xliff:g example="10" id="Number of applications">%1$d</xliff:g>应用程序已受到保护</item>
+        <item quantity="other"><xliff:g example="10" id="Number of applications">%1$d</xliff:g> applications are protected</item>
     </plurals>
     <string name="app_lock_authentication_dialog_title">解锁​​​​</string>
     <string name="enable_debugging">启用调试</string>
@@ -1154,4 +1153,9 @@
     <string name="wifi_per_connection_random_mac_addr">Use per-connection randomized MAC (default)</string>
     <string name="wifi_per_network_random_mac_addr">Use per-network randomized MAC</string>
     <string name="wifi_device_mac_addr">Use device MAC</string>
+    <!-- Ambient wake -->
+    <string name="doze_gesture_ambient_title">Show Ambient</string>
+    <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
+    <string name="gesture_wake_ambient">Show Ambient</string>
+    <string name="gesture_wake">Fully wake</string>
 </resources>
