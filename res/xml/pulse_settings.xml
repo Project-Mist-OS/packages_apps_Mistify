@@ -73,6 +73,7 @@
 
     <PreferenceCategory
         android:key="pulse_fading_bars_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/pulse_legacy_mode_advanced_category">
 
         <org.mist.settings.preferences.SecureSettingSeekBarPreference
@@ -123,6 +124,7 @@
 
     <PreferenceCategory
         android:key="pulse_2"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/pulse_solid_dimen_category">
 
         <org.mist.settings.preferences.SecureSettingSeekBarPreference

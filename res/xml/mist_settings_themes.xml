@@ -10,19 +10,8 @@
     android:title="@string/themes_title">
 
     <PreferenceCategory
-        android:key="themes_monet_category"
-        android:title="@string/themes_monet_category">
-
-        <!-- Monet engine -->
-        <Preference
-            android:key="monet_engine"
-            android:title="@string/themes_monet_title"
-            android:summary="@string/themes_monet_summary"
-            android:fragment="org.mist.settings.fragments.themes.MonetSettings" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="themes_general_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_general_category">
 
         <!-- Wallpaper Settings -->
@@ -78,6 +67,7 @@
 	
     <PreferenceCategory
         android:key="themes_audio_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_audio_category">
 
         <!-- Lock sound -->
@@ -99,6 +89,7 @@
 
     <PreferenceCategory
         android:key="themes_fonts_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_fonts_category">
 
         <!-- System font -->
@@ -111,6 +102,7 @@
 
     <PreferenceCategory
         android:key="themes_launcher_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_launcher_category">
 
         <org.mist.settings.preferences.OverlaySwitchPreference
@@ -128,6 +120,7 @@
 
     <PreferenceCategory
         android:key="themes_icons_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_icons_category">
 
         <!-- System icons -->
@@ -175,6 +168,7 @@
 
     <PreferenceCategory
         android:key="themes_animations_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_animations_category">
 
         <!-- Boot animation -->

@@ -10,6 +10,7 @@
 
     <PreferenceCategory
         android:key="spoofing_system_wide_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/spoofing_system_wide_category">
 
         <!-- GMS spoof -->
@@ -61,6 +62,7 @@
 
     <PreferenceCategory
         android:key="spoofing_app_specific_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/spoofing_app_specific_category">
 
         <!-- Play Store -->

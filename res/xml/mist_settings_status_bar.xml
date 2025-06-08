@@ -11,6 +11,7 @@
 
     <PreferenceCategory
         android:key="status_bar_gestures_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/status_bar_gestures_category">
 
         <!-- Status bar brightness control -->
@@ -31,6 +32,7 @@
 
     <PreferenceCategory
         android:key="status_bar_icons_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/status_bar_icons_category">
 
         <!-- Status bar tuner -->
@@ -161,6 +163,7 @@
 
     <PreferenceCategory
         android:key="status_bar_privacy_indicators_category"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/status_bar_privacy_indicators_category">
 
         <!-- Mic/Camera privacy indicator -->

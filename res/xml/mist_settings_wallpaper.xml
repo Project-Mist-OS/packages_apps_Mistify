@@ -21,6 +21,7 @@
 
     <PreferenceCategory
         android:key="wallpaper_blur"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/wallpaper_blur_title">
 
         <org.mist.settings.preferences.SystemPropertyListPreference
@@ -42,6 +43,7 @@
 
     <PreferenceCategory
         android:key="wallpaper_dim"
+        android:layout="@layout/mist_first_header_pref"
         android:title="@string/wallpaper_dim_title">
 
         <org.mist.settings.preferences.SystemPropertyListPreference
