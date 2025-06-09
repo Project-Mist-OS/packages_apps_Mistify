@@ -40,6 +40,13 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/spoofing_app_specific_category">
 
+        <!-- Google App -->
+        <org.evolution.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.qsb.enable"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />
+
         <!-- Play Store -->
         <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.vending.enable"
