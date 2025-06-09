@@ -19,7 +19,6 @@
         android:title="@string/settings_styles"
         android:summary="@string/settings_summary"
         android:icon="@drawable/ic_home"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.UserInterface" />
 
     </PreferenceCategory>
@@ -33,7 +32,6 @@
             android:title="@string/themes_monet_title"
             android:icon="@drawable/ic_monet"
             android:summary="@string/themes_monet_summary"
-            settings:layout="@layout/mist_dashboard_single"
             android:fragment="org.mist.settings.fragments.themes.MonetSettings" />
 
     </PreferenceCategory>
@@ -48,7 +46,6 @@
         android:title="@string/themes_title"
         android:summary="@string/themes_summary"
         android:icon="@drawable/ic_themes"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.themes.Themes" />
 
     </PreferenceCategory>
@@ -61,7 +58,6 @@
         android:title="@string/lock_screen_title"
         android:summary="@string/lock_screen_summary"
         android:icon="@drawable/ic_lock_screen"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.lockscreen.LockScreen" />
 
     </PreferenceCategory>
@@ -74,7 +70,6 @@
         android:title="@string/status_bar_title"
         android:summary="@string/status_bar_summary"
         android:icon="@drawable/ic_status_bar"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.statusbar.StatusBar" />
 
     </PreferenceCategory>
@@ -87,7 +82,6 @@
         android:title="@string/quick_settings_title"
         android:summary="@string/quick_settings_summary"
         android:icon="@drawable/ic_quick_settings"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.quicksettings.QuickSettings" />
 
     </PreferenceCategory>
@@ -100,7 +94,6 @@
         android:title="@string/notifications_title"
         android:summary="@string/notifications_summary"
         android:icon="@drawable/ic_notifications"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.notifications.Notifications" />
 
     </PreferenceCategory>
@@ -115,7 +108,6 @@
         android:title="@string/power_menu_title"
         android:summary="@string/power_menu_summary"
         android:icon="@drawable/ic_power_menu"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.powermenu.PowerMenu" />
 
     </PreferenceCategory>
@@ -130,7 +122,6 @@
         android:title="@string/miscellaneous_title"
         android:summary="@string/miscellaneous_summary"
         android:icon="@drawable/ic_miscellaneous"
-        settings:layout="@layout/mist_dashboard_single"
         android:fragment="org.mist.settings.fragments.miscellaneous.Miscellaneous" />
     </PreferenceCategory>
 
@@ -144,7 +135,6 @@
             android:title="@string/spoofing_title"
             android:summary="@string/spoofing_summary"
             android:icon="@drawable/ic_spoofing"
-            settings:layout="@layout/mist_dashboard_single"
             android:fragment="org.mist.settings.fragments.miscellaneous.Spoofing" />
     </PreferenceCategory>
 
