@@ -13,38 +13,20 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/spoofing_system_wide_category">
 
-    <!-- Key box -->
-        <Preference
-            android:key="import_keybox"
-            android:title="@string/import_keybox_title"
-            android:summary="@string/import_keybox_summary" />
-
-        <Preference
-            android:key="clear_keybox"
-            android:title="@string/clear_keybox_title"
-            android:summary="@string/clear_keybox_summary" />
-
-    <!-- GMS spoof -->
+        <!-- GMS spoof -->
         <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gms"
             android:title="@string/gms_spoof_title"
             android:summary="@string/gms_spoof_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <Preference
             android:key="show_pif_properties"
             android:title="@string/show_pif_properties_title"
             android:summary="@string/show_pif_properties_summary"
-            android:dependency="persist.sys.pixelprops.gms"/>
+            android:dependency="persist.sys.pixelprops.gms" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="spoofing_app_specific_category"
-        android:layout="@layout/mist_first_header_pref"
-        android:title="@string/spoofing_app_specific_category">
-
-         <Preference
+        <Preference
             android:key="update_pif_json"
             android:title="@string/update_pif_json_title"
             android:summary="@string/update_pif_json_summary"
@@ -54,28 +36,69 @@
             android:key="pif_json_file_preference"
             android:title="@string/pif_spoofing_title"
             android:summary="@string/pif_spoofing_summary"
-            android:dependency="persist.sys.pixelprops.gms"/>
+            android:dependency="persist.sys.pixelprops.gms" />
 
-        <!-- Unlimited google photos storage -->
+        <!-- Pixel props -->
         <org.mist.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.gphotos"
-            android:title="@string/use_photos_spoof_title"
-            android:summary="@string/use_photos_spoof_summary"
+            android:key="persist.sys.pixelprops"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
             android:defaultValue="true" />
 
-        <!-- Games spoof -->
+        <!-- Tensor features -->
         <org.mist.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.gameprops.enable"
-            android:title="@string/use_games_spoof_title"
-            android:summary="@string/use_games_spoof_summary"
+            android:key="persist.sys.features.tensor"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
             android:defaultValue="false" />
 
-        <!-- Netflix spoof -->
-        <org.mist.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.netflix"
-            android:title="@string/netflix_spoof_title"
-            android:summary="@string/netflix_spoof_summary"
+        <!-- Encryption -->
+        <org.mist.settings.preferences.GlobalSettingSwitchPreference
+            android:key="spoofing_storage_encryption"
+            android:title="@string/spoofing_storage_encryption_title"
+            android:summary="@string/spoofing_storage_encryption_summary"
             android:defaultValue="false" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spoofing_app_specific_category"
+        android:layout="@layout/mist_first_header_pref"
+        android:title="@string/spoofing_app_specific_category">
+
+        <!-- Google App -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.qsb"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />
+
+        <!-- Play Store -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.vending"
+            android:title="@string/spoofing_vending_title"
+            android:summary="@string/spoofing_vending_summary"
+            android:defaultValue="false" />
+
+        <!-- Google Photos -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
+
+        <!-- Games FPS -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.games"
+            android:title="@string/gameprops_title"
+            android:summary="@string/gameprops_summary"
+            android:defaultValue="true" />
+
+        <!-- Snapchat -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.snap"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 </PreferenceScreen>
