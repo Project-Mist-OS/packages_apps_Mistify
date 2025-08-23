@@ -953,4 +953,12 @@
     <string name="status_bar_logo_color_default">Default (White)</string>
     <string name="status_bar_logo_color_accent">Accent</string>
     <string name="status_bar_logo_color_custom">Custom</string>
+
+    <!-- Transient task mode (Tadi mode) -->
+    <string name="transient_task_mode_title">Transient task mode</string>
+    <string name="transient_task_mode_dialog_title">Transient task mode (Reboot your device to apply changes)</string>
+    <string name="transient_task_mode_summary">Dismiss apps from recents when last activity gets closed using back button.</string>
+    <string name="transient_task_mode_default">Disable (Default)</string>
+    <string name="transient_task_mode_allow">Enable (Some apps will stay)</string>
+    <string name="transient_task_mode_force">Force (Override app behaviour)</string>
 </resources>
