@@ -602,6 +602,8 @@
     <string name="gameprops_summary">Spoof your device as different model for specific games to unlock higher FPS</string>
     <string name="gameprops_load_json_title">Select Game Props JSON File</string>
     <string name="gameprops_load_json_summary">Pick Game Props JSON file to be used for spoofing games</string>
+    <string name="spoofing_netflix_title">Netflix</string>
+    <string name="spoofing_netflix_summary">Spoof your device as different model for Netflix</string>
 
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
     <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for Play Integrity.</string>

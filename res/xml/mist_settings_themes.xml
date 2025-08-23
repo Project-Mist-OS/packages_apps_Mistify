@@ -14,12 +14,12 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_general_category">
 
-        <SwitchPreferenceCompat
+        <!--<SwitchPreferenceCompat
             android:key="expressive_design"
             android:title="@string/expressive_design_title"
             android:summary="@string/expressive_design_summary"
             android:defaultValue="false"
-            android:persistent="true" />
+            android:persistent="true" /> -->
 
         <!-- Wallpaper Settings -->
         <!--<Preference
