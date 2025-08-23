@@ -15,6 +15,13 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/miscellaneous_developer_options_category">
 
+        <!-- QuickSwitch -->
+        <Preference
+            android:key="quickswitch"
+            android:title="@string/quickswitch_launcher_title" 
+            android:summary="@string/quickswitch_launcher_summary" 
+            android:fragment="org.mist.settings.fragments.miscellaneous.QuickSwitch" /> 
+
         <!-- Hide applist -->
         <Preference
             android:key="hide_applist_setting"
