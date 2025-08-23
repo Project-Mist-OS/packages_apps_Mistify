@@ -22,20 +22,19 @@
             android:persistent="true" />
 
         <!-- Wallpaper Settings -->
-        <Preference
+        <!--<Preference
             android:key="wallpaper_settings"
             android:title="@string/wallpaper_settings_title"
             android:summary="@string/wallpaper_settings_summary"
             android:fragment="org.mist.settings.fragments.themes.Wallpaper" />
 
-        <!-- Brightness slider -->
         <Preference
             android:key="android.theme.customization.brightness_slider"
             android:title="@string/themes_brightness_slider_title"
             android:summary="@string/themes_brightness_slider_summary"
-            android:fragment="org.mist.settings.fragments.themes.BrightnessSlider" />
+            android:fragment="org.mist.settings.fragments.themes.BrightnessSlider" /> -->
 
-        <!-- Notification styles -->      
+        <!-- Notification styles -->
         <org.mist.settings.preferences.SystemSettingListPreference
             android:key="notification_style"
             android:title="@string/notif_style_title"
@@ -63,13 +62,13 @@
             android:defaultValue="0" />
 
         <!-- Volume Styles -->
-        <org.mist.settings.preferences.SystemSettingListPreference
+        <!--<org.mist.settings.preferences.SystemSettingListPreference
             android:key="custom_volume_styles"
             android:title="@string/volume_style_title"
             android:entries="@array/volume_styles_entries"
             android:entryValues="@array/volume_styles_values"
             android:summary="%s"
-            android:defaultValue="0" />
+            android:defaultValue="0" /> -->
     </PreferenceCategory>
 	
     <PreferenceCategory
@@ -112,11 +111,11 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_launcher_category">
 
-        <org.mist.settings.preferences.OverlaySwitchPreference
+        <!--<org.mist.settings.preferences.OverlaySwitchPreference
             android:key="com.google.android.apps.nexuslauncher.blur.overlay"
             android:title="@string/themes_launcher_background_blur_title"
             android:summary="@string/themes_launcher_background_blur_summary"
-            android:defaultValue="true" />
+            android:defaultValue="true" /> -->
 
         <org.mist.settings.preferences.OverlaySwitchPreference
             android:key="com.google.android.apps.nexuslauncher.icons.overlay"

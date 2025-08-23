@@ -729,6 +729,10 @@
     <string name="lockscreen_albumart_filter_blur">Blur</string>
     <string name="lockscreen_albumart_filter_grayblur">Grayscale and blurred</string>
 
+    <!-- Media Art Blur Level -->
+    <string name="lockscreen_media_art_blur_level_title">Media art blur level</string>
+    <string name="lockscreen_media_art_blur_level_summary">Blur intensity when blur filter is applied</string>
+
     <!-- Haptics Settings -->
     <string name="haptics_settings_title">System haptics</string>
     <string name="haptics_settings_summary">Modify system haptics intensities</string>
