@@ -204,22 +204,24 @@
             android:defaultValue="0" />
     </PreferenceCategory> -->
 
-    <!--<PreferenceCategory
+    <PreferenceCategory
         android:key="quick_settings_lock_screen_category"
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/quick_settings_lock_screen_category">
 
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="secure_lockscreen_qs_disabled"
+        <!-- Hide on secure lock screen -->
+        <org.mist.settings.preferences.SecureSettingListPreference
+            android:key="enable_lockscreen_quick_settings"
             android:title="@string/quick_settings_secure_lock_screen_title"
-            android:summary="@string/quick_settings_secure_lock_screen_summary"
-            android:defaultValue="false" />
+            android:entries="@array/quick_settings_secure_lock_screen_entries"
+            android:entryValues="@array/quick_settings_secure_lock_screen_values"
+            android:defaultValue="1" />
 
-        <org.mist.settings.preferences.SecureSettingSwitchPreference
+        <!--<org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="qstile_requires_unlocking"
             android:title="@string/quick_settings_require_unlock_title"
             android:summary="@string/quick_settings_require_unlock_summary"
-            android:defaultValue="true"/>
+            android:defaultValue="true"/> -->
     </PreferenceCategory> -->
 
     <PreferenceCategory
