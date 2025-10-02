@@ -42,6 +42,13 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/notifications_interface_category">
 
+        <!-- Small landscape notifications -->
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="small_landscape_notification"
+            android:title="@string/small_landscape_notification_title"
+            android:summary="@string/small_landscape_notification_summary"
+            android:defaultValue="true" />
+
         <!--<org.mist.settings.preferences.SystemSettingSeekBarPreference
             android:key="max_visible_notification_icons"
             android:title="@string/max_visible_notification_icons_title"
