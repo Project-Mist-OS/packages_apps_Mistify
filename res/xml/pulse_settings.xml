@@ -73,7 +73,6 @@
 
     <PreferenceCategory
         android:key="pulse_fading_bars_category"
-        android:layout="@layout/mist_first_header_pref"
         android:title="@string/pulse_legacy_mode_advanced_category">
 
         <org.mist.settings.preferences.SecureSettingSeekBarPreference
@@ -82,6 +81,7 @@
             android:defaultValue="14"
             android:max="30"
             settings:min="1"
+            settings:interval="1"
             settings:units="@string/unit_pixels"
             android:dependency="pulse_fading_bars_category"/>
 
@@ -101,6 +101,7 @@
             android:defaultValue="4"
             android:max="8"
             settings:min="4"
+            settings:interval="1"
             settings:units="@string/unit_pixels"
             android:dependency="pulse_fading_bars_category"/>
 
@@ -110,6 +111,7 @@
             android:defaultValue="1"
             android:max="4"
             settings:min="0"
+            settings:interval="1"
             settings:units="@string/unit_pixels"
             android:dependency="pulse_fading_bars_category"/>
 
@@ -119,12 +121,12 @@
             android:defaultValue="4"
             android:max="6"
             settings:min="2"
+            settings:interval="1"
             android:dependency="pulse_fading_bars_category"/>
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="pulse_2"
-        android:layout="@layout/mist_first_header_pref"
         android:title="@string/pulse_solid_dimen_category">
 
         <org.mist.settings.preferences.SecureSettingSwitchPreference
@@ -140,6 +142,7 @@
             android:defaultValue="200"
             android:max="255"
             settings:min="0"
+            settings:interval="1"
             android:dependency="pulse_2"/>
 
         <org.mist.settings.preferences.SecureSettingSeekBarPreference
@@ -157,6 +160,7 @@
             android:defaultValue="4"
             android:max="8"
             settings:min="2"
+            settings:interval="1"
             android:dependency="pulse_2"/>
     </PreferenceCategory>
 

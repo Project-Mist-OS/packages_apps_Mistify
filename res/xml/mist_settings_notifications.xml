@@ -42,14 +42,14 @@
         android:layout="@layout/mist_first_header_pref"
         android:title="@string/notifications_interface_category">
 
-        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+        <!--<org.mist.settings.preferences.SystemSettingSeekBarPreference
             android:key="max_visible_notification_icons"
             android:title="@string/max_visible_notification_icons_title"
             android:summary="@string/max_visible_notification_icons_summary"
             android:defaultValue="4"
             android:max="10"
             settings:min="0"
-            settings:units="" />
+            settings:units="" /> -->
 
         <!-- Alert Slider Notifications (OnePlus devices) -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
@@ -66,11 +66,11 @@
             android:fragment="org.mist.settings.fragments.notifications.EdgeLightSettings" />
 
         <!-- Kill app button -->
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
+        <!--<org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="notification_guts_kill_app_button"
             android:title="@string/notifications_kill_app_button_title"
             android:summary="@string/notifications_kill_app_button_summary"
-            android:defaultValue="false" />
+            android:defaultValue="false" />-->
     </PreferenceCategory>
 
     <PreferenceCategory
