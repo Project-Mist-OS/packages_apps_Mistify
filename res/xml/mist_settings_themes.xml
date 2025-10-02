@@ -184,6 +184,13 @@
             android:summary="@string/themes_charging_animation_summary"
             android:defaultValue="true" />
 
+        <!-- AOD wallpaper -->
+        <org.mist.settings.preferences.OverlaySwitchPreference
+            android:key="com.android.aod.wallpaper"
+            android:title="@string/aod_wallpaper_title"
+            android:summary="@string/aod_wallpaper_summary"
+            android:defaultValue="false" />
+
         <!-- Screen Off animation -->
         <org.mist.settings.preferences.SystemSettingListPreference
             android:key="screen_off_animation"
