@@ -9,11 +9,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/mist_dashboard_title">
 
-   <PreferenceCategory
+   <!--<PreferenceCategory
         android:key="top_level_mistify_ui"
         android:layout="@layout/settingslib_preference_category_no_title">
 
-    <!-- Dashboard -->
     <Preference
         android:key="styles"
         android:title="@string/settings_styles"
@@ -21,7 +20,7 @@
         android:icon="@drawable/ic_home"
         android:fragment="org.mist.settings.fragments.UserInterface" />
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="top_level_personalize_monet"
