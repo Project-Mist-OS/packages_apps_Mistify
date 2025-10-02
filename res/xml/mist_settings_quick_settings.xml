@@ -30,6 +30,14 @@
             android:entryValues="@array/quick_settings_brightness_slider_position_values"
             android:defaultValue="0" />
 
+        <!-- Brightness Slider Style -->
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="qs_brightness_slider_shape"
+            android:title="@string/qs_brightness_slider_shape_title"
+            android:entries="@array/qs_brightness_slider_shape_entries"
+            android:entryValues="@array/qs_brightness_slider_shape_values"
+            android:defaultValue="0" />
+
         <!-- Haptic feedback on brightness slider -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_brightness_slider_haptic"
