@@ -59,7 +59,6 @@ import java.util.stream.Collectors;
 
 import org.mist.settings.preferences.KeyboxDataPreference;
 import org.mist.settings.preferences.SystemPropertySwitchPreference;
-import org.mist.settings.utils.DeviceUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -123,18 +122,16 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
         mKeyboxCheckEnabled = (SystemPropertySwitchPreference) findPreference(SYS_KEYBOX_CHECK_ENABLED);
 
-        String model = SystemProperties.get("ro.product.model");
-        boolean isTensorDevice = model.matches("Pixel (6|7|8|9|10)[a-zA-Z ]*");
         boolean isPixelGmsEnabled = SystemProperties.getBoolean(SYS_GMS_SPOOF, true); // Default to Pixel GMS
 
-        if (DeviceUtils.isCurrentlySupportedPixel()) {
+        if (Utils.isCurrentlySupportedPixel()) {
             mGoogleSpoof.setDefaultValue(false);
-            if (isMainlineTensorModel(model)) {
+            if (Utils.isMainlineTensor()) {
                 mSystemWideCategory.removePreference(mGoogleSpoof);
             }
         }
 
-        if (isTensorDevice) {
+        if (Utils.isTensor()) {
             mSystemWideCategory.removePreference(mTensorSpoof);
         }
 
