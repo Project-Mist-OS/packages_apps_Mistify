@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mist.settings.fragments.statusbar;
+package org.lunaris.settings.fragments.statusbar;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -33,7 +33,9 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import org.mist.settings.preferences.SystemSettingSwitchPreference;
+import com.android.internal.util.android.VibrationUtils;
+
+import org.lunaris.settings.preferences.SystemSettingSwitchPreference;
 
 public class BatteryBar extends SettingsPreferenceFragment
             implements Preference.OnPreferenceChangeListener  {
@@ -94,6 +96,14 @@ public class BatteryBar extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.MIST;
+        return MetricsProto.MetricsEvent.LUNARIS;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference != null && preference.getKey() != null) {
+            VibrationUtils.triggerVibration(getContext(), 3);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 }

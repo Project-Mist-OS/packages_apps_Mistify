@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.mist.settings.preferences.colorpicker;
+package org.lunaris.settings.preferences.colorpicker;
 
 import android.app.AlertDialog;
 import android.content.Context;

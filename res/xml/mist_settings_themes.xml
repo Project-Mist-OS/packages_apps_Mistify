@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2019-2024 MistOS
-     SPDX-License-Identifier: Apache-2.0
+    Copyright (C) 2024-2025 MistOS
+    SPDX-License-Identifier: Apache-2.0
 -->
 
 <PreferenceScreen
@@ -10,116 +10,59 @@
     android:title="@string/themes_title">
 
     <PreferenceCategory
-        android:key="themes_general_category"
-        android:layout="@layout/mist_first_header_pref"
-        android:title="@string/themes_general_category">
-
-        <!-- Wallpaper Settings -->
-        <!--<Preference
-            android:key="wallpaper_settings"
-            android:title="@string/wallpaper_settings_title"
-            android:summary="@string/wallpaper_settings_summary"
-            android:fragment="org.mist.settings.fragments.themes.Wallpaper" />
-
-        <Preference
-            android:key="android.theme.customization.brightness_slider"
-            android:title="@string/themes_brightness_slider_title"
-            android:summary="@string/themes_brightness_slider_summary"
-            android:fragment="org.mist.settings.fragments.themes.BrightnessSlider" /> -->
-
-        <!-- Notification styles -->      
-        <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="notification_style"
-            android:title="@string/notif_style_title"
-            android:entries="@array/notif_style_entries"
-            android:entryValues="@array/notif_style_values"
-            android:summary="%s"
-            android:defaultValue="0" />
-
-        <!-- Power menu styles -->      
-        <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="powermenu_style"
-            android:title="@string/powermenu_style_title"
-            android:entries="@array/powermenu_style_entries"
-            android:entryValues="@array/powermenu_style_values"
-            android:summary="%s"
-            android:defaultValue="0" />
-
-        <!-- Progress bar styles -->      
-        <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="progress_bar_style"
-            android:title="@string/progress_bar_style_title"
-            android:entries="@array/progress_bar_style_entries"
-            android:entryValues="@array/progress_bar_style_values"
-            android:summary="%s"
-            android:defaultValue="0" />
-
-        <!-- Volume Styles -->
-        <!--<org.mist.settings.preferences.SystemSettingListPreference
-            android:key="custom_volume_styles"
-            android:title="@string/volume_style_title"
-            android:entries="@array/volume_styles_entries"
-            android:entryValues="@array/volume_styles_values"
-            android:summary="%s"
-            android:defaultValue="0" />-->
-    </PreferenceCategory>
-	
-    <PreferenceCategory
-        android:key="themes_audio_category"
-        android:layout="@layout/mist_first_header_pref"
-        android:title="@string/themes_audio_category">
-
-        <!-- Lock sound -->
-        <org.mist.settings.preferences.GlobalSettingListPreference
-            android:key="lock_sound"
-            android:title="@string/themes_lock_sound_title"
-            android:entries="@array/themes_lock_unlock_sounds_entries"
-            android:entryValues="@array/themes_lock_sounds_values"
-            android:defaultValue="/product/media/audio/ui/Lock.ogg" />
-
-        <!-- Unlock sound -->
-        <org.mist.settings.preferences.GlobalSettingListPreference
-            android:key="unlock_sound"
-            android:title="@string/themes_unlock_sound_title"
-            android:entries="@array/themes_lock_unlock_sounds_entries"
-            android:entryValues="@array/themes_unlock_sounds_values"
-            android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="themes_fonts_category"
-        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_fonts_category">
 
-        <!-- System font -->
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="font_mode"
+            android:title="@string/font_mode_title"
+            android:summary="%s"
+            android:entries="@array/font_mode_entries"
+            android:entryValues="@array/font_mode_values"
+            android:defaultValue="prebuilt" />
+
+        <!-- Prebuilt Fonts -->
         <Preference
             android:key="android.theme.customization.fonts"
             android:title="@string/themes_system_font_title"
             android:summary="@string/themes_system_font_summary"
-            android:fragment="org.mist.settings.fragments.themes.fonts.FontPickerPreview"/>
-    </PreferenceCategory>
+            android:fragment="org.mist.settings.fragments.themes.fonts.FontsPicker"
+            android:dependency="font_mode" />
 
-    <PreferenceCategory
-        android:key="themes_launcher_category"
-        android:layout="@layout/mist_first_header_pref"
-        android:title="@string/themes_launcher_category">
+        <!-- Custom Font Picker -->
+        <Preference
+            android:key="custom_font_picker"
+            android:title="@string/custom_font_picker_title"
+            android:summary="@string/custom_font_picker_summary" />
 
-        <!--<org.mist.settings.preferences.OverlaySwitchPreference
-            android:key="com.google.android.apps.nexuslauncher.blur.overlay"
-            android:title="@string/themes_launcher_background_blur_title"
-            android:summary="@string/themes_launcher_background_blur_summary"
-            android:defaultValue="true" /> -->
+        <!-- Custom Font Info -->
+        <Preference
+            android:key="custom_font_info"
+            android:title="@string/custom_font_installed_title"
+            android:selectable="false" />
 
-        <org.mist.settings.preferences.OverlaySwitchPreference
-            android:key="com.google.android.apps.nexuslauncher.icons.overlay"
-            android:title="@string/themes_launcher_more_themed_icons_title"
-            android:summary="@string/themes_launcher_more_themed_icons_summary"
-            android:defaultValue="true" />
+        <!-- Reset Custom Font Button -->
+        <Preference
+            android:key="reset_custom_font"
+            android:title="@string/reset_custom_font_title"
+            android:summary="@string/reset_custom_font_summary" />
+
+        <!-- Reboot Button for Custom Font -->
+        <Preference
+            android:key="reboot_for_font"
+            android:title="@string/reboot_device"
+            android:summary="@string/reboot_required_custom_font_desc" />
+
+        <Preference
+            android:key="android.theme.customization.lockscreen_clock_font"
+            android:title="@string/theme_customization_lock_clock_title"
+            android:summary="@string/theme_customization_lock_clock_summary"
+            android:fragment="org.mist.settings.fragments.themes.fonts.LockClockFontsPicker"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="themes_icons_category"
-        android:layout="@layout/mist_first_header_pref"
         android:title="@string/themes_icons_category">
 
         <!-- System icons -->
@@ -156,54 +99,137 @@
             android:title="@string/themes_navigation_bar_icons_title"
             android:summary="@string/themes_navigation_bar_icons_summary"
             android:fragment="org.mist.settings.fragments.themes.NavigationBarIcons"/>
-
-        <!-- Udfps icon -->
-        <Preference
-            android:key="udfps_icon"
-            android:title="@string/themes_udfps_icon_title"
-            android:summary="@string/themes_udfps_icon_summary"
-            android:fragment="org.mist.settings.fragments.themes.UdfpsIcons" />
+            
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="themes_animations_category"
-        android:layout="@layout/mist_first_header_pref"
-        android:title="@string/themes_animations_category">
+        android:key="video_wallpaper_category"
+        android:title="@string/video_wallpaper_category">
 
-        <!-- Boot animation -->
         <Preference
-            android:key="boot_animation"
-            android:title="@string/themes_boot_animation_title"
-            android:summary="@string/themes_boot_animation_summary"
-            android:fragment="org.mist.settings.fragments.themes.BootAnimation" />
+            android:key="video_wallpaper"
+            android:title="@string/video_wallpaper_category_title"
+            android:summary="@string/video_wallpaper_category_summary"
+            android:fragment="org.mist.settings.fragments.themes.VideoWallpaperFragment" />
 
-        <!-- Charging animation -->
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="charging_animation"
-            android:title="@string/themes_charging_animation_title"
-            android:summary="@string/themes_charging_animation_summary"
-            android:defaultValue="true" />
+        <Preference
+            android:key="wallpaper_settings"
+            android:title="@string/wallpaper_settings_title"
+            android:summary="@string/wallpaper_settings_summary"
+            android:fragment="org.mist.settings.fragments.themes.Wallpaper" />
 
-        <!-- AOD wallpaper -->
-        <org.mist.settings.preferences.OverlaySwitchPreference
-            android:key="com.android.aod.wallpaper"
-            android:title="@string/aod_wallpaper_title"
-            android:summary="@string/aod_wallpaper_summary"
-            android:defaultValue="false" />
+    </PreferenceCategory>
 
-        <!-- Screen Off animation -->
+    <PreferenceCategory
+        android:key="themes_general_category"
+        android:title="@string/themes_general_category">
+
         <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="screen_off_animation"
-            android:title="@string/themes_screen_off_animation_title"
-            android:entries="@array/themes_screen_off_animation_entries"
-            android:entryValues="@array/themes_screen_off_animation_values"
+            android:key="system_animation_style"
+            android:title="@string/system_animation_style_title"
+            android:dialogTitle="@string/system_animation_style_title"
+            android:entries="@array/system_animation_styles_entries"
+            android:entryValues="@array/system_animation_styles_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
+        <!-- Notification styles    
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="notification_style"
+            android:title="@string/notif_style_title"
+            android:entries="@array/notif_style_entries"
+            android:entryValues="@array/notif_style_values"
+            android:summary="%s"
+            android:defaultValue="0" /> -->
+
+        <!-- Power menu styles -->      
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="powermenu_style"
+            android:title="@string/powermenu_style_title"
+            android:entries="@array/powermenu_style_entries"
+            android:entryValues="@array/powermenu_style_values"
+            android:summary="%s"
             android:defaultValue="0" />
 
-        <!-- Udfps animation -->
-        <Preference
-            android:key="udfps_animation"
-            android:title="@string/themes_udfps_animation_title"
-            android:summary="@string/themes_udfps_animation_summary"
-            android:fragment="org.mist.settings.fragments.themes.UdfpsAnimations" />
+        <!-- Progress bar styles  
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="progress_bar_style"
+            android:title="@string/progress_bar_style_title"
+            android:entries="@array/progress_bar_style_entries"
+            android:entryValues="@array/progress_bar_style_values"
+            android:summary="%s"
+            android:defaultValue="0" /> --> 
+
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="themes_audio_category"
+        android:title="@string/themes_audio_category">
+
+        <!-- Lock sound -->
+        <org.mist.settings.preferences.GlobalSettingListPreference
+            android:key="lock_sound"
+            android:title="@string/themes_lock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_lock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Lock.ogg" />
+
+        <!-- Unlock sound -->
+        <org.mist.settings.preferences.GlobalSettingListPreference
+            android:key="unlock_sound"
+            android:title="@string/themes_unlock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_unlock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="volume_category"
+        android:title="@string/volume_category_title">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="volume_show_media_button"
+            android:title="@string/volume_show_media_button_title"
+            android:summary="@string/volume_show_media_button_summary"
+            android:defaultValue="true"/>
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="VOLUME_TEXTVIEW"
+            android:title="@string/volume_persen_switch_title"
+            android:summary="@string/volume_persen_switch_summary"
+            android:defaultValue="false" />
+            
+        <!-- Volumen panel text type -->
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="VOLUME_TEXTVIEW_STYLE"                                          
+            android:title="@string/volume_persen_style_title"
+            android:summary="%s"
+            android:dialogTitle="@string/volume_persen_style_title"
+            android:entries="@array/volume_persen_style_entries"
+            android:dependency="VOLUME_TEXTVIEW"
+            android:entryValues="@array/volume_persen_style_values"
+            android:defaultValue="0" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="music_volume_panel_dialog"
+            android:title="@string/volume_panel_musiccard_title"
+            android:summary="@string/volume_panel_musiccard_summary" 
+            android:defaultValue="false" />  
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="settings_category"
+        android:title="@string/settings_category_title">
+        
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="search_bar_style"
+            android:title="@string/search_bar_style_title"
+            android:entries="@array/settings_sb_style_entries"
+            android:entryValues="@array/settings_sb_style_values"
+            android:defaultValue="1"
+            android:summary="%s" />
+
+    </PreferenceCategory>
+        
 </PreferenceScreen>

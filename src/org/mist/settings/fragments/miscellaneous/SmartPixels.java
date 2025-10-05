@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mist.settings.fragments.miscellaneous;
+package org.lunaris.settings.fragments.miscellaneous;
 
 import android.content.Context;
 import android.content.ContentResolver;
@@ -35,6 +35,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.util.android.VibrationUtils;
+
 public class SmartPixels extends SettingsPreferenceFragment {
 
     private static final String TAG = "SmartPixels";
@@ -50,20 +52,16 @@ public class SmartPixels extends SettingsPreferenceFragment {
         findPreference(SMART_PIXELS_FOOTER).setTitle(R.string.smart_pixels_warning_text);
     }
 
-    public static void reset(Context mContext) {
-        ContentResolver resolver = mContext.getContentResolver();
-        Settings.System.putIntForUser(resolver,
-                Settings.System.SMART_PIXELS_ENABLE, 0, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.SMART_PIXELS_ON_POWER_SAVE, 0, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.SMART_PIXELS_PATTERN, 5, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.SMART_PIXELS_SHIFT_TIMEOUT, 4, UserHandle.USER_CURRENT);
+    @Override
+    public int getMetricsCategory() {
+        return MetricsProto.MetricsEvent.LUNARIS;
     }
 
     @Override
-    public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.MIST;
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference != null && preference.getKey() != null) {
+            VibrationUtils.triggerVibration(getContext(), 3);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 }

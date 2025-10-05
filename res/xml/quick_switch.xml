@@ -20,7 +20,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/quickswitch_launcher_title" >
 
-     <org.mist.settings.preferences.SystemPropertyListPreference
+     <org.lunaris.settings.preferences.SystemPropertyListPreference
         android:key="persist.sys.default_launcher"
         android:title="@string/quickswitch_launcher_title"
         android:entries="@array/quickswitch_launcher_entries"

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mist.settings.fragments.miscellaneous;
+package org.lunaris.settings.fragments.miscellaneous;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -37,7 +37,9 @@ import com.android.settingslib.search.SearchIndexable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.internal.util.mist.SystemRestartUtils;
+import com.android.internal.util.android.SystemRestartUtils;
+
+import com.android.internal.util.android.VibrationUtils;
 
 @SearchIndexable
 public class QuickSwitch extends SettingsPreferenceFragment 
@@ -84,6 +86,14 @@ public class QuickSwitch extends SettingsPreferenceFragment
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.VIEW_UNKNOWN;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference != null && preference.getKey() != null) {
+            VibrationUtils.triggerVibration(getContext(), 3);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 
     @Override
