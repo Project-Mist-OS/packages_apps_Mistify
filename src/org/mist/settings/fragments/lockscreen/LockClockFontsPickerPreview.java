@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lunaris.settings.fragments.lockscreen;
+package org.mist.settings.fragments.lockscreen;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -48,8 +48,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import org.lunaris.settings.fragments.themes.fonts.FontArrayAdapter;
-import org.lunaris.settings.fragments.themes.fonts.FontManager;
+import org.mist.settings.fragments.themes.fonts.FontArrayAdapter;
+import org.mist.settings.fragments.themes.fonts.FontManager;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import com.android.internal.util.android.ThemeUtils;

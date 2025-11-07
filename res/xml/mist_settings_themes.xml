@@ -218,18 +218,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="settings_category"
-        android:title="@string/settings_category_title">
-        
-        <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="search_bar_style"
-            android:title="@string/search_bar_style_title"
-            android:entries="@array/settings_sb_style_entries"
-            android:entryValues="@array/settings_sb_style_values"
-            android:defaultValue="1"
-            android:summary="%s" />
-
-    </PreferenceCategory>
-        
 </PreferenceScreen>
