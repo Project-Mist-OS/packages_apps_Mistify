@@ -125,6 +125,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="top_level_personalize_extras"
+        android:layout="@layout/settingslib_preference_category_no_title">
+
+    <!-- Extras Settings -->
+    <Preference
+        android:key="miscellaneous"
+        android:title="@string/extras_title"
+        android:summary="@string/extras_summary"
+        android:icon="@drawable/ic_homepage_extras"
+        android:fragment="org.mist.settings.fragments.extras.Extras" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="top_level_personalize_spoofing"
         android:layout="@layout/settingslib_preference_category_no_title">
 
