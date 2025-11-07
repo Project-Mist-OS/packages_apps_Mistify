@@ -9,13 +9,13 @@
         android:key="lockscreen_media_category"
         android:title="@string/lockscreen_media_art_title">
         
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="ls_media_art_enabled"
             android:title="@string/lockscreen_media_art_title"
             android:summary="@string/lockscreen_media_art_summary"
             android:defaultValue="false" />
         
-        <org.lunaris.settings.preferences.SystemSettingListPreference
+        <org.mist.settings.preferences.SystemSettingListPreference
             android:key="ls_media_art_filter"
             android:title="@string/lockscreen_media_art_filter_title"
             android:summary="@string/lockscreen_media_art_filter_summary"
@@ -24,7 +24,7 @@
             android:defaultValue="0"
             android:dependency="ls_media_art_enabled" />
         
-        <org.lunaris.settings.preferences.SystemSettingSeekBarPreference
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
             android:key="ls_media_art_fade_level"
             android:title="@string/lockscreen_media_art_fade_level_title"
             android:summary="@string/lockscreen_media_art_fade_level_summary"
@@ -33,7 +33,7 @@
             android:defaultValue="40"
             android:dependency="ls_media_art_enabled" />
         
-        <org.lunaris.settings.preferences.SystemSettingSeekBarPreference
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
             android:key="ls_media_art_blur_level"
             android:title="@string/lockscreen_media_art_blur_level_title"
             android:summary="@string/lockscreen_media_art_blur_level_summary"
@@ -52,41 +52,41 @@
             android:key="lock_glymps_settings"
             android:title="@string/lock_glymps_title"
             android:summary="@string/lock_glymps_enable_summary"
-            android:fragment="org.lunaris.settings.fragments.lockscreen.LockGlympsSettings" />
+            android:fragment="org.mist.settings.fragments.lockscreen.LockGlympsSettings" />
 
         <Preference
             android:key="pulse_settings"
             android:title="@string/pulse_settings"
             android:summary="@string/pulse_settings_summary"
-            android:fragment="org.lunaris.settings.fragments.lockscreen.PulseSettings" />
+            android:fragment="org.mist.settings.fragments.lockscreen.PulseSettings" />
 
         <Preference
             android:key="edge_light_settings"
             android:title="@string/edge_light_title"
             android:summary="@string/edge_light_summary"
-            android:fragment="org.lunaris.settings.fragments.lockscreen.EdgeLightSettings" />
+            android:fragment="org.mist.settings.fragments.lockscreen.EdgeLightSettings" />
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="notification_row_transparency_lockscreen"
             android:title="@string/notification_row_transparency_lockscreen_title"
             android:summary="@string/notification_row_transparency_lockscreen_summary"
             android:defaultValue="true" />
 
         <!-- Keyguard user switcher -->
-	    <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+	    <org.mist.settings.preferences.SystemSettingSwitchPreference
 	        android:key="kg_user_switcher_enabled"
             android:title="@string/kg_user_switcher_enabled_title"
             android:summary="@string/kg_user_switcher_enabled_summary"
             android:defaultValue="false" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_show_carrier"
             android:title="@string/status_bar_carrier_lock_screen_title"
             android:summary="@string/status_bar_carrier_lock_screen_summary"
             android:defaultValue="true" />
 
         <!-- Shortcuts -->
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="keyguard_affordance_single_tap"
             android:title="@string/keyguard_affordance_single_tap_title"
             android:summary="@string/keyguard_affordance_single_tap_summary"
@@ -98,7 +98,7 @@
         android:key="ambient_display_category"
         android:title="@string/ambient_display_category_title">
 
-        <org.lunaris.settings.preferences.SystemSettingListPreference
+        <org.mist.settings.preferences.SystemSettingListPreference
             android:key="ambient_show_settings"
             android:title="@string/ambient_bottom_title"
             android:entries="@array/ambient_bottom_entries"
@@ -106,13 +106,13 @@
             android:summary="%s"
             android:defaultValue="1" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="ambient_show_settings_icons"
             android:title="@string/display_icon_title"
             android:summary="@string/display_icon_summary"
             android:defaultValue="false" />
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="ambient_aod"
             android:title="@string/ambient_aod_title"
             android:summary="@string/ambient_aod_summary"
@@ -124,20 +124,20 @@
         android:key="themes_animations_category"
         android:title="@string/themes_animations_category">
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="screen_animation_enabled"
             android:title="@string/screen_animation_title"
             android:summary="@string/screen_animation_summary"
             android:defaultValue="true" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="screen_off_aod_enabled"
             android:title="@string/screen_off_aod_enabled_title"
             android:summary="@string/screen_off_aod_enabled_summary"
             android:defaultValue="false" 
             android:dependency="screen_animation_enabled" />
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="doze_screen_state_fix_enabled"
             android:title="@string/doze_screen_state_fix_title"
             android:summary="@string/doze_screen_state_fix_summary"
@@ -145,7 +145,7 @@
             android:dependency="screen_animation_enabled" />
 
         <!-- Screen Off animation -->
-        <org.lunaris.settings.preferences.SystemSettingListPreference
+        <org.mist.settings.preferences.SystemSettingListPreference
             android:key="screen_off_animation"
             android:title="@string/themes_screen_off_animation_title"
             android:entries="@array/themes_screen_off_animation_entries"
@@ -162,7 +162,7 @@
             android:key="udfps_cust"
             android:title="@string/udfps_cust_title"
             android:summary="@string/udfps_cust_summary"
-            android:fragment="org.lunaris.settings.fragments.lockscreen.UdfpsCust" />
+            android:fragment="org.mist.settings.fragments.lockscreen.UdfpsCust" />
 
     </PreferenceCategory>
 
@@ -171,20 +171,20 @@
         android:title="@string/lock_screen_charging_category">
 
         <!-- Charging animation -->
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="charging_animation"
             android:title="@string/themes_charging_animation_title"
             android:summary="@string/themes_charging_animation_summary"
             android:defaultValue="true" />
 
         <!-- Dynamic charging animation -->
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="wireless_charging_dynamic_color"
             android:title="@string/wireless_charging_dynamic_color_title"
             android:summary="@string/wireless_charging_dynamic_color_summary"
             android:defaultValue="true" />
 
-        <org.lunaris.settings.preferences.SystemSettingListPreference
+        <org.mist.settings.preferences.SystemSettingListPreference
             android:key="wireless_charging_ripple_shape"
             android:title="@string/ripple_shape_title"
             android:summary="%s"
@@ -193,13 +193,13 @@
             android:defaultValue="0" />
 
         <!-- Charging stats -->
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_battery_info"
             android:title="@string/lock_screen_charging_stats_title"
             android:summary="@string/lock_screen_charging_stats_summary"
             android:defaultValue="true" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_charging_time"
             android:title="@string/lockscreen_charging_time_title"
             android:summary="@string/lockscreen_charging_time_summary"
@@ -212,19 +212,19 @@
         android:key="lock_screen_fingerprint_category"
         android:title="@string/lock_screen_fingerprint_category">
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="enable_ripple_effect"
             android:title="@string/lock_screen_fingerprint_ripple_title"
             android:summary="@string/lock_screen_fingerprint_ripple_summary"
             android:defaultValue="true" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="fp_success_vibrate"
             android:title="@string/lock_screen_fingerprint_success_vibration_title"
             android:summary="@string/lock_screen_fingerprint_success_vibration_summary"
             android:defaultValue="true" />
 
-        <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="fp_error_vibrate"
             android:title="@string/lock_screen_fingerprint_error_vibration_title"
             android:summary="@string/lock_screen_fingerprint_error_vibration_summary"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2019-2024 lunaris X
+     Copyright (C) 2019-2024 mist X
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen
@@ -13,7 +13,7 @@
         android:title="@string/spoofing_system_wide_category">
 
         <!-- GMS spoof -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gms"
             android:title="@string/gms_spoof_title"
             android:summary="@string/gms_spoof_summary"
@@ -38,25 +38,25 @@
             android:dependency="persist.sys.pixelprops.gms" />
 
         <!-- Keybox Data -->
-        <org.lunaris.settings.preferences.KeyboxDataPreference
+        <org.mist.settings.preferences.KeyboxDataPreference
             android:key="keybox_data_setting"
             android:title="@string/keybox_data_title" />
 
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.keybox.check.enabled"
             android:title="@string/keybox_check_title"
             android:summary="@string/keybox_check_summary"
             android:defaultValue="false" />
 
         <!-- Pixel props -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops"
             android:title="@string/spoofing_pixel_props_title"
             android:summary="@string/spoofing_pixel_props_summary"
             android:defaultValue="true" />
 
         <!-- Tensor features -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.features.tensor"
             android:title="@string/tensor_spoof_title"
             android:summary="@string/tensor_spoof_summary"
@@ -69,7 +69,7 @@
         android:title="@string/spoofing_app_specific_category">
 
         <!-- Games FPS -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.gameprops.enabled"
             android:title="@string/gameprops_title"
             android:summary="@string/gameprops_summary"
@@ -81,42 +81,42 @@
             android:summary="@string/gameprops_load_json_summary" />
 
         <!-- Google App -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.qsb"
             android:title="@string/spoofing_qsb_title"
             android:summary="@string/spoofing_qsb_summary"
             android:defaultValue="false" />
 
         <!-- Play Store -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.vending"
             android:title="@string/spoofing_vending_title"
             android:summary="@string/spoofing_vending_summary"
             android:defaultValue="true" />
 
         <!-- Google Photos -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gphotos"
             android:title="@string/spoofing_photos_title"
             android:summary="@string/spoofing_photos_summary"
             android:defaultValue="true" />
 
         <!-- Encryption -->
-        <org.lunaris.settings.preferences.GlobalSettingSwitchPreference
+        <org.mist.settings.preferences.GlobalSettingSwitchPreference
             android:key="spoofing_storage_encryption"
             android:title="@string/spoofing_storage_encryption_title"
             android:summary="@string/spoofing_storage_encryption_summary"
             android:defaultValue="false" />
 
         <!-- Snapchat -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.snap"
             android:title="@string/spoofing_snap_title"
             android:summary="@string/spoofing_snap_summary"
             android:defaultValue="false" />
         
         <!-- Netflix -->
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.netflix"
             android:title="@string/spoofing_netflix_title"
             android:summary="@string/spoofing_netflix_summary"

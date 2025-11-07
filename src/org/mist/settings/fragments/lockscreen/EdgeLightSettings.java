@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.lockscreen;
+package org.mist.settings.fragments.lockscreen;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -63,7 +63,7 @@ public class EdgeLightSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     @Override

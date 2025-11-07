@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.preferences;
+package org.mist.settings.preferences;
 
 import android.content.Context;
 import android.os.SystemProperties;

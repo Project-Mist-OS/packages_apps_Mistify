@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.themes;
+package org.mist.settings.fragments.themes;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -55,8 +55,8 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.bumptech.glide.Glide;
 
-import com.android.internal.util.lunaris.ThemeUtils;
-import com.android.internal.util.lunaris.Utils;
+import com.android.internal.util.mist.ThemeUtils;
+import com.android.internal.util.mist.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,7 +113,7 @@ public class NavigationBarIcons extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.LUNARIS;
+        return MetricsEvent.MIST;
     }
 
     @Override

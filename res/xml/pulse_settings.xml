@@ -24,14 +24,14 @@
         android:key="lockscreen_pulse_enabled"
         android:title="@string/enable" />
 
-    <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+    <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="pulse_show_on_ambient"
         android:title="@string/pulse_show_on_ambient_title"
         android:summary="@string/pulse_show_on_ambient_summary"
         android:defaultValue="true" 
         android:dependency="lockscreen_pulse_enabled" />
 
-    <org.lunaris.settings.preferences.SecureSettingListPreference
+    <org.mist.settings.preferences.SecureSettingListPreference
         android:key="pulse_renderer"
         android:title="@string/pulse_renderer"
         android:summary="%s"
@@ -41,14 +41,14 @@
         android:defaultValue="solid"
         android:dependency="lockscreen_pulse_enabled" />
 
-    <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+    <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="pulse_rounded_bars"
         android:title="@string/pulse_rounded_bars_title"
         android:summary="@string/pulse_rounded_bars_summary"
         android:defaultValue="false"
         android:dependency="lockscreen_pulse_enabled" />
 
-    <org.lunaris.settings.preferences.SecureSettingListPreference
+    <org.mist.settings.preferences.SecureSettingListPreference
         android:key="pulse_color"
         android:title="@string/pulse_color"
         android:summary="%s"
@@ -58,7 +58,7 @@
         android:defaultValue="lavalamp"
         android:dependency="lockscreen_pulse_enabled" />
 
-    <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+    <org.mist.settings.preferences.SecureSettingSeekBarPreference
         android:key="pulse_bar_count"
         android:title="@string/pulse_bar_count_title"
         android:summary="@string/pulse_bar_count_summary"
@@ -69,7 +69,7 @@
         android:max="64"
         android:dependency="lockscreen_pulse_enabled" />
 
-    <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+    <org.mist.settings.preferences.SecureSettingSeekBarPreference
         android:key="pulse_height_multiplier"
         android:title="@string/pulse_height_multiplier_title"
         android:summary="@string/pulse_height_multiplier_summary"

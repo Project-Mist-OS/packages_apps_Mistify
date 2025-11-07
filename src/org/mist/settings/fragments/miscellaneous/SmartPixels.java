@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.miscellaneous;
+package org.mist.settings.fragments.miscellaneous;
 
 import android.content.Context;
 import android.content.ContentResolver;
@@ -54,7 +54,7 @@ public class SmartPixels extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     @Override

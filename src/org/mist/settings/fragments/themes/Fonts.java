@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.themes;
+package org.mist.settings.fragments.themes;
 
-import static com.android.internal.util.lunaris.ThemeUtils.FONT_KEY;
+import static com.android.internal.util.mist.ThemeUtils.FONT_KEY;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -37,7 +37,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.util.lunaris.ThemeUtils;
+import com.android.internal.util.mist.ThemeUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -92,7 +92,7 @@ public class Fonts extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.LUNARIS;
+        return MetricsEvent.MIST;
     }
 
     public static class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {

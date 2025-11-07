@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lunaris.settings.fragments.lockscreen;
+package org.mist.settings.fragments.lockscreen;
 
 import android.content.Context;
 import android.content.ContentResolver;
@@ -44,7 +44,7 @@ public class PulseSettings extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     @Override

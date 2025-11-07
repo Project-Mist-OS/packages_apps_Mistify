@@ -1,4 +1,4 @@
-package org.lunaris.settings.preferences;
+package org.mist.settings.preferences;
 
 import android.content.ContentResolver;
 import android.content.Context;

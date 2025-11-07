@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.themes;
+package org.mist.settings.fragments.themes;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -46,9 +46,9 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 import com.skydoves.colorpickerview.flag.BubbleFlag;
 import com.skydoves.colorpickerview.flag.FlagMode;
 
-import org.lunaris.settings.preferences.colorpicker.ColorPickerPreference;
-import org.lunaris.settings.preferences.CustomSeekBarPreference;
-import org.lunaris.settings.utils.WallpaperUtils;
+import org.mist.settings.preferences.colorpicker.ColorPickerPreference;
+import org.mist.settings.preferences.CustomSeekBarPreference;
+import org.mist.settings.utils.WallpaperUtils;
 
 import java.lang.CharSequence;
 
@@ -673,7 +673,7 @@ public class MonetSettings extends DashboardFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     @Override

@@ -4,7 +4,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/udfps_cust_title">
 
-    <org.lunaris.settings.preferences.SystemSettingListPreference
+    <org.mist.settings.preferences.SystemSettingListPreference
         android:key="udfps_icon_type"
         android:title="@string/udfps_icon_type_title"
         android:summary="%s"
@@ -16,7 +16,7 @@
         android:key="udfps_icon_picker"
         android:title="@string/udfps_icon_picker_title"
         android:summary="@string/udfps_icon_picker_summary"
-        android:fragment="org.lunaris.settings.fragments.lockscreen.UdfpsIconPicker" />
+        android:fragment="org.mist.settings.fragments.lockscreen.UdfpsIconPicker" />
 
     <Preference
         android:key="udfps_custom_icon_select"
@@ -27,9 +27,9 @@
         android:key="udfps_recognizing_animation_preview"
         android:title="@string/udfps_recog_animation_effect_title"
         android:summary="@string/udfps_recog_animation_effect_summary"
-        android:fragment="org.lunaris.settings.fragments.lockscreen.UdfpsAnimation" />
+        android:fragment="org.mist.settings.fragments.lockscreen.UdfpsAnimation" />
 
-    <org.lunaris.settings.preferences.SystemSettingSeekBarPreference
+    <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="udfps_anim_size"
         android:title="@string/udfps_animation_size_title"
         android:summary="@string/udfps_animation_size_summary"
@@ -40,7 +40,7 @@
         settings:units="%"
         android:dependency="udfps_recognizing_animation_preview" />
 
-    <org.lunaris.settings.preferences.SystemSettingSeekBarPreference
+    <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="udfps_anim_offset"
         android:title="@string/udfps_animation_offset_title"
         android:summary="@string/udfps_animation_offset_summary"

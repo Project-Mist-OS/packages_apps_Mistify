@@ -17,13 +17,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/performance_title">
 
-    <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+    <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="axion_sf_boost"
         android:title="@string/display_boost_title"
         android:summary="@string/display_boost_summary"
         android:defaultValue="true"/>
 
-    <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+    <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="axion_touch_boost"
         android:title="@string/input_touch_boost_title"
         android:summary="@string/input_touch_boost_summary"
@@ -34,13 +34,13 @@
         android:key="axion_cluster_little"
         android:title="@string/cluster_little_title">
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="axion_cpu_boost"
             android:title="@string/cpu_boost_title"
             android:summary="@string/cpu_boost_summary"
             android:defaultValue="true"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq_boost"
             android:title="@string/axion_min_freq_boost_title"
             android:summary="@string/axion_min_freq_boost_summary"
@@ -49,7 +49,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq"
             android:title="@string/axion_min_freq_title"
             android:summary="@string/axion_min_freq_summary"
@@ -57,7 +57,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_max_freq"
             android:title="@string/axion_max_freq_title"
             android:summary="@string/axion_max_freq_summary"
@@ -71,13 +71,13 @@
         android:key="axion_cluster_big"
         android:title="@string/cluster_big_title">
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="axion_big_core_boost"
             android:title="@string/big_core_boost_title"
             android:summary="@string/big_core_boost_summary"
             android:defaultValue="false"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq_big_boost"
             android:title="@string/axion_min_freq_big_boost_title"
             android:summary="@string/axion_min_freq_big_boost_summary"
@@ -86,7 +86,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq_big"
             android:title="@string/axion_min_freq_big_title"
             android:summary="@string/axion_min_freq_big_summary"
@@ -94,7 +94,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_max_freq_big"
             android:title="@string/axion_max_freq_big_title"
             android:summary="@string/axion_max_freq_big_summary"
@@ -108,13 +108,13 @@
         android:key="axion_cluster_prime"
         android:title="@string/cluster_prime_title">
 
-        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="axion_prime_core_boost"
             android:title="@string/prime_core_boost_title"
             android:summary="@string/prime_core_boost_summary"
             android:defaultValue="false"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq_prime_boost"
             android:title="@string/axion_min_freq_prime_boost_title"
             android:summary="@string/axion_min_freq_prime_boost_summary"
@@ -123,7 +123,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_min_freq_prime"
             android:title="@string/axion_min_freq_prime_title"
             android:summary="@string/axion_min_freq_prime_summary"
@@ -131,7 +131,7 @@
             settings:interval="100000"
             settings:units="MHz"/>
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_max_freq_prime"
             android:title="@string/axion_max_freq_prime_title"
             android:summary="@string/axion_max_freq_prime_summary"
@@ -145,14 +145,14 @@
         android:key="axion_gpu"
         android:title="@string/gpu_title">
 
-        <org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_game_gpu_boost_level"
             android:title="@string/axion_game_gpu_boost_title"
             android:summary="@string/axion_game_gpu_boost_summary"
             settings:min="0"
             settings:units="Level"/>
 
-	<org.lunaris.settings.preferences.SecureSettingSeekBarPreference
+	<org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="axion_sys_gpu_boost_level"
             android:title="@string/axion_sys_gpu_boost_title"
             android:summary="@string/axion_sys_gpu_boost_summary"

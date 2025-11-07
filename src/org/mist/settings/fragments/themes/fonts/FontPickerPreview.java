@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lunaris.settings.fragments.themes.fonts;
+package org.mist.settings.fragments.themes.fonts;
 
 import android.content.Context;
 import android.content.res.Configuration;

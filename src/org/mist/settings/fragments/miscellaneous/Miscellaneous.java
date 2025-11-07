@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.miscellaneous;
+package org.mist.settings.fragments.miscellaneous;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -52,7 +52,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.lunaris_settings_miscellaneous);
+        addPreferencesFromResource(R.xml.mist_settings_miscellaneous);
 
         Context mContext = getActivity().getApplicationContext();
         final ContentResolver resolver = mContext.getContentResolver();
@@ -78,7 +78,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.LUNARIS;
+        return MetricsEvent.MIST;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.lunaris_settings_miscellaneous) {
+            new BaseSearchIndexProvider(R.xml.mist_settings_miscellaneous) {
 
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {

@@ -16,7 +16,7 @@
     <PreferenceCategory
         android:title="@string/status_bar_lyric_options_title">
 
-        <org.lunaris.settings.preferences.SystemPropertySwitchPreference
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.disguise_props_for_music_app"
             android:title="@string/disguise_props_for_music_app_title"
             android:summary="@string/disguise_props_for_music_app_summary"

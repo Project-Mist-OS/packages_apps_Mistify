@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lunaris.settings.fragments.quicksettings;
+package org.mist.settings.fragments.quicksettings;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -40,7 +40,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
-import org.lunaris.settings.utils.ImageUtils;
+import org.mist.settings.utils.ImageUtils;
 
 import com.android.internal.util.android.VibrationUtils;
 
@@ -302,7 +302,7 @@ public class QsHeaderImageSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+        return MetricsProto.MetricsEvent.MIST;
     }
 
     @Override

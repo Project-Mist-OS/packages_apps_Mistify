@@ -24,7 +24,7 @@
         android:title="@string/enable"
         android:defaultValue="false" />
 
-    <org.lunaris.settings.preferences.SystemSettingListPreference
+    <org.mist.settings.preferences.SystemSettingListPreference
         android:key="smart_pixels_pattern"
         android:entries="@array/smart_pixels_percent_strings"
         android:entryValues="@array/smart_pixels_percent_values"
@@ -33,12 +33,12 @@
         android:title="@string/smart_pixels_percent"
         android:dialogTitle="@string/smart_pixels_percent" />
 
-    <org.lunaris.settings.preferences.SystemSettingSwitchPreference
+    <org.mist.settings.preferences.SystemSettingSwitchPreference
         android:key="smart_pixels_on_power_save"
         android:title="@string/smart_pixels_on_power_save_title"
         android:summary="@string/smart_pixels_on_power_save_summary" />
 
-    <org.lunaris.settings.preferences.SystemSettingListPreference
+    <org.mist.settings.preferences.SystemSettingListPreference
         android:key="smart_pixels_shift_timeout"
         android:entries="@array/smart_pixels_shift_times"
         android:entryValues="@array/smart_pixels_shift_values"

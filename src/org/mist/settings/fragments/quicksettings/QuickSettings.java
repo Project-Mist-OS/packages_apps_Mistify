@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.quicksettings;
+package org.mist.settings.fragments.quicksettings;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -38,13 +38,13 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
-import org.lunaris.settings.preferences.SecureSettingSwitchPreference;
-import org.lunaris.settings.preferences.SecureSettingListPreference;
-import org.lunaris.settings.preferences.SystemSettingListPreference;
+import org.mist.settings.preferences.SecureSettingSwitchPreference;
+import org.mist.settings.preferences.SecureSettingListPreference;
+import org.mist.settings.preferences.SystemSettingListPreference;
 
-import org.lunaris.settings.utils.DeviceUtils;
-import org.lunaris.settings.utils.SystemRestartUtils;
-import org.lunaris.settings.utils.SystemUtils;
+import org.mist.settings.utils.DeviceUtils;
+import org.mist.settings.utils.SystemRestartUtils;
+import org.mist.settings.utils.SystemUtils;
 
 import com.android.internal.util.android.VibrationUtils;
 
@@ -78,7 +78,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.lunaris_settings_quick_settings);
+        addPreferencesFromResource(R.xml.mist_settings_quick_settings);
 
         final Context mContext = getContext();
         final ContentResolver resolver = mContext.getContentResolver();
@@ -180,7 +180,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.LUNARIS;
+        return MetricsEvent.MIST;
     }
 
     @Override
@@ -192,7 +192,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider(R.xml.lunaris_settings_quick_settings) {
+        new BaseSearchIndexProvider(R.xml.mist_settings_quick_settings) {
 
             @Override
             public List<String> getNonIndexableKeys(Context context) {

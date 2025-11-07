@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.miscellaneous;
+package org.mist.settings.fragments.miscellaneous;
 
 import android.content.Context;
 import android.content.res.Resources;
