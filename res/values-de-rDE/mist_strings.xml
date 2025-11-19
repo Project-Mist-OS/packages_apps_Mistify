@@ -226,7 +226,7 @@
     <string name="status_bar_battery_style_icon_landscape_buddy">Querformat Kapsel</string>
     <string name="status_bar_battery_style_icon_landscape_line">Querformat Lorn</string>
     <string name="status_bar_battery_style_icon_landscape_musku">Hochformat IOS</string>
-    <string name="status_bar_battery_style_icon_landscape_pill">Hochformat Mx</string>
+    <string name="status_bar_battery_style_icon_landscape_pill">Portrait Mx</string>
     <string name="status_bar_battery_style_icon_landscape_signal">Querformat Airoo</string>
     <string name="status_bar_battery_style_icon_rlandscape_style_a">Querformat R Stil A</string>
     <string name="status_bar_battery_style_icon_landscape_style_a">Querformat L Stil A</string>
