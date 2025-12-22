@@ -119,10 +119,17 @@
             android:summary="@string/qs_refactor_summary"
             android:defaultValue="false" />
 
-        <org.mist.settings.preferences.OverlaySwitchPreference
+        <!-- <org.mist.settings.preferences.OverlaySwitchPreference
             android:key="com.android.system.qs.dualtone"
             android:title="@string/qs_dual_tone_title"
             android:summary="@string/qs_dual_tone_summary"
+            android:defaultValue="false" /> -->
+
+        <!-- Single Tone QS -->
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="single_qs_tone_enabled"
+            android:title="@string/qs_single_tone_title"
+            android:summary="@string/qs_single_tone_summary"
             android:defaultValue="false" />
 
         <org.mist.settings.preferences.SystemSettingSeekBarPreference
