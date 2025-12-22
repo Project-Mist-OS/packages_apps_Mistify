@@ -63,6 +63,25 @@
 
      </PreferenceCategory>
 
+     <PreferenceCategory
+            android:key="custom_lockscreen_category"
+            android:title="@string/custom_lockscreen_title">
+
+            <!-- Enable / Disable Custom Lockscreen -->
+            <androidx.preference.SwitchPreferenceCompat
+                android:key="pref_custom_lockscreen_enable"
+                android:title="@string/custom_lockscreen_title"
+                android:summary="@string/custom_lockscreen_summary"
+                android:defaultValue="false" />
+
+            <!-- Open Lockscreen Editor App -->
+            <Preference
+                android:key="pref_custom_lockscreen_open"
+                android:title="@string/custom_lockscreen_open"
+                android:summary="@string/custom_lockscreen_open_summary"
+                android:selectable="true" />
+        </PreferenceCategory>
+
      <!-- Incall vibration options -->
     <PreferenceCategory
         android:key="accessibility_incall_vibration_category"
