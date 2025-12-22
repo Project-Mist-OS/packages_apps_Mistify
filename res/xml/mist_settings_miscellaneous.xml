@@ -102,6 +102,13 @@
             android:summary="@string/no_storage_restrict_summary"
             android:defaultValue="false" />
 
+        <!-- Sensor block per package -->
+        <Preference
+            android:key="sensor_block_settings"
+            android:title="@string/sensor_block_title"
+            android:summary="@string/sensor_block_summary"
+            android:fragment="org.mist.settings.fragments.miscellaneous.SensorBlock"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
