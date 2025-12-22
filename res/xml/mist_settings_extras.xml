@@ -2,6 +2,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/extras_title">
 
@@ -64,23 +65,17 @@
      </PreferenceCategory>
 
      <PreferenceCategory
-            android:key="custom_lockscreen_category"
-            android:title="@string/custom_lockscreen_title">
+        android:key="custom_lockscreen_category"
+        android:title="@string/custom_lockscreen_title">
 
-            <!-- Enable / Disable Custom Lockscreen -->
-            <androidx.preference.SwitchPreferenceCompat
-                android:key="pref_custom_lockscreen_enable"
-                android:title="@string/custom_lockscreen_title"
-                android:summary="@string/custom_lockscreen_summary"
-                android:defaultValue="false" />
+        <!-- Custom Lockscreen with clickable summary -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.mist.customlockscreen.enable"
+            android:title="@string/custom_lockscreen_title"
+            android:summary="@string/custom_lockscreen_summary"
+            android:defaultValue="false" />
 
-            <!-- Open Lockscreen Editor App -->
-            <Preference
-                android:key="pref_custom_lockscreen_open"
-                android:title="@string/custom_lockscreen_open"
-                android:summary="@string/custom_lockscreen_open_summary"
-                android:selectable="true" />
-        </PreferenceCategory>
+    </PreferenceCategory>
 
      <!-- Incall vibration options -->
     <PreferenceCategory
