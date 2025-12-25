@@ -1315,4 +1315,7 @@
     <string name="qs_calendar_type_saka">萨卡（印度）</string>
     <string name="qs_calendar_type_islamic">Islamic (Hijri)</string>
     <string name="qs_calender_type_islamic">Islamic (Hijri)</string>
+    <!-- Custom switch -->
+    <string name="theme_customization_switch_title">Switch Style</string>
+    <string name="theme_customization_switch_summary">set the style of switch</string>
 </resources>
