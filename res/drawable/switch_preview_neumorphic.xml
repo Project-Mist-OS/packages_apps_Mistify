@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 MistOS
+     Neumorphic Switch Preview
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Track with neumorphic effect -->
+    <item>
+        <layer-list>
+            <!-- Outer shadow -->
+            <item android:top="2dp" android:left="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#20000000" />
+                    <corners android:radius="18dp" />
+                </shape>
+            </item>
+            <!-- Inner highlight -->
+            <item android:bottom="2dp" android:right="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#E8E8E8" />
+                    <corners android:radius="16dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <!-- Thumb with neumorphic effect -->
+    <item android:left="20dp" android:top="4dp" android:bottom="4dp" android:right="4dp">
+        <layer-list>
+            <!-- Shadow -->
+            <item android:top="1dp" android:left="1dp">
+                <shape android:shape="oval">
+                    <solid android:color="#30000000" />
+                </shape>
+            </item>
+            <!-- Highlight -->
+            <item android:bottom="1dp" android:right="1dp">
+                <shape android:shape="oval">
+                    <solid android:color="#FFFFFF" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</layer-list>

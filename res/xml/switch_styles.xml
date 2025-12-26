@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 MistOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/switch_styles_title">
+
+    <PreferenceCategory
+        android:title="@string/switch_style_category_title"
+        android:key="switch_style_category">
+
+        <org.mist.settings.preferences.SwitchStylePreference
+            android:key="switch_style_selection"
+            android:title="@string/switch_style_selection_title"
+            android:summary="@string/switch_style_selection_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/switch_customization_category_title"
+        android:key="switch_customization_category">
+
+        <SwitchPreference
+            android:key="custom_switch_enabled"
+            android:title="@string/custom_switch_enabled_title"
+            android:summary="@string/custom_switch_enabled_summary"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="switch_animation_enabled"
+            android:title="@string/switch_animation_enabled_title"
+            android:summary="@string/switch_animation_enabled_summary"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="switch_haptic_feedback"
+            android:title="@string/switch_haptic_feedback_title"
+            android:summary="@string/switch_haptic_feedback_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="switch_custom_colors"
+            android:title="@string/switch_custom_colors_title"
+            android:summary="@string/switch_custom_colors_summary"
+            android:fragment="org.mist.settings.fragments.SwitchCustomColors" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/switch_advanced_category_title"
+        android:key="switch_advanced_category">
+
+        <ListPreference
+            android:key="switch_thumb_style"
+            android:title="@string/switch_thumb_style_title"
+            android:summary="@string/switch_thumb_style_summary"
+            android:entries="@array/switch_thumb_style_entries"
+            android:entryValues="@array/switch_thumb_style_values"
+            android:defaultValue="0" />
+
+        <ListPreference
+            android:key="switch_track_style"
+            android:title="@string/switch_track_style_title"
+            android:summary="@string/switch_track_style_summary"
+            android:entries="@array/switch_track_style_entries"
+            android:entryValues="@array/switch_track_style_values"
+            android:defaultValue="0" />
+
+        <org.mist.settings.preferences.CustomSeekBarPreference
+            android:key="switch_corner_radius"
+            android:title="@string/switch_corner_radius_title"
+            android:summary="@string/switch_corner_radius_summary"
+            android:max="50"
+            android:min="0"
+            settings:defaultValue="25"
+            settings:units="dp" />
+
+        <org.mist.settings.preferences.CustomSeekBarPreference
+            android:key="switch_elevation"
+            android:title="@string/switch_elevation_title"
+            android:summary="@string/switch_elevation_summary"
+            android:max="20"
+            android:min="0"
+            settings:defaultValue="4"
+            settings:units="dp" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/switch_png_support_category_title"
+        android:key="switch_png_support_category">
+
+        <SwitchPreference
+            android:key="switch_png_enabled"
+            android:title="@string/switch_png_enabled_title"
+            android:summary="@string/switch_png_enabled_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="switch_png_thumb_on"
+            android:title="@string/switch_png_thumb_on_title"
+            android:summary="@string/switch_png_thumb_on_summary"
+            android:dependency="switch_png_enabled" />
+
+        <Preference
+            android:key="switch_png_thumb_off"
+            android:title="@string/switch_png_thumb_off_title"
+            android:summary="@string/switch_png_thumb_off_summary"
+            android:dependency="switch_png_enabled" />
+
+        <Preference
+            android:key="switch_png_track_on"
+            android:title="@string/switch_png_track_on_title"
+            android:summary="@string/switch_png_track_on_summary"
+            android:dependency="switch_png_enabled" />
+
+        <Preference
+            android:key="switch_png_track_off"
+            android:title="@string/switch_png_track_off_title"
+            android:summary="@string/switch_png_track_off_summary"
+            android:dependency="switch_png_enabled" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

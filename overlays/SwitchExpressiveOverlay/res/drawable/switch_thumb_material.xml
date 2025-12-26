@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 MistOS
+     Expressive UI Switch Thumb - Android 16 Style
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <layer-list>
+            <!-- Shadow -->
+            <item android:top="2dp" android:left="2dp">
+                <shape android:shape="oval">
+                    <solid android:color="#20000000" />
+                </shape>
+            </item>
+            <!-- Thumb -->
+            <item android:bottom="2dp" android:right="2dp">
+                <shape android:shape="oval">
+                    <solid android:color="#FAFAFA" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <!-- Shadow -->
+            <item android:top="2dp" android:left="2dp">
+                <shape android:shape="oval">
+                    <solid android:color="#40000000" />
+                </shape>
+            </item>
+            <!-- Thumb -->
+            <item android:bottom="2dp" android:right="2dp">
+                <shape android:shape="oval">
+                    <gradient
+                        android:startColor="#FFFFFF"
+                        android:endColor="#F5F5F5"
+                        android:angle="135" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

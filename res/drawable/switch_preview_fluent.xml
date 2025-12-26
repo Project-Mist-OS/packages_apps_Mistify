@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 MistOS
+     Fluent Design Switch Preview
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Track -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#0078D4" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <!-- Thumb -->
+    <item android:left="20dp" android:top="2dp" android:bottom="2dp" android:right="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+</layer-list>

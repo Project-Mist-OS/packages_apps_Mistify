@@ -6,4 +6,16 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="settingslib_preference_fg_color">@*android:color/system_neutral1_900</color>
+    
+    <!-- Switch Style Colors - Night Mode -->
+    <color name="switch_selection_color">#FF8A50</color>
+    <color name="switch_style_background">#2A2A2A</color>
+    <color name="switch_style_selected_background">#3A2A1A</color>
+    <color name="switch_style_border">#404040</color>
+    <color name="switch_preview_background_color">#1E1E1E</color>
+    <color name="switch_selection_overlay">#30FF8A50</color>
+    
+    <!-- Custom Switch Colors - Night Mode -->
+    <color name="custom_switch_track_color">#FF8A50</color>
+    <color name="custom_switch_thumb_color">#FFFFFF</color>
 </resources>

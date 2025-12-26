@@ -1438,4 +1438,33 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+    
+    <!-- Switch Style Arrays -->
+    <string-array name="switch_thumb_style_entries">
+        <item>Circle</item>
+        <item>Square</item>
+        <item>Rounded Square</item>
+        <item>Custom Shape</item>
+    </string-array>
+    
+    <string-array name="switch_thumb_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    
+    <string-array name="switch_track_style_entries">
+        <item>Rounded Rectangle</item>
+        <item>Pill Shape</item>
+        <item>Rectangle</item>
+        <item>Custom Shape</item>
+    </string-array>
+    
+    <string-array name="switch_track_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

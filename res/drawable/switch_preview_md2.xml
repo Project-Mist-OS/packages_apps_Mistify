@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 MistOS
+     Material Design 2 Switch Preview
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Track -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1976D2" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+    <!-- Thumb -->
+    <item android:left="20dp" android:top="4dp" android:bottom="4dp" android:right="4dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

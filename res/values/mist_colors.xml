@@ -23,4 +23,16 @@
     <color name="op_control_accent_color_green_dark">#ff06743e</color>
     <color name="option_border_default">#5f6368</color>
     <color name="settingslib_preference_fg_color">@*android:color/system_neutral1_100</color>
+    
+    <!-- Switch Style Colors -->
+    <color name="switch_selection_color">#FF6B35</color>
+    <color name="switch_style_background">#F5F5F5</color>
+    <color name="switch_style_selected_background">#FFF3E0</color>
+    <color name="switch_style_border">#E0E0E0</color>
+    <color name="switch_preview_background_color">#FAFAFA</color>
+    <color name="switch_selection_overlay">#20FF6B35</color>
+    
+    <!-- Custom Switch Colors -->
+    <color name="custom_switch_track_color">#FF6B35</color>
+    <color name="custom_switch_thumb_color">#FFFFFF</color>
 </resources>
