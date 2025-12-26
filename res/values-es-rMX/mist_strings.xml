@@ -1318,4 +1318,53 @@
     <!-- Custom switch -->
     <string name="theme_customization_switch_title">Switch Style</string>
     <string name="theme_customization_switch_summary">set the style of switch</string>
+    <!-- Switch Styles -->
+    <string name="switch_styles_title">Switch Styles</string>
+    <string name="switch_style_category_title">Switch Style Selection</string>
+    <string name="switch_style_selection_title">Choose Switch Style</string>
+    <string name="switch_style_selection_summary">Select your preferred switch design</string>
+    <string name="switch_customization_category_title">Switch Customization</string>
+    <string name="custom_switch_enabled_title">Enable Custom Switch</string>
+    <string name="custom_switch_enabled_summary">Use custom switch designs and colors</string>
+    <string name="switch_animation_enabled_title">Switch Animations</string>
+    <string name="switch_animation_enabled_summary">Enable smooth switch animations</string>
+    <string name="switch_haptic_feedback_title">Haptic Feedback</string>
+    <string name="switch_haptic_feedback_summary">Vibrate when toggling switches</string>
+    <string name="switch_custom_colors_title">Custom Colors</string>
+    <string name="switch_custom_colors_summary">Customize switch colors and gradients</string>
+    <string name="switch_advanced_category_title">Advanced Options</string>
+    <string name="switch_thumb_style_title">Thumb Style</string>
+    <string name="switch_thumb_style_summary">Choose the switch thumb appearance</string>
+    <string name="switch_track_style_title">Track Style</string>
+    <string name="switch_track_style_summary">Choose the switch track appearance</string>
+    <string name="switch_corner_radius_title">Corner Radius</string>
+    <string name="switch_corner_radius_summary">Adjust switch corner roundness</string>
+    <string name="switch_elevation_title">Elevation</string>
+    <string name="switch_elevation_summary">Adjust switch shadow depth</string>
+    <string name="switch_png_support_category_title">PNG Image Support</string>
+    <string name="switch_png_enabled_title">Enable PNG Images</string>
+    <string name="switch_png_enabled_summary">Use custom PNG images for switch components</string>
+    <string name="switch_png_thumb_on_title">Thumb ON Image</string>
+    <string name="switch_png_thumb_on_summary">Select PNG image for switch thumb when ON</string>
+    <string name="switch_png_thumb_off_title">Thumb OFF Image</string>
+    <string name="switch_png_thumb_off_summary">Select PNG image for switch thumb when OFF</string>
+    <string name="switch_png_track_on_title">Track ON Image</string>
+    <string name="switch_png_track_on_summary">Select PNG image for switch track when ON</string>
+    <string name="switch_png_track_off_title">Track OFF Image</string>
+    <string name="switch_png_track_off_summary">Select PNG image for switch track when OFF</string>
+    <!-- Switch Style Names -->
+    <string name="switch_style_stock">Stock Android</string>
+    <string name="switch_style_md2">Material Design 2</string>
+    <string name="switch_style_oneui">One UI</string>
+    <string name="switch_style_ios">iOS Style</string>
+    <string name="switch_style_expressive">Expressive UI</string>
+    <string name="switch_style_fluent">Fluent Design</string>
+    <string name="switch_style_neumorphic">Neumorphic</string>
+    <string name="switch_style_retro">Retro</string>
+    <string name="switch_style_minimal">Minimal</string>
+    <string name="switch_style_custom">Custom</string>
+    <!-- Switch Style Dialog -->
+    <string name="switch_style_title">Switch Style</string>
+    <string name="switch_style_summary">Customize switch appearance</string>
+    <string name="switch_style_dialog_title">Choose Switch Style</string>
 </resources>
