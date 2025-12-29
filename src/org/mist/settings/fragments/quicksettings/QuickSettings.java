@@ -41,7 +41,7 @@ import com.android.settingslib.search.SearchIndexable;
 import org.mist.settings.preferences.SecureSettingSwitchPreference;
 import org.mist.settings.preferences.SecureSettingListPreference;
 import org.mist.settings.preferences.SystemSettingListPreference;
-import org.lunaris.settings.preferences.SystemSettingSwitchPreference;
+import org.mist.settings.preferences.SystemSettingSwitchPreference;
 
 import org.mist.settings.utils.DeviceUtils;
 import org.mist.settings.utils.SystemRestartUtils;
