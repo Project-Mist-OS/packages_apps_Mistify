@@ -252,7 +252,7 @@
     <string name="status_bar_battery_percent_text_next_left">图标旁边(左)</string>
     <string name="status_bar_battery_text_charging_title">充电时电池百分比</string>
     <string name="status_bar_battery_text_charging_summary">充电时总是显示电池百分比</string>
-    <string name="status_bar_clock_and_date_title">Clock &amp; date</string>
+    <string name="status_bar_clock_and_date_title">时钟和日期</string>
     <string name="status_bar_clock_and_date_summary">自定义时钟 &amp; 日期</string>
     <string name="status_bar_data_disabled_icon_title">数据禁用指示器</string>
     <string name="status_bar_data_disabled_icon_summary">当数据禁用时在信号图标旁显示指示器</string>
@@ -623,7 +623,7 @@
     <string name="rainbow_gradient_color">彩虹渐变颜色</string>
     <string name="custom_color">自定义颜色</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_value">值：<xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">默认设置</string>
     <string name="custom_seekbar_default_value_to_set">默认值： <xliff:g id="v">%s</xliff:g>\n长按以设置</string>
     <string name="custom_seekbar_default_value_is_set">默认值已设置</string>
@@ -697,7 +697,7 @@
     <string name="glass_blur">玻璃模糊</string>
     <string name="frosted_blur">纤维化</string>
     <string name="wallpaper_dim_level_summary">配置壁纸暗度级别</string>
-    <string name="wallpaper_styles_footer">For wallpaper styles to work effectively, users must set the wallpapers for the lock screen and home screen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lock screen and home screen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.</string>
+    <string name="wallpaper_styles_footer">为了使壁纸样式有效生效，用户必须分别设置锁屏和主屏幕的壁纸。\n可以使用同一张壁纸，但不能同时应用于锁屏和主屏幕。\n当使用壁纸模糊和暗化样式的“BOTH OPTION”选项时，此步骤是可选的。</string>
     <string name="wallpaper_performance_warning">:警告：这些视觉效果是资源密集型的，可能影响低端设备的性能。 为了获得最佳体验，在中程或旗舰设备上使用。\n效果可能会造成滞后、耗电或停电到较老的手机上。</string>
     <!-- Effect Titles -->
     <string name="wallpaper_saturation_title">饱和度</string>
@@ -722,8 +722,7 @@
     <string name="dw_wallpaper_opacity_title">深度壁纸不透明度</string>
     <string name="depth_wallpaper_offset_x_title">深度壁纸水平偏移</string>
     <string name="depth_wallpaper_offset_y_title">深度壁纸垂直偏移</string>
-    <string name="dw_footer_text">        The depth wallpaper feature, inspired by iOS\'s Wallpaper Subject Segmentation, enables overlaying of a subject above the lock screen clock to show a wallpaper depth effect.\n\nTo setup Depth Wallpaper Feature:\n1. Set a wallpaper with the subject or a background you want the subject to be above of.\n2. Select a subject image to track, this image will be overlaid above the lock screen clock.\n3. Modify the offsets and opacity according to your needs.
-    </string>
+    <string name="dw_footer_text">深度壁纸功能灵感源自 iOS 的壁纸主体分割功能，可将主体叠加在锁屏时钟上方，从而呈现壁纸的深度效果。\n\n设置深度壁纸功能：\n1. 设置一张包含主体或背景图的壁纸，主体将叠加在其上方。\n2. 选择要追踪的主体图像，该图像将叠加在锁屏时钟上方。\n3. 根据需要调整偏移量和不透明度    </string>
     <!-- Media art -->
     <string name="media_art_title">媒体封面</string>
     <string name="media_art_summary">可用时显示媒体封面</string>
@@ -786,7 +785,7 @@
     <string name="custom_aod_image_not_supported">不支持时钟样式</string>
     <!-- QS Widgets -->
     <string name="qs_widgets_enabled_title">快速设置小部件</string>
-    <string name="qs_widgets_enabled_summary">Show widgets for quick access. \nLimits QS rows to 2 to avoid breaking AOSP QS Panel scrolling</string>
+    <string name="qs_widgets_enabled_summary">显示小部件以便快速访问。\n限制快速访问栏行数为 2，以避免破坏 AOSP 快速访问栏面板的滚动功能</string>
     <!-- Lockscreen widgets  -->
     <string name="lockscreen_widgets_title">小部件</string>
     <string name="lockscreen_widgets_enabled_title">启用锁屏小部件</string>
@@ -936,23 +935,31 @@
     <string name="circular_position_x_summary">微调水平位置</string>
     <string name="circular_position_y_title">垂直偏移量</string>
     <string name="circular_position_y_summary">微调垂直位置</string>
-    <string name="progress_footer_text">    \"The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="progress_footer_text">状态栏进度条可实时更新媒体播放和正在进行的下载/上传进度。
 
-    - 🎵 Media Progress:
-    • Displays playback progress for music and video when media is playing.
-    • Single tap opens playback controls (Previous, Next track).
-    • Double tap toggles play/pause.
-    • Swipe left skips to the previous track.
-    • Swipe right skips to the next track.
-    • Long press opens the media app. 
+- 🎵 媒体播放进度：
 
-    - 📥Download/Upload Progress:
-    • Shows progress for ongoing downloads and uploads.
-    • Automatically hides when no active transfers are detected.
-    • Single tap opens the app responsible for the download.
+• 媒体播放时显示音乐和视频的播放进度。
 
-    The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.\"
-    </string>
+• 单击打开播放控制（上一首、下一首）。
+
+• 双击切换播放/暂停。
+
+• 向左滑动跳至上一首。
+
+• 向右滑动跳至下一首。
+
+• 长按打开媒体应用。
+
+- 📥 下载/上传进度：
+
+• 显示正在进行的下载和上传进度。
+
+• 未检测到任何传输时自动隐藏。
+
+• 单击打开负责下载的应用。
+
+进度条会在媒体播放和下载状态之间动态切换，确保您始终能够一目了然地获取最相关的信息    </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">空闲启动模式</string>
     <string name="freeform_launch_mode_1">原生AOSP</string>
@@ -999,10 +1006,11 @@
     <string name="nothing_launcher_customizations_title">没有自定义启动器</string>
     <string name="nothing_launcher_customizations_summary">自定义无启动器主屏幕应用</string>
     <string name="quickswitch_not_supported">不支持快速开关；系统只有一个启动器。</string>
-    <string name="quickswitch_footer_text">        Notes: \n\n
-        1. Due to compatibility issues with current Android API, the Lawnchair Launcher uses the Mist Launcher recents overview and will override any third-party launchers when set as the active QuickSwitch launcher. For better compatibility with third-party launchers, consider setting the QuickSwitch launcher to Mist or Pixel Launcher instead.\n\n
-        2. External launcher modules/modifications must be adapted to the QuickSwitch structure to function properly.
-    </string>
+    <string name="quickswitch_footer_text">注意事项：\n\n
+
+1. 由于与当前 Android API 的兼容性问题，Lawnchair Launcher 使用 Mist Launcher 的最近使用应用概览，并且在设置为活动 QuickSwitch 启动器时会覆盖任何第三方启动器。为了更好地兼容第三方启动器，请考虑将 QuickSwitch 启动器设置为 Mist 或 Pixel Launcher。\n\n
+
+2. 外部启动器模块/修改必须适配 QuickSwitch 结构才能正常工作    </string>
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">彩色图标</string>
     <string name="statusbar_colored_icons_summary">在状态栏使用适当的应用图标通知图标</string>
@@ -1126,7 +1134,7 @@
     <string name="ambient_battery_disable_title">已禁用</string>
     <string name="ambient_battery_percent_title">电量等级</string>
     <string name="ambient_battery_both_title">电池(级别 &amp; 温度)</string>
-    <string name="ambient_battery_cpu_battery_temperature_title">Battery level, temperature (Battery &amp; CPU)</string>
+    <string name="ambient_battery_cpu_battery_temperature_title">电池电量、温度（电池和 CPU）</string>
     <string name="ambient_user_name_title">用户名</string>
     <string name="display_icon_title">图标</string>
     <string name="display_icon_summary">显示图标和级别 &amp; 温度</string>
@@ -1142,8 +1150,7 @@
     <!-- Island Notification -->
     <string name="island_notification_now_playing_title">正在播放</string>
     <string name="island_notification_now_playing_summary">以动态岛屿风格显示当前播放的歌曲</string>
-    <string name="island_notification_footer_text">        The Island notification feature, inspired by iOS\'s Dynamic Island, transforms Android\'s heads-up notifications into quick-access and compact notification utility.\n\nIsland Quick Access Controls includes the following features:\n1. Tap island notification to quick answer phone calls.\n2. Long press island notification to reject phone calls.\n3. Long press island notification to expand the island notification preview.
-    </string>
+    <string name="island_notification_footer_text">受 iOS 动态岛屿的启发，岛屿通知功能将 Android 的弹出式通知转化为快速访问的简洁通知工具。\n\n岛屿快速访问控制包含以下功能：\n1. 点击岛屿通知快速接听电话。\n2. 长按岛屿通知拒接电话。\n3. 长按岛屿通知展开岛屿通知预览    </string>
     <string name="notifications_island_notification_title">岛屿通知</string>
     <string name="notifications_island_notification_summary">以动态岛屿风格显示浮动通知</string>
     <string name="island_transparent_background_title">透明岛屿背景</string>
@@ -1193,7 +1200,7 @@
     <string name="video_wallpaper_info_title">支持的格式</string>
     <string name="video_wallpaper_info_summary">MP4 视频，GIF 和 WebP 动画\n最大文件大小：50MB</string>
     <string name="video_wallpaper_tips_title">提示</string>
-    <string name="video_wallpaper_tips_summary">• Videos are muted automatically\n• Lower resolution videos use less battery\n• Shorter loops are recommended for better performance\n• If videos wallpaper doesnt load select live wallpaper from Wallpaper and style after selecting video wallpaper\n• You have to reapply live wallpaper after restart device</string>
+    <string name="video_wallpaper_tips_summary">视频会自动静音\n• 低分辨率视频更省电\n• 建议缩短循环播放时间以获得更佳性能\n• 如果视频壁纸无法加载，请在选择视频壁纸后，从“壁纸和样式”中选择动态壁纸\n• 重启设备后，您需要重新应用动态壁纸</string>
     <string name="video_wallpaper_description">动态视频和 GIF 壁纸</string>
     <string name="mist_os">MistOS ！</string>
     <!-- Video Wallpaper Strings -->
@@ -1246,10 +1253,10 @@
     <string name="lock_glymps_home_preview_desc">主屏幕壁纸预览</string>
     <!-- Footer -->
     <string name="lock_glymps_footer_title">重要信息</string>
-    <string name="lock_glymps_footer_text">📁 Local folder: /sdcard/MistGlymps\n\n⚠️ Low-end devices may experience slight lag\n\n🎨 Tip: Use Custom Accent in Monet Settings for stable colors</string>
+    <string name="lock_glymps_footer_text">本地文件夹：/sdcard/MistGlymps\n\n⚠️ 低端设备可能会出现轻微卡顿\n\n🎨 提示：在 Monet 设置中使用自定义强调色可获得更稳定的色彩</string>
     <!-- Blur intensity -->
     <string name="blur_intensity_title">模糊强度</string>
-    <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the system.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
+    <string name="blur_intensity_summary" formatted="false">控制系统中模糊效果的强度。\n0% = 无模糊，100% = 系统默认值，200% = 双倍强度。</string>
     <!-- Font Mode -->
     <string name="font_mode_title">字体源</string>
     <string name="font_settings_title">字体设置</string>
