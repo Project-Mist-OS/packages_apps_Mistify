@@ -697,7 +697,7 @@
     <string name="glass_blur">Desenfoque de cristal</string>
     <string name="frosted_blur">Desenfoque helado</string>
     <string name="wallpaper_dim_level_summary">Configurar nivel de atenuación del fondo de pantalla</string>
-    <string name="wallpaper_styles_footer">For wallpaper styles to work effectively, users must set the wallpapers for the lock screen and home screen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lock screen and home screen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.</string>
+    <string name="wallpaper_styles_footer">Para que los estilos de fondo de pantalla funcionen de manera efectiva, los usuarios deben configurar los fondos de pantalla para la pantalla de bloqueo y la pantalla de inicio en diferentes momentos.\nSe puede usar el mismo fondo de pantalla, pero no se debe aplicar tanto a la pantalla de bloqueo como a la pantalla de inicio al mismo tiempo.\nEsto es opcional cuando se usa la OPCIÓN AMBAS para los estilos de desenfoque y atenuación del fondo de pantalla.</string>
     <string name="wallpaper_performance_warning">⚠️ Aviso de rendimiento: Estos efectos visuales son intensivos en recursos y pueden afectar al rendimiento en dispositivos de gama baja. Para una experiencia óptima, utilice en dispositivos de rango medio o bandera.\nLos efectos pueden causar retraso, consumo de batería o retraso en los teléfonos antiguos.</string>
     <!-- Effect Titles -->
     <string name="wallpaper_saturation_title">Nivel de saturación</string>
@@ -722,8 +722,7 @@
     <string name="dw_wallpaper_opacity_title">Opacidad del fondo de pantalla</string>
     <string name="depth_wallpaper_offset_x_title">Desplazamiento horizontal del fondo de pantalla</string>
     <string name="depth_wallpaper_offset_y_title">Desplazamiento vertical del fondo de pantalla</string>
-    <string name="dw_footer_text">        The depth wallpaper feature, inspired by iOS\'s Wallpaper Subject Segmentation, enables overlaying of a subject above the lock screen clock to show a wallpaper depth effect.\n\nTo setup Depth Wallpaper Feature:\n1. Set a wallpaper with the subject or a background you want the subject to be above of.\n2. Select a subject image to track, this image will be overlaid above the lock screen clock.\n3. Modify the offsets and opacity according to your needs.
-    </string>
+    <string name="dw_footer_text">La función de fondo de pantalla con profundidad, inspirada en la segmentación de fondo de pantalla de iOS, permite superponer un objeto sobre el reloj de la pantalla de bloqueo para mostrar un efecto de profundidad.\n\nPara configurar la función de fondo de pantalla con profundidad:\n1. Configura un fondo de pantalla con el objeto o un fondo sobre el que quieras que aparezca.\n2. Selecciona la imagen de un objeto para rastrear; esta se superpondrá sobre el reloj de la pantalla de bloqueo.\n3. Modifica los desplazamientos y la opacidad según tus necesidades    </string>
     <!-- Media art -->
     <string name="media_art_title">Carátula multimedia</string>
     <string name="media_art_summary">Mostrar carátula multimedia cuando esté disponible</string>
@@ -826,7 +825,7 @@
     <!-- Font styles -->
     <string name="font_styles_title">Font Styles</string>
     <string name="font_styles_summary">Cambiar estilo de fuente del sistema</string>
-    <string name="font_preview_text">The quick brown\nfox jumps over the\nlazy dog\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
+    <string name="font_preview_text">El rápido zorro marrón salta sobre el perro perezoso</string>
     <string name="apply_button_text">Aplicar</string>
     <string name="font_picker_select_font">Select font</string>
     <!-- Apply Button -->
@@ -936,23 +935,22 @@
     <string name="circular_position_x_summary">Ajustar posición horizontal</string>
     <string name="circular_position_y_title">Desplazamiento vertical</string>
     <string name="circular_position_y_summary">Ajustar posición vertical</string>
-    <string name="progress_footer_text">    \"The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="progress_footer_text">La barra de progreso de la barra de estado proporciona actualizaciones en tiempo real tanto de la reproducción multimedia como de las descargas/subidas activas.
 
-    - 🎵 Media Progress:
-    • Displays playback progress for music and video when media is playing.
-    • Single tap opens playback controls (Previous, Next track).
-    • Double tap toggles play/pause.
-    • Swipe left skips to the previous track.
-    • Swipe right skips to the next track.
-    • Long press opens the media app. 
+- 🎵 Progreso Multimedia:
+• Muestra el progreso de la reproducción de música y vídeo durante la reproducción multimedia.
+• ​​Un solo toque abre los controles de reproducción (Pista anterior, Pista siguiente).
+• Un doble toque alterna entre reproducción/pausa.
+• Deslizar hacia la izquierda salta a la pista anterior.
+• Deslizar hacia la derecha salta a la pista siguiente.
+• Una pulsación prolongada abre la app multimedia.
 
-    - 📥Download/Upload Progress:
-    • Shows progress for ongoing downloads and uploads.
-    • Automatically hides when no active transfers are detected.
-    • Single tap opens the app responsible for the download.
+- 📥 Progreso de Descarga/Subida:
+• Muestra el progreso de las descargas y subidas en curso.
+• Se oculta automáticamente cuando no se detectan transferencias activas.
+• Un solo toque abre la app responsable de la descarga.
 
-    The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.\"
-    </string>
+La barra de progreso cambia dinámicamente entre el estado multimedia y el de descarga, lo que garantiza que siempre tengas la información más relevante a la vista    </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Modo de lanzamiento libre</string>
     <string name="freeform_launch_mode_1">AOSP nativo</string>
@@ -999,10 +997,9 @@
     <string name="nothing_launcher_customizations_title">Personalizaciones de ningún lanzador</string>
     <string name="nothing_launcher_customizations_summary">Personalizar ninguna aplicación de pantalla de inicio del launcher</string>
     <string name="quickswitch_not_supported">QuickSwitch no es compatible; el sistema solo tiene un lanzador.</string>
-    <string name="quickswitch_footer_text">        Notes: \n\n
-        1. Due to compatibility issues with current Android API, the Lawnchair Launcher uses the Mist Launcher recents overview and will override any third-party launchers when set as the active QuickSwitch launcher. For better compatibility with third-party launchers, consider setting the QuickSwitch launcher to Mist or Pixel Launcher instead.\n\n
-        2. External launcher modules/modifications must be adapted to the QuickSwitch structure to function properly.
-    </string>
+    <string name="quickswitch_footer_text">Notas: \n\n
+1. Debido a problemas de compatibilidad con la API actual de Android, el lanzador Lawnchair utiliza la vista previa de actualizaciones recientes de Mist Launcher y anulará cualquier lanzador de terceros al configurarse como el lanzador QuickSwitch activo. Para una mejor compatibilidad con lanzadores de terceros, considere configurar el lanzador QuickSwitch como Mist o Pixel Launcher.\n\n
+2. Los módulos o modificaciones del lanzador externo deben adaptarse a la estructura de QuickSwitch para funcionar correctamente    </string>
     <!-- Statusbar colored icons -->
     <string name="statusbar_colored_icons_title">Iconos de color</string>
     <string name="statusbar_colored_icons_summary">Usar iconos de aplicación adecuados para los iconos de notificación en la barra de estado</string>
@@ -1114,8 +1111,7 @@
     <string name="axion_game_gpu_boost_summary">Establecer el nivel de mejora de GPU para escenarios de juego</string>
     <string name="axion_sys_gpu_boost_title">Aumento de GPU del Sistema</string>
     <string name="axion_sys_gpu_boost_summary">Ajuste el nivel de mejora de GPU para escenarios del sistema/UI</string>
-    <string name="performence_footer_text">    If you don\’t know what frequency value to set, press the reset switch in the seekbar to restore the default.
-    </string>
+    <string name="performence_footer_text">Si no sabe qué valor de frecuencia configurar, presione el interruptor de reinicio en la barra de búsqueda para restaurar el valor predeterminado    </string>
     <!-- Notification Row -->
     <string name="notification_row_transparency_title">Notificaciones translúcidas</string>
     <string name="notification_row_transparency_summary">Establecer fondo traslúcido para las notificaciones en QS</string>
