@@ -722,8 +722,7 @@
     <string name="dw_wallpaper_opacity_title">Opacité du fond d\'écran de la profondeur</string>
     <string name="depth_wallpaper_offset_x_title">Décalage horizontal du fond d\'écran de profondeur</string>
     <string name="depth_wallpaper_offset_y_title">Décalage vertical du fond d\'écran</string>
-    <string name="dw_footer_text">        The depth wallpaper feature, inspired by iOS\'s Wallpaper Subject Segmentation, enables overlaying of a subject above the lock screen clock to show a wallpaper depth effect.\n\nTo setup Depth Wallpaper Feature:\n1. Set a wallpaper with the subject or a background you want the subject to be above of.\n2. Select a subject image to track, this image will be overlaid above the lock screen clock.\n3. Modify the offsets and opacity according to your needs.
-    </string>
+    <string name="dw_footer_text">La fonctionnalité de fond d\'écran avec effet de profondeur, inspirée de la segmentation du sujet d\'iOS, permet de superposer un sujet à l\'horloge de l\'écran de verrouillage pour créer un effet de profondeur.\n\nConfiguration du fond d\'écran avec effet de profondeur :\n1. Définissez un fond d\'écran avec le sujet ou un arrière-plan sur lequel vous souhaitez superposer le sujet.\n2. Sélectionnez une image à suivre ; cette image sera superposée à l\'horloge de l\'écran de verrouillage.\n3. Ajustez le décalage et l\'opacité selon vos besoins    </string>
     <!-- Media art -->
     <string name="media_art_title">Pochette de média</string>
     <string name="media_art_summary">Afficher les pochettes des médias quand elles sont disponibles</string>
@@ -849,7 +848,7 @@
     <string name="max_visible_notification_icons_summary">Nombre maximum d\'icônes de notification visibles dans la barre d\'état</string>
     <!-- Squiggle animation -->
     <string name="show_squiggle_animation_title">Afficher l\'animation de squiggle</string>
-    <string name="show_squiggle_animation_summary">Show media panel squiggle animation\nAfter change need to switch music, pause music or move the progress bar to apply</string>
+    <string name="show_squiggle_animation_summary">Afficher l\'animation ondulée du panneau multimédia\nAprès modification, il est nécessaire de changer de musique, de mettre la musique en pause ou de déplacer la barre de progression pour appliquer</string>
     <!-- Unlimit screenrecord -->
     <string name="unlimit_screenrecord_title">Ne pas limiter l\'enregistrement d\'écran</string>
     <string name="unlimit_screenrecord_summary">Retirer la limite de taille de fichier de 15GiB\npeut entraîner un fichier de sortie plus grand que nécessaire</string>
@@ -936,23 +935,31 @@
     <string name="circular_position_x_summary">Ajuster la position horizontale</string>
     <string name="circular_position_y_title">Décalage vertical</string>
     <string name="circular_position_y_summary">Ajuster la position verticale</string>
-    <string name="progress_footer_text">    \"The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="progress_footer_text">La barre de progression affiche en temps réel la progression de la lecture multimédia et des téléchargements/envois en cours.
 
-    - 🎵 Media Progress:
-    • Displays playback progress for music and video when media is playing.
-    • Single tap opens playback controls (Previous, Next track).
-    • Double tap toggles play/pause.
-    • Swipe left skips to the previous track.
-    • Swipe right skips to the next track.
-    • Long press opens the media app. 
+- 🎵 Progression multimédia :
 
-    - 📥Download/Upload Progress:
-    • Shows progress for ongoing downloads and uploads.
-    • Automatically hides when no active transfers are detected.
-    • Single tap opens the app responsible for the download.
+• Affiche la progression de la lecture de musique et de vidéos.
 
-    The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.\"
-    </string>
+• Un simple appui ouvre les commandes de lecture (Piste précédente, Piste suivante).
+
+• Un double appui active/désactive la lecture/pause.
+
+• Un glissement vers la gauche permet de passer à la piste précédente.
+
+• Un glissement vers la droite permet de passer à la piste suivante.
+
+• Un appui long ouvre l\'application multimédia.
+
+- 📥 Progression des téléchargements/envois :
+
+• Affiche la progression des téléchargements et envois en cours.
+
+• Se masque automatiquement lorsqu\'aucun transfert n\'est actif.
+
+• Un simple appui ouvre l\'application responsable du téléchargement.
+
+La barre de progression bascule dynamiquement entre l\'état de lecture multimédia et l\'état de téléchargement, vous permettant ainsi d\'accéder en un coup d\'œil aux informations les plus pertinentes    </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Mode de lancement de formulaire libre</string>
     <string name="freeform_launch_mode_1">AOSP natif</string>
@@ -1115,8 +1122,7 @@
     <string name="axion_game_gpu_boost_summary">Définir le niveau de boost GPU pour les scénarios de jeux</string>
     <string name="axion_sys_gpu_boost_title">Niveau de Boost GPU du système</string>
     <string name="axion_sys_gpu_boost_summary">Définir le niveau de boost GPU pour les scénarios système/UI</string>
-    <string name="performence_footer_text">    If you don\’t know what frequency value to set, press the reset switch in the seekbar to restore the default.
-    </string>
+    <string name="performence_footer_text">Si vous ne savez pas quelle valeur de fréquence régler, appuyez sur le bouton de réinitialisation de la barre de recherche pour rétablir la valeur par défaut    </string>
     <!-- Notification Row -->
     <string name="notification_row_transparency_title">Notifications translucides</string>
     <string name="notification_row_transparency_summary">Définir l\'arrière-plan translucide pour les notifications dans les réglages rapides</string>
@@ -1143,8 +1149,7 @@
     <!-- Island Notification -->
     <string name="island_notification_now_playing_title">En cours de lecture</string>
     <string name="island_notification_now_playing_summary">Afficher la chanson en cours de lecture dans le style de l\'île dynamique</string>
-    <string name="island_notification_footer_text">        The Island notification feature, inspired by iOS\'s Dynamic Island, transforms Android\'s heads-up notifications into quick-access and compact notification utility.\n\nIsland Quick Access Controls includes the following features:\n1. Tap island notification to quick answer phone calls.\n2. Long press island notification to reject phone calls.\n3. Long press island notification to expand the island notification preview.
-    </string>
+    <string name="island_notification_footer_text">La fonctionnalité de notification Island, inspirée de Dynamic Island d\'iOS, transforme les notifications contextuelles d\'Android en un utilitaire de notification compact et à accès rapide.\n\nLes commandes d\'accès rapide Island incluent les fonctionnalités suivantes :\n1. Appuyez sur la notification Island pour répondre rapidement aux appels.\n2. Appuyez longuement sur la notification Island pour rejeter les appels.\n3. Appuyez longuement sur la notification Island pour afficher l\'aperçu    </string>
     <string name="notifications_island_notification_title">Notification de l\'île</string>
     <string name="notifications_island_notification_summary">Afficher les notifications flottantes dans le style de l\'île dynamique</string>
     <string name="island_transparent_background_title">Arrière-plan de l\'île transparente</string>
