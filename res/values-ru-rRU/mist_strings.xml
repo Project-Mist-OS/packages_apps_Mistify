@@ -623,7 +623,7 @@
     <string name="rainbow_gradient_color">Радужный градиент</string>
     <string name="custom_color">Пользовательский цвет</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_value">Значение: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">по умолчанию</string>
     <string name="custom_seekbar_default_value_to_set">Значение по умолчанию: <xliff:g id="v">%s</xliff:g>\nДолгое нажатие для установки</string>
     <string name="custom_seekbar_default_value_is_set">Значение по умолчанию установлено</string>
@@ -645,7 +645,7 @@
     <string name="systemui_restart_not_now">Не сейчас</string>
     <!-- Split Shade -->
     <string name="qs_split_shade_enabled_title">Лучший ландшафтный QS</string>
-    <string name="qs_split_shade_enabled_summary">Enable new experimental split shade quicksettings,\nbreaks landscape headsup notifications</string>
+    <string name="qs_split_shade_enabled_summary">Включить новые экспериментальные быстрые настройки разделенного экрана, что нарушает работу всплывающих уведомлений в альбомной ориентации</string>
     <!-- Power Menu Styles -->
     <string name="powermenu_style_title">Стиль меню питания</string>
     <string name="powermenu_style1">Cyberpunk</string>
@@ -698,7 +698,7 @@
     <string name="frosted_blur">Масштабированное размытие</string>
     <string name="wallpaper_dim_level_summary">Настроить уровень затемнения обоев</string>
     <string name="wallpaper_styles_footer">Для эффективной работы стилей обоев необходимо установить обои для экрана блокировки и домашнего экрана.\nМожно использовать одни и те же обои, но они не должны применяться одновременно и на экране блокировки, и на главном экране.\nЭто опционально при использовании BOTH OPTION для стилей размытия и затемнения.</string>
-    <string name="wallpaper_performance_warning">⚠ Performance Notice: These visual effects are resource-intensive and may impact performance on low-end devices. For optimal experience, use on mid-range or flagship devices.\nEffects may cause lag, battery drain, or stuttering on older phones.</string>
+    <string name="wallpaper_performance_warning">⚠ Предупреждение о производительности: Эти визуальные эффекты ресурсоемки и могут повлиять на производительность на устройствах низкого класса. Для оптимальной работы используйте их на устройствах среднего или флагманского класса.\nЭффекты могут вызывать задержки, разрядку батареи или зависания на старых телефонах.</string>
     <!-- Effect Titles -->
     <string name="wallpaper_saturation_title">Уровень насыщенности</string>
     <string name="wallpaper_saturation_summary">Увеличить или уменьшить интенсивность цвета</string>
@@ -786,7 +786,7 @@
     <string name="custom_aod_image_not_supported">Стиль часов не поддерживается</string>
     <!-- QS Widgets -->
     <string name="qs_widgets_enabled_title">Виджеты QS</string>
-    <string name="qs_widgets_enabled_summary">Show widgets for quick access. \nLimits QS rows to 2 to avoid breaking AOSP QS Panel scrolling</string>
+    <string name="qs_widgets_enabled_summary">Отображение виджетов для быстрого доступа. Ограничивает количество строк в панели быстрого доступа до 2, чтобы избежать нарушения прокрутки в панели быстрого доступа AOSP</string>
     <!-- Lockscreen widgets  -->
     <string name="lockscreen_widgets_title">Виджеты</string>
     <string name="lockscreen_widgets_enabled_title">Включить виджеты экрана блокировки</string>
@@ -1193,7 +1193,7 @@
     <string name="video_wallpaper_info_title">Поддерживаемые форматы</string>
     <string name="video_wallpaper_info_summary">MP4 видео, GIF и WebP\nМаксимальный размер файла: 50MB</string>
     <string name="video_wallpaper_tips_title">Советы</string>
-    <string name="video_wallpaper_tips_summary">• Videos are muted automatically\n• Lower resolution videos use less battery\n• Shorter loops are recommended for better performance\n• If videos wallpaper doesnt load select live wallpaper from Wallpaper and style after selecting video wallpaper\n• You have to reapply live wallpaper after restart device</string>
+    <string name="video_wallpaper_tips_summary">Видео автоматически отключаются. • Видео с более низким разрешением потребляют меньше заряда батареи. • Для повышения производительности рекомендуется использовать более короткие циклы воспроизведения. • Если видеообои не загружаются, выберите живые обои в разделе «Обои и стиль» после выбора видеообоев. • Необходимо повторно применить живые обои после перезагрузки устройства</string>
     <string name="video_wallpaper_description">Анимированные видео и GIF обои</string>
     <string name="mist_os">MistOS !!</string>
     <!-- Video Wallpaper Strings -->
@@ -1249,7 +1249,7 @@
     <string name="lock_glymps_footer_text">📁 Локальная папка: /sdcard/MistGlymps\n\n⚠️ Низкая часть устройств может иметь легкий флаг\n\n🎨 Совет: Использовать пользовательскую Accent в настройках Monet для стабильных цветов</string>
     <!-- Blur intensity -->
     <string name="blur_intensity_title">Интенсивность размытия</string>
-    <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the system.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
+    <string name="blur_intensity_summary" formatted="false">Настройте интенсивность эффектов размытия в системе.\n0% = без размытия, 100% = по умолчанию, 200% = удвоенная интенсивность.</string>
     <!-- Font Mode -->
     <string name="font_mode_title">Источник шрифта</string>
     <string name="font_settings_title">Настройки шрифта</string>
@@ -1320,7 +1320,7 @@
     <string name="mistos_donate_upi_copied">ID UPI скопирован в буфер обмена</string>
     <!-- PayPal Strings -->
     <string name="mistos_donate_no_paypal_app">Приложение PayPal не найдено</string>
-    <string name="mistos_donate_paypal_options">PayPal app is not installed. You can open PayPal in your browser or copy the email address.\n\nPayPal Email: %s</string>
+    <string name="mistos_donate_paypal_options">Приложение PayPal не установлено. Вы можете открыть PayPal в браузере или скопировать адрес электронной почты.\n\nАдрес электронной почты PayPal: %s</string>
     <string name="mistos_donate_open_browser">Открыть в браузере</string>
     <string name="mistos_donate_copy_email">Копировать E-mail</string>
     <string name="mistos_donate_email_copied">PayPal email скопирован в буфер обмена</string>
