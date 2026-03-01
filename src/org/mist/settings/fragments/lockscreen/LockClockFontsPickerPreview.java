@@ -53,6 +53,7 @@ import org.mist.settings.fragments.lockscreen.fonts.FontManager;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import com.android.internal.util.mist.ThemeUtils;
+import org.mist.settings.utils.SystemUtils;
 
 import java.util.List;
 
@@ -197,7 +198,8 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                       updateClockOverlays(mClockPosition);
+                        updateClockOverlays(mClockPosition);
+                        SystemUtils.showSystemUiRestartDialog(getContext());
                     }
                 }, 1250);
             }
