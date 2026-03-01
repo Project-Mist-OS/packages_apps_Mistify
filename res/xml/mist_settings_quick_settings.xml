@@ -21,6 +21,51 @@
     android:title="@string/quick_settings_title" >
 
     <PreferenceCategory
+         android:key="qs_brightness_slider_category"
+         android:title="@string/qs_brightness_slider_category">
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_brightness_slider_style"
+            android:title="@string/qs_brightness_slider_style_title"
+            android:summary="@string/qs_brightness_slider_style_summary"
+            android:defaultValue="false" />
+
+        <lineageos.preference.LineageSecureSettingListPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/qs_show_brightness_slider_title"
+            android:entries="@array/qs_show_brightness_slider_entries"
+            android:entryValues="@array/qs_show_brightness_slider_values"
+            android:defaultValue="1" />
+
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="qs_brightness_slider_shape"
+            android:title="@string/qs_brightness_slider_shape_title"
+            android:entries="@array/qs_brightness_slider_shape_entries"
+            android:entryValues="@array/qs_brightness_slider_shape_values"
+            android:defaultValue="0" />
+
+        <lineageos.preference.LineageSecureSettingListPreference
+            android:key="qs_brightness_slider_position"
+            android:title="@string/qs_brightness_slider_position_title"
+            android:entries="@array/qs_brightness_slider_position_entries"
+            android:entryValues="@array/qs_brightness_slider_position_values"
+            android:defaultValue="0" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_brightness_slider_haptic"
+            android:title="@string/qs_brightness_slider_haptic_title"
+            android:summary="@string/qs_brightness_slider_haptic_summary"
+            android:defaultValue="true" />
+
+        <lineageos.preference.LineageSecureSettingSwitchPreference
+            android:key="qs_show_auto_brightness"
+            android:title="@string/qs_show_auto_brightness_title"
+            android:summary="@string/qs_show_auto_brightness_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
          android:title="@string/qs_misc_category">
 
         <!-- QS Header -->
@@ -35,6 +80,31 @@
             android:title="@string/lockscreen_quick_settings_title"
             android:summary="@string/lockscreen_quick_settings_summary"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="qs_scrim_category"
+        android:title="@string/qs_scrim_category_title">
+
+        <!-- Single Tone QS -->
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="single_qs_tone_enabled"
+            android:title="@string/qs_single_tone_title"
+            android:summary="@string/qs_single_tone_summary"
+            android:defaultValue="false" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="dual_target_tile_style"
+            android:title="@string/dual_target_tile_style_title"
+            android:summary="@string/dual_target_tile_style_summary"
+            android:defaultValue="false" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_alternate_color"
+            android:title="@string/qs_tile_alternate_color_title"
+            android:summary="@string/qs_tile_alternate_color_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
@@ -77,76 +147,6 @@
             android:key="qs_tile_haptic"
             android:title="@string/qs_brightness_slider_haptic_title"
             android:summary="@string/qs_tile_haptic_summary"
-            android:defaultValue="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="qs_scrim_category"
-        android:title="@string/qs_scrim_category_title">
-
-        <!-- Single Tone QS -->
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="single_qs_tone_enabled"
-            android:title="@string/qs_single_tone_title"
-            android:summary="@string/qs_single_tone_summary"
-            android:defaultValue="false" />
-
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="dual_target_tile_style"
-            android:title="@string/dual_target_tile_style_title"
-            android:summary="@string/dual_target_tile_style_summary"
-            android:defaultValue="false" />
-
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_tile_alternate_color"
-            android:title="@string/qs_tile_alternate_color_title"
-            android:summary="@string/qs_tile_alternate_color_summary"
-            android:defaultValue="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-         android:key="qs_brightness_slider_category"
-         android:title="@string/qs_brightness_slider_category">
-
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_brightness_slider_style"
-            android:title="@string/qs_brightness_slider_style_title"
-            android:summary="@string/qs_brightness_slider_style_summary"
-            android:defaultValue="false" />
-
-        <lineageos.preference.LineageSecureSettingListPreference
-            android:key="qs_show_brightness_slider"
-            android:title="@string/qs_show_brightness_slider_title"
-            android:entries="@array/qs_show_brightness_slider_entries"
-            android:entryValues="@array/qs_show_brightness_slider_values"
-            android:defaultValue="1" />
-
-        <org.mist.settings.preferences.SystemSettingListPreference
-            android:key="qs_brightness_slider_shape"
-            android:title="@string/qs_brightness_slider_shape_title"
-            android:entries="@array/qs_brightness_slider_shape_entries"
-            android:entryValues="@array/qs_brightness_slider_shape_values"
-            android:defaultValue="0" />
-
-        <lineageos.preference.LineageSecureSettingListPreference
-            android:key="qs_brightness_slider_position"
-            android:title="@string/qs_brightness_slider_position_title"
-            android:entries="@array/qs_brightness_slider_position_entries"
-            android:entryValues="@array/qs_brightness_slider_position_values"
-            android:defaultValue="0" />
-
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_brightness_slider_haptic"
-            android:title="@string/qs_brightness_slider_haptic_title"
-            android:summary="@string/qs_brightness_slider_haptic_summary"
-            android:defaultValue="true" />
-
-        <lineageos.preference.LineageSecureSettingSwitchPreference
-            android:key="qs_show_auto_brightness"
-            android:title="@string/qs_show_auto_brightness_title"
-            android:summary="@string/qs_show_auto_brightness_summary"
             android:defaultValue="true" />
 
     </PreferenceCategory>

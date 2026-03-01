@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2019-2025 The Evolution X Project
+     Copyright (C) 2019-2024 The Evolution X Project
      SPDX-License-Identifier: Apache-2.0
 -->
 
@@ -10,7 +10,7 @@
         <com.android.settingslib.widget.AdaptiveIconShapeDrawable
             android:width="@dimen/dashboard_tile_image_size"
             android:height="@dimen/dashboard_tile_image_size"
-            android:color="@color/homepage_system_background" />
+            android:color="@color/homepage_battery_background" />
     </item>
 
     <item
@@ -18,5 +18,5 @@
         android:height="@dimen/dashboard_tile_foreground_image_size"
         android:start="@dimen/dashboard_tile_foreground_image_inset"
         android:top="@dimen/dashboard_tile_foreground_image_inset"
-        android:drawable="@drawable/ic_lock_screen_expressive" />
+        android:drawable="@drawable/ic_spoofing_expressive" />
 </layer-list>
