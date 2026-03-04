@@ -9,6 +9,6 @@
             android:key="changelog"
             android:title="@string/mistos_changelog_title"
             android:summary="@string/mistos_changelog_summary"
-            android:icon="@drawable/ic_changelog" />
+            android:icon="@drawable/ic_homepage_changelog" />
 
 </PreferenceScreen>
