@@ -49,12 +49,6 @@
 
     </PreferenceCategory>
 
-    <Preference
-        android:key="lock_glymps_folder_info"
-        android:title="@string/lock_glymps_folder_title"
-        android:summary="@string/lock_glymps_folder_summary"
-        android:dependency="lock_glymps_enabled" />
-
     <PreferenceCategory
         android:title="@string/lock_glymps_behavior_category"
         android:dependency="lock_glymps_enabled">

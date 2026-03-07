@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 MistOS
+ * Copyright (C) 2024-2025 Mist AOSP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import org.mist.settings.utils.UDFPSUtils;
-import com.android.internal.util.android.VibrationUtils;
+import com.android.internal.util.mist.VibrationUtils;
 
 import java.io.File;
 

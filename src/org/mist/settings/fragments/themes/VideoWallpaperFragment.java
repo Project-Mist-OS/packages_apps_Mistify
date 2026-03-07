@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 MistOS
+ * Copyright (C) 2024-2025 Mist AOSP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ import org.mist.settings.utils.MediaUtils;
 import java.io.File;
 import java.util.List;
 
-import com.android.internal.util.android.VibrationUtils;
+import com.android.internal.util.mist.VibrationUtils;
 
 @SearchIndexable
 public class VideoWallpaperFragment extends SettingsPreferenceFragment

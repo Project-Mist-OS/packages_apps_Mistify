@@ -50,6 +50,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import org.mist.settings.preferences.PackageListAdapter;
 import org.mist.settings.preferences.PackageListAdapter.PackageItem;
 
+import com.android.internal.util.mist.VibrationUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -232,6 +234,14 @@ public class SensorBlock extends SettingsPreferenceFragment
             builder.show();
         }
         return true;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference != null && preference.getKey() != null) {
+            VibrationUtils.triggerVibration(getContext(), 3);
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 
     private void addCustomApplicationPref(String packageName, Map<String,Package> map) {

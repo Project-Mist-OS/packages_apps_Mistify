@@ -1,8 +1,3 @@
-/*
- * Copyright (C) 2019-2024 MistOS
- * SPDX-License-Identifier: Apache-2.0
- */
-
 package org.mist.settings;
 
 import android.content.Context;

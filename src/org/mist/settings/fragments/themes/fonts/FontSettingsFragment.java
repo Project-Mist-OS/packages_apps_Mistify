@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Lunaris AOSP
+ * Copyright (C) 2024-2025 Mist AOSP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.util.android.ThemeUtils;
+import com.android.internal.util.mist.ThemeUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -41,7 +41,7 @@ import org.mist.settings.utils.ExternalFontInstaller;
 
 import android.widget.Toast;
 
-import com.android.internal.util.android.VibrationUtils;
+import com.android.internal.util.mist.VibrationUtils;
 
 import java.util.List;
 
@@ -222,7 +222,7 @@ public class FontSettingsFragment extends SettingsPreferenceFragment implements
         if (mThemeUtils != null) {
             mThemeUtils.setOverlayEnabled(
                     "android.theme.customization.font",
-                    "com.android.theme.font.SpaceGrotesk",
+                    "com.android.theme.font.googlesansflex",
                     "android"
             );
         }

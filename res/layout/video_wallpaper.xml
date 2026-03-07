@@ -4,4 +4,4 @@
     android:description="@string/video_wallpaper_description"
     android:thumbnail="@drawable/video_wallpaper_thumbnail"
     android:author="@string/mist_os"
-    android:settingsActivity="org.mist.settings.fragments.VideoWallpaperFragment" />
+    android:settingsActivity="org.mist.settings.fragments.themes.VideoWallpaperFragment" />
