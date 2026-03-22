@@ -113,6 +113,12 @@
         android:title="@string/qs_layout_category_title">
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_ios_control_panel"
+            android:title="@string/ios_style"
+            android:summary="@string/ios_style_summary"
+            android:defaultValue="false" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_style_minimal"
             android:title="@string/qs_tile_style_minimal_title"
             android:summary="@string/qs_tile_style_minimal_summary"
