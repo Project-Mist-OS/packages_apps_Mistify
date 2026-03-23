@@ -39,6 +39,12 @@
             android:entryValues="@array/volume_dialog_type_values"
             android:defaultValue="1" />
 
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="ios_volume_expand_on_key"
+            android:title="@string/ios_volume_expand_on_key_title"
+            android:summary="@string/ios_volume_expand_on_key_summary"
+            android:defaultValue="false" />
+
         </PreferenceCategory>
 
         <PreferenceCategory
