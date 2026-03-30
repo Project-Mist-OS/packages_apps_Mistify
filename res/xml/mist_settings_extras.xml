@@ -22,6 +22,13 @@
             android:summary="@string/ignore_wallpaper_dimming_requests_summary"
             android:defaultValue="false" />
 
+        <!-- Disable flash sms -->
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="disable_flash_sms"
+            android:title="@string/disable_flash_sms_title"
+            android:summary="@string/disable_flash_sms_summary"
+            android:defaultValue="false"/>
+
         <!-- Block PairIP license activity -->
         <org.mist.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pairip.activity.block"
