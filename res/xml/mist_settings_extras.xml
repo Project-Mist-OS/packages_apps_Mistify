@@ -22,6 +22,13 @@
             android:summary="@string/ignore_wallpaper_dimming_requests_summary"
             android:defaultValue="false" />
 
+        <!-- Block PairIP license activity -->
+        <org.mist.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pairip.activity.block"
+            android:title="@string/miscellaneous_pairip_activity_block_title"
+            android:summary="@string/miscellaneous_pairip_activity_block_summary"
+            android:defaultValue="false" /> 
+
         <!-- Unlimit screenrecord -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="unlimit_screenrecord"
