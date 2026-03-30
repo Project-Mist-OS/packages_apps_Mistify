@@ -62,12 +62,12 @@
         android:key="spoofing_app_specific_category"
         android:title="@string/spoofing_app_specific_category">
 
-        <!-- Games FPS -->
-        <org.mist.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.gameprops.enabled"
-            android:title="@string/gameprops_title"
-            android:summary="@string/gameprops_summary"
-            android:defaultValue="false" />
+        <!-- App Spoofing -->
+        <Preference
+            android:key="user_selectable_app_spoofing"
+            android:title="@string/user_selectable_app_spoofing_title"
+            android:summary="@string/user_selectable_app_spoofing_summary"
+            android:fragment="org.mist.settings.fragments.miscellaneous.UserSelectedAppSpoofSettings" />
             
         <Preference
             android:key="game_props_json_file_preference"
