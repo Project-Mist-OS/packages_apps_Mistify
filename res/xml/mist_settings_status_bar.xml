@@ -108,11 +108,11 @@
 	        android:summary="@string/statusbar_notif_count_summary"
 	        android:defaultValue="false" />
 
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
+        <!--<org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="wifi_standard_icon"
             android:title="@string/wifi_standard_icon_title"
             android:summary="@string/wifi_standard_icon_summary"
-            android:defaultValue="false"/>
+            android:defaultValue="false"/> -->
         
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="tint_statusbar_icons_with_accent"
