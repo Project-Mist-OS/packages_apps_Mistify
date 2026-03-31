@@ -118,6 +118,23 @@
             android:summary="@string/ios_style_summary"
             android:defaultValue="false" />
 
+         <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="qs_panel_style"
+            android:title="@string/qs_panel_style_title"
+            android:entries="@array/qs_panel_style_entries"
+            android:entryValues="@array/qs_panel_style_values"
+            android:defaultValue="0" />
+
+        <org.mist.settings.preferences.QSTileIconShapePreference
+            android:key="qs_tile_icon_shape"
+            android:title="@string/qs_tile_shape_title" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_label_hide"
+            android:title="@string/qs_tile_label_hide_title"
+            android:summary="@string/qs_tile_label_hide_summary"
+            android:defaultValue="false" />
+
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_style_minimal"
             android:title="@string/qs_tile_style_minimal_title"
