@@ -29,7 +29,7 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.settings.Utils;
+//import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
@@ -37,8 +37,8 @@ import com.android.settingslib.search.SearchIndexable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.internal.util.mist.Utils;
 import com.android.internal.util.mist.SystemRestartUtils;
-
 import com.android.internal.util.mist.VibrationUtils;
 
 @SearchIndexable
@@ -50,6 +50,8 @@ public class QuickSwitch extends SettingsPreferenceFragment
     private static final String QUICKSWITCH_KEY = "persist.sys.default_launcher";
     
     private ListPreference quickSwitchPref;
+
+    private static final String WALLPAPER_OVERLAY = "com.android.system.qs.wallpaperoverlay";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,16 +86,15 @@ public class QuickSwitch extends SettingsPreferenceFragment
     }
 
     @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference != null && preference.getKey() != null) {
-            VibrationUtils.triggerVibration(getContext(), 3);
-        }
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == quickSwitchPref) {
+            int value = Integer.parseInt((String) newValue);
+            Context context = getContext();
+            if (value == 0) {
+                Utils.toggleOverlay(context, WALLPAPER_OVERLAY, true);
+            } else if (value == 1) {
+                Utils.toggleOverlay(context, WALLPAPER_OVERLAY, false);
+            }
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
