@@ -120,12 +120,6 @@
             android:summary="@string/status_bar_tint_icons_summary"
             android:defaultValue="false" />
 
-        <Preference
-            android:key="ongoing_progress_settings"
-            android:title="@string/ongoing_progress_settings_title"
-            android:summary="@string/ongoing_progress_settings_summary"
-            android:fragment="org.mist.settings.fragments.statusbar.OngoingProgressBar" />
-            
     </PreferenceCategory>
 
     <!-- Custom logo -->
