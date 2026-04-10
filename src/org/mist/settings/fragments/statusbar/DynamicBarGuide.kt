@@ -1,4 +1,4 @@
-*
+/*
  * SPDX-FileCopyrightText: crDroid Android Project
  * SPDX-License-Identifier: Apache-2.0
  */
