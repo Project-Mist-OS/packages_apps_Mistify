@@ -33,6 +33,13 @@
         android:key="lockscreen_interface_category"
         android:title="@string/lockscreen_interface_category">
 
+        <!-- Mist Hub -->
+        <Preference
+            android:key="mist_hub_settings"
+            android:title="@string/mist_hub_title"
+            android:summary="@string/mist_hub_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.MistHubSettings" />
+
         <!-- Lockscreen Media Art -->
         <Preference
             android:key="media_art_settings"

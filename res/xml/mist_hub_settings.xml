@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 MistOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/mist_hub_title">
+
+    <lineageos.preference.SystemSettingMainSwitchPreference
+        android:key="mist_hub_enabled"
+        android:title="@string/mist_hub_enable_title"
+        android:summary="@string/mist_hub_enable_summary"
+        android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="mist_hub_appearance_category"
+        android:title="@string/mist_hub_appearance_category"
+        android:dependency="mist_hub_enabled">
+
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+            android:key="mist_hub_corner_radius"
+            android:title="@string/mist_hub_corner_radius_title"
+            android:summary="@string/mist_hub_corner_radius_summary"
+            android:dependency="mist_hub_enabled"
+            android:max="100"
+            settings:min="0"
+            android:defaultValue="50"
+            settings:interval="1"
+            settings:units="dp" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="mist_hub_edge_glow"
+            android:title="@string/mist_hub_edge_glow_title"
+            android:summary="@string/mist_hub_edge_glow_summary"
+            android:dependency="mist_hub_enabled"
+            android:defaultValue="true" />
+
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+            android:key="mist_hub_vertical_offset"
+            android:title="@string/mist_hub_vertical_offset_title"
+            android:summary="@string/mist_hub_vertical_offset_summary"
+            android:dependency="mist_hub_enabled"
+            android:max="300"
+            settings:min="-200"
+            android:defaultValue="16"
+            settings:interval="4"
+            settings:units="dp" />
+
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+            android:key="mist_hub_max_width"
+            android:title="@string/mist_hub_max_width_title"
+            android:summary="@string/mist_hub_max_width_summary"
+            android:dependency="mist_hub_enabled"
+            android:max="700"
+            settings:min="100"
+            android:defaultValue="300"
+            settings:interval="10"
+            settings:units="dp" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="mist_hub_animation_category"
+        android:title="@string/mist_hub_animation_category"
+        android:dependency="mist_hub_enabled">
+
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+            android:key="mist_hub_animation_speed"
+            android:title="@string/mist_hub_animation_speed_title"
+            android:summary="@string/mist_hub_animation_speed_summary"
+            android:dependency="mist_hub_enabled"
+            android:max="200"
+            settings:min="50"
+            android:defaultValue="100"
+            settings:interval="5"
+            settings:units="ms" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="mist_hub_spring_animation"
+            android:title="@string/mist_hub_spring_animation_title"
+            android:summary="@string/mist_hub_spring_animation_summary"
+            android:dependency="mist_hub_enabled"
+            android:defaultValue="true" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="mist_hub_pulse_notifications"
+            android:title="@string/mist_hub_pulse_title"
+            android:summary="@string/mist_hub_pulse_summary"
+            android:dependency="mist_hub_enabled"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="mist_hub_integrations_category"
+        android:title="@string/mist_hub_integrations_category"
+        android:dependency="mist_hub_enabled">
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="mist_hub_battery_status"
+            android:title="@string/mist_hub_battery_title"
+            android:summary="@string/mist_hub_battery_summary"
+            android:dependency="mist_hub_enabled"
+            android:defaultValue="true" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="mist_hub_music_visualizer"
+            android:title="@string/mist_hub_music_visualizer_title"
+            android:summary="@string/mist_hub_music_visualizer_summary"
+            android:dependency="mist_hub_enabled"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="mist_hub_per_app_category"
+        android:title="@string/mist_hub_per_app_category"
+        android:dependency="mist_hub_enabled">
+
+        <Preference
+            android:key="mist_hub_per_app"
+            android:title="@string/mist_hub_per_app_title"
+            android:summary="@string/mist_hub_per_app_summary"
+            android:dependency="mist_hub_enabled"
+            android:fragment="org.mist.settings.fragments.lockscreen.MistHubPerAppSettings" />
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="mist_hub_live_updates_footer"
+            android:title="@string/mist_hub_live_updates_info"
+            android:selectable="false"
+            settings:searchable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
