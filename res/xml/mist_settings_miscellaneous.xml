@@ -29,20 +29,6 @@
             android:summary="@string/app_downgrade_summary"
             android:defaultValue="false"/>
 
-        <Preference
-            android:key="hide_developer_status_settings"
-            android:title="@string/hide_developer_status_title"
-            android:summary="@string/hide_developer_status_summary"
-            android:fragment="com.android.settings.security.HideDeveloperStatusSettings"
-            settings:controller="com.android.settings.security.HideDeveloperStatusPreferenceController" />
-
-        <!-- Hide applist -->
-        <Preference
-            android:key="hide_applist_setting"
-            android:title="@string/hide_applist_title"
-            android:summary="@string/hide_applist_summary"
-            android:fragment="org.mist.settings.fragments.miscellaneous.HideAppListSettings" />
-
         <!-- Notification bubble apps -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="notification_bubble_apps"
