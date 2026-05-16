@@ -84,6 +84,13 @@
             android:summary="@string/lockscreen_emergency_button_summary"
             android:defaultValue="true" />
 
+        <!-- Scrim -->
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="keyguard_scrim_transparent"
+            android:title="@string/keyguard_scrim_transparent_title"
+            android:summary="@string/keyguard_scrim_transparent_summary"
+            android:defaultValue="true" />
+
         <!-- Shortcuts -->
         <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="keyguard_affordance_single_tap"
