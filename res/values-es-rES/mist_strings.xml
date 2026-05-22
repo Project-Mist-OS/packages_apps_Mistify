@@ -34,7 +34,7 @@
     <string name="power_menu_summary">Ajustes del menú de apagado</string>
     <string name="buttons_title">Botones</string>
     <string name="buttons_summary">Botón del sistema, botones de volumen, etc</string>
-    <string name="miscellaneous_title">Miscellano</string>
+    <string name="miscellaneous_title">Miscelaneo</string>
     <string name="miscellaneous_summary">Algunos ajustes adicionales del sistema</string>
     <string name="ambient_title">Pantalla ambiente</string>
     <string name="lockscreen_button_category">Botón pantalla de bloqueo</string>
@@ -434,10 +434,10 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <!-- Status bar - Quick pulldown -->
     <string name="status_bar_quick_qs_pulldown_title">Despliegue rápido</string>
     <string name="status_bar_quick_qs_pulldown_summary">El borde %1$s de la barra de estado tira hacia abajo de los ajustes rápidos</string>
-    <string name="status_bar_quick_qs_pulldown_summary_left">Queda</string>
+    <string name="status_bar_quick_qs_pulldown_summary_left">Izquierda</string>
     <string name="status_bar_quick_qs_pulldown_summary_right">Derecha</string>
     <string name="status_bar_quick_qs_pulldown_off">Apagado</string>
-    <string name="status_bar_quick_qs_pulldown_left">Queda</string>
+    <string name="status_bar_quick_qs_pulldown_left">Izquierda</string>
     <string name="status_bar_quick_qs_pulldown_right">Derecha</string>
     <string name="status_bar_quick_qs_pulldown_always">Mostrar siempre la configuración rápida al tirar la barra de estado</string>
     <!-- Status bar - Smart pulldown-->
@@ -478,7 +478,7 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="status_bar_clock_seconds_summary">Mostrar segundos al lado del reloj en la barra de estado</string>
     <string name="status_bar_clock_position_title">Estilo del reloj</string>
     <string name="status_bar_clock_position_right">Derecha</string>
-    <string name="status_bar_clock_position_left">Queda</string>
+    <string name="status_bar_clock_position_left">Izquierda</string>
     <string name="status_bar_clock_position_center">Centrar</string>
     <string name="status_bar_clock_auto_hide_title">Auto ocultar</string>
     <string name="status_bar_clock_auto_hide_summary">Ocultar reloj si el lanzador es visible</string>
@@ -486,9 +486,9 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="status_bar_am_pm_info">El reloj de 24 horas está activado</string>
     <string name="status_bar_am_pm_normal">Normal</string>
     <string name="status_bar_am_pm_small">Pequeño</string>
-    <string name="status_bar_am_pm_hidden">Hidden</string>
+    <string name="status_bar_am_pm_hidden">Oculto</string>
     <string name="status_bar_date_title">Fecha</string>
-    <string name="status_bar_date_none">Hidden</string>
+    <string name="status_bar_date_none">Oculto</string>
     <string name="status_bar_date_small">Pequeño</string>
     <string name="status_bar_date_normal">Normal</string>
     <string name="status_bar_date_format_title">Formato de fecha</string>
@@ -511,9 +511,9 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="status_bar_battery_style_dotted_circle">Circulo punteado</string>
     <string name="status_bar_battery_style_filled_circle">Círculo lleno</string>
     <string name="status_bar_battery_style_text">Texto</string>
-    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
     <string name="status_bar_battery_percent_title">Porcentaje de batería</string>
-    <string name="status_bar_battery_percent_hidden">Hidden</string>
+    <string name="status_bar_battery_percent_hidden">Oculto</string>
     <string name="status_bar_battery_percent_text_inside">Dentro del icono</string>
     <string name="status_bar_battery_percent_text_next">Junto al icono</string>
     <string name="status_bar_battery_percent_text_next_right">Junto al icono (derecha)</string>
@@ -540,7 +540,7 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="battery_bar_blend_color_reverse_summary_on">Completa &#8594; vacío: rojo &#8594; verde &#8594; azul &#8594; rojo</string>
     <!-- Quick setting categories -->
     <string name="qs_misc_category">Miscellano</string>
-    <string name="qs_footer_category">Pie</string>
+    <string name="qs_footer_category">Pie de pagina</string>
     <!-- QS clock -->
     <string name="qs_clock_title">Reloj</string>
     <string name="qs_clock_summary">Mostrar reloj en el encabezado de la barra de estado rápida</string>
@@ -560,9 +560,9 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="network_traffic_location_statusbar">Barra de estado</string>
     <string name="network_traffic_location_quick_statusbar">Barra de estado rápida</string>
     <string name="network_traffic_mode_title">Modo de visualización</string>
-    <string name="network_traffic_mode_up">Sólo subir</string>
+    <string name="network_traffic_mode_up">Sólo subida</string>
     <string name="network_traffic_mode_down">Sólo descarga</string>
-    <string name="network_traffic_mode_all">Subir y descargar</string>
+    <string name="network_traffic_mode_all">Subida y descarga</string>
     <string name="network_traffic_autohide">Auto ocultar</string>
     <string name="network_traffic_autohide_summary">Ocultar el monitor de tráfico cuando esté inactivo</string>
     <string name="network_traffic_autohide_threshold">Umbral de inactividad</string>
@@ -648,7 +648,7 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <string name="qs_show_brightness_slider_always">Mostrar siempre</string>
     <string name="qs_show_brightness_slider_not_expanded">Mostrar cuando no se expanda</string>
     <string name="qs_brightness_slider_position_title">Posición</string>
-    <string name="qs_brightness_slider_position_top">Subir</string>
+    <string name="qs_brightness_slider_position_top">Arriba</string>
     <string name="qs_brightness_slider_position_bottom">Abajo</string>
     <!-- Brightness slider / QS tile haptic feedback -->
     <string name="qs_brightness_slider_haptic_title">Comentarios hápticos</string>
@@ -1608,7 +1608,7 @@ La barra de progreso cambia dinámicamente entre el estado multimedia y el de de
     <!-- Compact QS Media Player-->
     <string name="qs_compact_media_player_mode_title">Reproductor de medios QS de compacto</string>
     <string name="qs_compact_media_player_mode_summary">Activar modo compacto para el reproductor multimedia de QuickSettings</string>
-    <string name="qs_media_stock_title">Stock QS media player</string>
+    <string name="qs_media_stock_title">Stock QS media reproductor</string>
     <string name="qs_media_stock_summary">Activar reproductor multimedia de QuickSettings</string>
     <!-- Single Tone QS -->
     <string name="qs_scrim_category_title">QS Scrim</string>
