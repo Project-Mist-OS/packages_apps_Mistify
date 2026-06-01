@@ -43,8 +43,8 @@
         android:defaultValue="0"
         settings:interval="1"
         settings:units="dp"
-        android:max="50"
-        android:min="-50" />
+        android:max="200"
+        android:min="-200" />
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="lock_screen_depth_wallpaper_offset_y"
@@ -53,8 +53,8 @@
         android:defaultValue="0"
         settings:interval="1"
         settings:units="dp"
-        android:max="50"
-        android:min="-50" />
+        android:max="200"
+        android:min="-200" />
 
     <com.android.settingslib.widget.FooterPreference
         android:key="depthwall_footer"
