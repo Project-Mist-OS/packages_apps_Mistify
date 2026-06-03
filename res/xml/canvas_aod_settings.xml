@@ -67,6 +67,24 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="canvas_aod_custom_image_category"
+        android:title="@string/canvas_custom_cat">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="canvas_aod_use_custom_image"
+            android:title="@string/canvas_custom_image_title"
+            android:summary="@string/canvas_custom_image_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="canvas_aod_custom_image_picker"
+            android:title="@string/canvas_custom_image_picker_title"
+            android:summary="@string/canvas_custom_image_picker_summary"
+            android:dependency="canvas_aod_use_custom_image" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="canvas_aod_animation_category"
         android:title="@string/canvas_aod_animation_category">
 
