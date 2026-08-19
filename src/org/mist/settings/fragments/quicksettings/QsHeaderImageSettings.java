@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 crDroid Android Project
+ * Copyright (C) 2024-2026 crDroid Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package org.mist.settings.fragments.quicksettings;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,7 +26,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.MediaStore;
-import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
@@ -40,12 +40,10 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
-import org.mist.settings.utils.ImageUtils;
-
-import com.android.internal.util.mist.VibrationUtils;
-
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,8 +52,6 @@ import java.util.Map;
 public class QsHeaderImageSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String TAG = "QsHeaderImageSettings";
-    
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String CUSTOM_HEADER_PROVIDER = "qs_header_provider";
@@ -63,13 +59,15 @@ public class QsHeaderImageSettings extends SettingsPreferenceFragment implements
     private static final String FILE_HEADER_SELECT = "file_header_select";
     private static final int REQUEST_PICK_IMAGE = 10001;
 
-    private static final String PROVIDER_DAYLIGHT = "daylight";
-    private static final String PROVIDER_FILE = "file";
+    private static final String QSHEADER_RELATIVE_PATH = "Pictures/QSHeader";
+    private static final String QSHEADER_DISPLAY_NAME = "qs_header_image";
 
     private Preference mHeaderBrowse;
     private ListPreference mDaylightHeaderPack;
     private ListPreference mHeaderProvider;
+    private String mDaylightHeaderProvider;
     private Preference mFileHeader;
+    private String mFileHeaderProvider;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -77,227 +75,150 @@ public class QsHeaderImageSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.qs_header_image_settings);
 
-        ContentResolver resolver = getActivity().getContentResolver();
+        ContentResolver resolver = getContext().getContentResolver();
 
         mHeaderBrowse = findPreference(CUSTOM_HEADER_BROWSE);
-        if (mHeaderBrowse != null) {
-            mHeaderBrowse.setEnabled(isBrowseHeaderAvailable());
-        }
+        mHeaderBrowse.setEnabled(isBrowseHeaderAvailable());
 
         mDaylightHeaderPack = (ListPreference) findPreference(DAYLIGHT_HEADER_PACK);
-        if (mDaylightHeaderPack != null) {
-            List<String> entries = new ArrayList<>();
-            List<String> values = new ArrayList<>();
-            getAvailableHeaderPacks(entries, values);
-            mDaylightHeaderPack.setEntries(entries.toArray(new String[0]));
-            mDaylightHeaderPack.setEntryValues(values.toArray(new String[0]));
-            updateHeaderProviderSummary();
-            mDaylightHeaderPack.setOnPreferenceChangeListener(this);
-        }
 
-        String providerName = Settings.System.getStringForUser(resolver,
-                Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER,
-                UserHandle.USER_CURRENT);
+        List<String> entries = new ArrayList<String>();
+        List<String> values = new ArrayList<String>();
+        getAvailableHeaderPacks(entries, values);
+        mDaylightHeaderPack.setEntries(entries.toArray(new String[entries.size()]));
+        mDaylightHeaderPack.setEntryValues(values.toArray(new String[values.size()]));
+        updateHeaderProviderSummary();
+        mDaylightHeaderPack.setOnPreferenceChangeListener(this);
+
+        mDaylightHeaderProvider = "daylight";
+        mFileHeaderProvider = "file";
+        String providerName = Settings.System.getString(resolver,
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER);
         if (providerName == null) {
-            providerName = PROVIDER_DAYLIGHT;
+            providerName = mDaylightHeaderProvider;
         }
+        mHeaderBrowse.setEnabled(isBrowseHeaderAvailable() && !providerName.equals(mFileHeaderProvider));
 
         mHeaderProvider = (ListPreference) findPreference(CUSTOM_HEADER_PROVIDER);
-        if (mHeaderProvider != null) {
-            int valueIndex = mHeaderProvider.findIndexOfValue(providerName);
-            mHeaderProvider.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
-            mHeaderProvider.setSummary(mHeaderProvider.getEntry());
-            mHeaderProvider.setOnPreferenceChangeListener(this);
-        }
-
-        updatePreferencesForProvider(providerName);
+        int valueIndex = mHeaderProvider.findIndexOfValue(providerName);
+        mHeaderProvider.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
+        mHeaderProvider.setSummary(mHeaderProvider.getEntry());
+        mHeaderProvider.setOnPreferenceChangeListener(this);
+        mDaylightHeaderPack.setEnabled(providerName.equals(mDaylightHeaderProvider));
 
         mFileHeader = findPreference(FILE_HEADER_SELECT);
-        if (mFileHeader != null) {
-            mFileHeader.setEnabled(PROVIDER_FILE.equals(providerName));
-        }
-    }
-
-    private void updatePreferencesForProvider(String providerName) {
-        boolean isDaylight = PROVIDER_DAYLIGHT.equals(providerName);
-        boolean isFile = PROVIDER_FILE.equals(providerName);
-
-        if (mDaylightHeaderPack != null) {
-            mDaylightHeaderPack.setEnabled(isDaylight);
-        }
-
-        if (mHeaderBrowse != null) {
-            mHeaderBrowse.setEnabled(isBrowseHeaderAvailable() && !isFile);
-        }
-
-        if (mFileHeader != null) {
-            mFileHeader.setEnabled(isFile);
-        }
+        mFileHeader.setEnabled(providerName.equals(mFileHeaderProvider));
     }
 
     private void updateHeaderProviderSummary() {
-        if (mDaylightHeaderPack == null) return;
-        
-        String settingHeaderPackage = Settings.System.getStringForUser(
-                getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK,
-                UserHandle.USER_CURRENT);
-        
+        String settingHeaderPackage = Settings.System.getString(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK);
         int valueIndex = mDaylightHeaderPack.findIndexOfValue(settingHeaderPackage);
         if (valueIndex >= 0) {
-            mDaylightHeaderPack.setValueIndex(valueIndex);
+            mDaylightHeaderPack.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
             mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntry());
         }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == null || newValue == null) {
-            return false;
-        }
+        ContentResolver resolver = getContext().getContentResolver();
+        switch (preference.getKey()) {
+            case DAYLIGHT_HEADER_PACK:
+                String dhvalue = (String) newValue;
+                Settings.System.putString(resolver,
+                        Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, dhvalue);
+                int dhvalueIndex = mDaylightHeaderPack.findIndexOfValue(dhvalue);
+                mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[dhvalueIndex]);
+                return true;
 
-        ContentResolver resolver = getActivity().getContentResolver();
-        String key = preference.getKey();
-
-        if (DAYLIGHT_HEADER_PACK.equals(key)) {
-            String value = (String) newValue;
-            Settings.System.putStringForUser(resolver,
-                    Settings.System.STATUS_BAR_DAYLIGHT_HEADER_PACK, value,
-                    UserHandle.USER_CURRENT);
-            int valueIndex = mDaylightHeaderPack.findIndexOfValue(value);
-            if (valueIndex >= 0) {
-                mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntries()[valueIndex]);
-            }
-            return true;
-
-        } else if (CUSTOM_HEADER_PROVIDER.equals(key)) {
-            String value = (String) newValue;
-            Settings.System.putStringForUser(resolver,
-                    Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER, value,
-                    UserHandle.USER_CURRENT);
-            
-            int valueIndex = mHeaderProvider.findIndexOfValue(value);
-            if (valueIndex >= 0) {
+            case CUSTOM_HEADER_PROVIDER:
+                String value = (String) newValue;
+                Settings.System.putString(resolver,
+                        Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER, value);
+                int valueIndex = mHeaderProvider.findIndexOfValue(value);
                 mHeaderProvider.setSummary(mHeaderProvider.getEntries()[valueIndex]);
-            }
-            
-            updatePreferencesForProvider(value);
-            
-            if (mHeaderBrowse != null) {
-                boolean isDaylight = PROVIDER_DAYLIGHT.equals(value);
-                mHeaderBrowse.setTitle(isDaylight ? 
-                        R.string.qs_header_browse_title : R.string.qs_header_pick_title);
-                mHeaderBrowse.setSummary(isDaylight ? 
-                        R.string.qs_header_browse_summary : R.string.qs_header_pick_summary);
-            }
-            
-            return true;
-        }
+                mDaylightHeaderPack.setEnabled(value.equals(mDaylightHeaderProvider));
+                mHeaderBrowse.setEnabled(!value.equals(mFileHeaderProvider));
+                mHeaderBrowse.setTitle(valueIndex == 0 ? R.string.quick_settings_header_browse_title : R.string.quick_settings_header_pick_title);
+                mHeaderBrowse.setSummary(valueIndex == 0 ? R.string.quick_settings_header_browse_summary : R.string.quick_settings_header_pick_summary);
+                mFileHeader.setEnabled(value.equals(mFileHeaderProvider));
+                return true;
 
-        return false;
+            default:
+                return false;
+        }
     }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == null || preference.getKey() == null) {
-            return super.onPreferenceTreeClick(preference);
+        if (preference == mFileHeader) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_MIME_TYPES,
+                        new String[]{"image/jpeg","image/png","image/gif","image/webp"});
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivityForResult(intent, REQUEST_PICK_IMAGE);
+                return true;
+            } catch (Exception e) {
+                Toast.makeText(getContext(),
+                        R.string.quick_settings_header_needs_gallery,
+                        Toast.LENGTH_LONG).show();
+            }
         }
-
-        try {
-            VibrationUtils.triggerVibration(getActivity(), 3);
-        } catch (Exception e) {
-            Log.w(TAG, "Failed to trigger vibration", e);
-        }
-
-        if (FILE_HEADER_SELECT.equals(preference.getKey())) {
-            return handleFileHeaderSelect();
-        }
-
         return super.onPreferenceTreeClick(preference);
     }
 
-    private boolean handleFileHeaderSelect() {
-        try {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-            String[] mimeTypes = {"image/gif", "image/webp", "image/png", "image/jpeg"};
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-            
-            startActivityForResult(intent, REQUEST_PICK_IMAGE);
-            return true;
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to open image picker", e);
-            Toast.makeText(getActivity(), 
-                    R.string.qs_header_needs_gallery, 
-                    Toast.LENGTH_LONG).show();
-            return false;
-        }
-    }
-
     private boolean isBrowseHeaderAvailable() {
-        try {
-            PackageManager pm = getActivity().getPackageManager();
-            Intent browse = new Intent();
-            browse.setClassName("org.omnirom.omnistyle", 
-                    "org.omnirom.omnistyle.PickHeaderActivity");
-            return pm.resolveActivity(browse, 0) != null;
-        } catch (Exception e) {
-            Log.w(TAG, "Failed to check browse header availability", e);
-            return false;
-        }
+        PackageManager pm = getContext().getPackageManager();
+        Intent browse = new Intent();
+        browse.setClassName("org.omnirom.omnistyle", "org.omnirom.omnistyle.PickHeaderActivity");
+        return pm.resolveActivity(browse, 0) != null;
     }
 
     private void getAvailableHeaderPacks(List<String> entries, List<String> values) {
-        try {
-            Map<String, String> headerMap = new HashMap<>();
-            PackageManager pm = getActivity().getPackageManager();
-            
-            Intent intent = new Intent("org.omnirom.DaylightHeaderPack");
-            for (ResolveInfo r : pm.queryIntentActivities(intent, 0)) {
-                String packageName = r.activityInfo.packageName;
-                String label = r.activityInfo.loadLabel(pm).toString();
-                if (label == null || label.isEmpty()) {
-                    label = packageName;
-                }
-                headerMap.put(label, packageName);
+        Map<String, String> headerMap = new HashMap<>();
+        Intent intent = new Intent();
+        PackageManager packageManager = getContext().getPackageManager();
+        intent.setAction("org.omnirom.DaylightHeaderPack");
+        for (ResolveInfo r : packageManager.queryIntentActivities(intent, 0)) {
+            String packageName = r.activityInfo.packageName;
+            String label = r.activityInfo.loadLabel(packageManager).toString();
+            if (label == null) {
+                label = packageName;
             }
-            
-            intent.setAction("org.omnirom.DaylightHeaderPack1");
-            for (ResolveInfo r : pm.queryIntentActivities(intent, 0)) {
-                if (r.activityInfo.name.endsWith(".theme")) {
-                    continue;
-                }
-                String packageName = r.activityInfo.packageName;
-                String label = r.activityInfo.loadLabel(pm).toString();
-                if (label == null || label.isEmpty()) {
-                    label = packageName;
-                }
-                headerMap.put(label, packageName + "/" + r.activityInfo.name);
+            headerMap.put(label, packageName);
+        }
+        intent.setAction("org.omnirom.DaylightHeaderPack1");
+        for (ResolveInfo r : packageManager.queryIntentActivities(intent, 0)) {
+            String packageName = r.activityInfo.packageName;
+            String label = r.activityInfo.loadLabel(packageManager).toString();
+            if (r.activityInfo.name.endsWith(".theme")) {
+                continue;
             }
-            
-            List<String> labelList = new ArrayList<>(headerMap.keySet());
-            Collections.sort(labelList);
-            for (String label : labelList) {
-                entries.add(label);
-                values.add(headerMap.get(label));
+            if (label == null) {
+                label = packageName;
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to get available header packs", e);
+            headerMap.put(label, packageName + "/" + r.activityInfo.name);
+        }
+        List<String> labelList = new ArrayList<>(headerMap.keySet());
+        Collections.sort(labelList);
+        for (String label : labelList) {
+            entries.add(label);
+            values.add(headerMap.get(label));
         }
     }
 
-    public static void reset(Context context) {
-        if (context == null) return;
-        
-        ContentResolver resolver = context.getContentResolver();
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
         Settings.System.putIntForUser(resolver,
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_HEIGHT, 142, UserHandle.USER_CURRENT);
-        Settings.System.putStringForUser(resolver,
-                Settings.System.STATUS_BAR_FILE_HEADER_IMAGE, null, UserHandle.USER_CURRENT);
     }
 
     @Override
@@ -306,77 +227,87 @@ public class QsHeaderImageSettings extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent result) {
-        super.onActivityResult(requestCode, resultCode, result);
-        
-        if (requestCode != REQUEST_PICK_IMAGE) {
-            return;
-        }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode != Activity.RESULT_OK) {
-            Log.d(TAG, "Image picker cancelled");
-            return;
-        }
+        if (requestCode != REQUEST_PICK_IMAGE || resultCode != Activity.RESULT_OK
+                || data == null) return;
 
-        if (result == null || result.getData() == null) {
-            Log.w(TAG, "Image picker returned null data");
-            Toast.makeText(getActivity(), 
-                    R.string.qs_header_image_error, 
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
+        Uri inUri = data.getData();
+        if (inUri == null) return;
 
-        final Uri imageUri = result.getData();
-        handleImageSelection(imageUri);
+        ContentResolver cr = getContext().getContentResolver();
+
+        deleteExistingHeaderImages(cr);
+
+        Uri outUri = createHeaderImage(cr, inUri);
+        if (outUri != null) {
+            Settings.System.putString(cr,
+                    Settings.System.STATUS_BAR_FILE_HEADER_IMAGE,
+                    outUri.toString());
+        }
     }
 
-    private void handleImageSelection(Uri imageUri) {
-        Toast.makeText(getActivity(), 
-                R.string.qs_header_image_processing, 
-                Toast.LENGTH_SHORT).show();
-        new Thread(() -> {
-            String savedImagePath = ImageUtils.saveImageToInternalStorage(
-                    getActivity(), imageUri, "qs_header_image", "QS_HEADER_IMAGE");
-            
-            getActivity().runOnUiThread(() -> {
-                if (savedImagePath != null) {
-                    ContentResolver resolver = getActivity().getContentResolver();
-                    Settings.System.putStringForUser(resolver, 
-                            Settings.System.STATUS_BAR_FILE_HEADER_IMAGE, 
-                            savedImagePath, 
-                            UserHandle.USER_CURRENT);
-                    
-                    Toast.makeText(getActivity(), 
-                            R.string.qs_header_image_success, 
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.e(TAG, "Failed to save image");
-                    Toast.makeText(getActivity(), 
-                            R.string.qs_header_image_error, 
-                            Toast.LENGTH_LONG).show();
+    private void deleteExistingHeaderImages(ContentResolver cr) {
+        final Uri collection = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
+        final String selection =
+                MediaStore.MediaColumns.RELATIVE_PATH + "=? AND " +
+                MediaStore.MediaColumns.DISPLAY_NAME + " LIKE ?";
+        final String[] args = new String[] {
+                QSHEADER_RELATIVE_PATH + "/",
+                QSHEADER_DISPLAY_NAME + "%"
+        };
+
+        try {
+            cr.delete(collection, selection, args);
+        } catch (Exception ignored) {}
+    }
+
+    private Uri createHeaderImage(ContentResolver cr, Uri inUri) {
+        String mime = cr.getType(inUri);
+        if (mime == null) mime = "image/*";
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, QSHEADER_DISPLAY_NAME);
+        values.put(MediaStore.MediaColumns.MIME_TYPE, mime);
+        values.put(MediaStore.MediaColumns.RELATIVE_PATH, QSHEADER_RELATIVE_PATH);
+        values.put(MediaStore.MediaColumns.IS_PENDING, 1);
+
+        Uri outUri = null;
+        try {
+            outUri = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            if (outUri == null) return null;
+
+            try (InputStream in = cr.openInputStream(inUri);
+                 OutputStream out = cr.openOutputStream(outUri, "wt")) {
+
+                if (in == null || out == null) return null;
+
+                byte[] buf = new byte[8192];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
                 }
-            });
-        }).start();
+                out.flush();
+            }
+
+            ContentValues done = new ContentValues();
+            done.put(MediaStore.MediaColumns.IS_PENDING, 0);
+            cr.update(outUri, done, null, null);
+
+            return outUri;
+        } catch (Exception e) {
+            if (outUri != null) {
+                try { cr.delete(outUri, null, null); } catch (Exception ignored) {}
+            }
+            return null;
+        }
     }
 
     /**
      * For search
      */
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    List<SearchIndexableResource> result = new ArrayList<>();
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.qs_header_image_settings;
-                    result.add(sir);
-                    return result;
-                }
-
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    return new ArrayList<>();
-                }
-            };
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider(R.xml.qs_header_image_settings);
 }

@@ -1,122 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--
+     SPDX-FileCopyrightText: Evolution X
+     SPDX-License-Identifier: Apache-2.0
+-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    xmlns:lineage="http://schemas.android.com/apk/res-auto"
-    android:title="@string/lock_screen_title_mist">
+    android:title="@string/lock_screen_title">
 
     <PreferenceCategory
-        android:key="lockscreen_clock_category"
-        android:title="@string/qs_clock_title">
+        android:key="lock_screen_clock_category"
+        android:title="@string/lock_screen_clock_category">
 
+        <!-- Custom clock style -->
         <Preference
             android:key="clock_styles_settings"
             android:title="@string/ls_clock_title"
             android:summary="@string/ls_clock_summary"
             android:fragment="org.mist.settings.fragments.lockscreen.ClockStyles" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lock_screen_media_category"
+        android:title="@string/lock_screen_media_category">
+
+        <!-- Now Playing -->
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="nowplaying_enabled"
+            android:title="@string/nowplaying_title"
+            android:summary="@string/nowplaying_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.NowPlayingSettings"
+            android:defaultValue="false" />
+
+        <!-- Edge light -->
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="edge_light_enabled"
+            android:title="@string/edge_light_title"
+            android:summary="@string/edge_light_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.EdgeLightSettings"
+            android:defaultValue="false" />
+
+        <!-- Lockscreen Media Art -->
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="ls_media_art_enabled"
+            android:title="@string/ls_media_art_title"
+            android:summary="@string/ls_media_art_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.MediaArtSettings"
+            android:defaultValue="false" />
+
+        <!-- Pulse music visualizer -->
+        <org.mist.settings.preferences.SecureSettingPrimarySwitchPreference
+            android:key="lockscreen_pulse_enabled"
+            android:title="@string/pulse_settings_title"
+            android:summary="@string/pulse_settings_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.PulseSettings"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/depth_wallpaper_category">
-        
-        <Preference
-            android:key="depth_wallpaper"
-            android:title="@string/depthwall_wallpaper_enabled_title"
-            android:summary="@string/depthwall_wallpaper_enabled_summary"
-            android:fragment="org.mist.settings.fragments.themes.WallpaperDepth" />
+        android:key="lock_screen_interface_category"
+        android:title="@string/lock_screen_interface_category">
 
-        <Preference
-            android:key="canvas_aod_settings"
-            android:title="@string/canvas_aod_title"
-            android:summary="@string/canvas_aod_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.CanvasAodSettings" />
-     </PreferenceCategory>
+        <!-- Ambient Wallpaper -->
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="doze_always_on_wallpaper_enabled"
+            android:title="@string/doze_always_on_wallpaper_title"
+            android:summary="@string/doze_always_on_wallpaper_summary"
+            android:defaultValue="@*android:bool/config_dozeSupportsAodWallpaper" />
 
-    <PreferenceCategory
-        android:key="lockscreen_interface_category"
-        android:title="@string/lockscreen_interface_category">
-
-        <!-- Mist Hub -->
-        <Preference
-            android:key="mist_hub_settings"
-            android:title="@string/mist_hub_title"
-            android:summary="@string/mist_hub_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.MistHubSettings" />
-
-        <!-- Lockscreen Media Art -->
-        <Preference
-            android:key="media_art_settings"
-            android:title="@string/ls_media_art_title"
-            android:summary="@string/ls_media_art_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.MediaArtSettings" />
-
-        <!-- Pulse music visualizer -->
-        <Preference
-            android:key="pulse_settings"
-            android:title="@string/pulse_settings_title"
-            android:summary="@string/pulse_settings_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.PulseSettings" />
-
-        <Preference
-            android:key="nowplaying_settings"
-            android:title="@string/nowplaying_title"
-            android:summary="@string/nowplaying_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.NowplayingSettings" />
-
+        <!-- Charging stats -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_battery_info"
-            android:title="@string/lockscreen_battery_info_title"
-            android:summary="@string/lockscreen_battery_info_summary"
+            android:title="@string/lock_screen_charging_stats_title"
+            android:summary="@string/lock_screen_charging_stats_summary"
             android:defaultValue="true" />
 
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
+        <!-- Remaining charging time -->
+        <!--<org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_charging_time"
-            android:title="@string/lockscreen_charging_time_title"
-            android:summary="@string/lockscreen_charging_time_summary"
+            android:title="@string/lock_screen_charging_time_title"
+            android:summary="@string/lock_screen_charging_time_summary"
             android:defaultValue="true" />
 
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="lockscreen_show_carrier"
-            android:title="@string/lockscreen_show_carrier_title"
-            android:summary="@string/lockscreen_show_carrier_summary"
-            android:defaultValue="true" />
-        
-        <org.mist.settings.preferences.SecureSettingSwitchPreference
-            android:key="lockscreen_show_emergency_button"
-            android:title="@string/lockscreen_emergency_button_title"
-            android:summary="@string/lockscreen_emergency_button_summary"
-            android:defaultValue="true" />
-
-        <!-- Scrim -->
         <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="keyguard_scrim_transparent"
             android:title="@string/keyguard_scrim_transparent_title"
             android:summary="@string/keyguard_scrim_transparent_summary"
-            android:defaultValue="true" />
-
-        <!-- Shortcuts -->
-        <org.mist.settings.preferences.SecureSettingSwitchPreference
-            android:key="keyguard_affordance_single_tap"
-            android:title="@string/keyguard_affordance_single_tap_title"
-            android:summary="@string/keyguard_affordance_single_tap_summary"
-            android:defaultValue="false" />
-
-        <!-- Keyguard user switcher -->
-	    <org.mist.settings.preferences.SystemSettingSwitchPreference
-	        android:key="kg_user_switcher_enabled"
-            android:title="@string/kg_user_switcher_enabled_title"
-            android:summary="@string/kg_user_switcher_enabled_summary"
-            android:defaultValue="false" />
+            android:defaultValue="false" />-->
 
     </PreferenceCategory>
+
+    <!--<PreferenceCategory
+        android:key="ambient_display_category"
+        android:title="@string/ambient_display_category_title">
+
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="ambient_show_settings"
+            android:title="@string/ambient_bottom_title"
+            android:entries="@array/ambient_bottom_entries"
+            android:entryValues="@array/ambient_bottom_values"
+            android:summary="%s"
+            android:defaultValue="1" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="ambient_show_settings_icons"
+            android:title="@string/display_icon_title"
+            android:summary="@string/display_icon_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>-->
 
     <PreferenceCategory
         android:key="lockscreen_weather_category"
         android:title="@string/lockscreen_weather_category">
 
+        <!-- Smartspace -->
         <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="lockscreen_smartspace_enabled"
             android:title="@string/lockscreen_smartspace_title"
@@ -167,56 +167,52 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="lock_screen_charging_effects_category"
+        android:title="@string/lock_screen_charging_effects_category">
+
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="charging_animation_enabled"
+            android:title="@string/charging_animation_title"
+            android:summary="@string/charging_animation_summary"
+            android:fragment="org.mist.settings.fragments.lockscreen.ChargingAnimationSettings"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="lockscreen_gestures_category"
-        android:title="@string/gestures_title">
+        android:title="@string/lock_screen_fingerprint_category">
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="double_tap_sleep_lockscreen"
-            android:title="@string/lockscreen_doubletap_sleep_title"
-            android:summary="@string/lockscreen_doubletap_sleep_summary"
+            android:key="enable_ripple_effect"
+            android:title="@string/lock_screen_fingerprint_ripple_title"
+            android:summary="@string/lock_screen_fingerprint_ripple_summary"
             android:defaultValue="true" />
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="fp_success_vibrate"
-            android:title="@string/fp_success_vibrate_title"
-            android:summary="@string/fp_success_vibrate_summary"
+            android:title="@string/lock_screen_fingerprint_success_vibration_title"
+            android:summary="@string/lock_screen_fingerprint_success_vibration_summary"
             android:defaultValue="true" />
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="fp_error_vibrate"
-            android:title="@string/fp_error_vibrate_title"
-            android:summary="@string/fp_error_vibrate_summary"
-            android:defaultValue="true" />
-
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
-            android:key="enable_ripple_effect"
-            android:title="@string/enable_fingerprint_ripple_effect_title"
-            android:summary="@string/enable_fingerprint_ripple_effect_summary"
+            android:title="@string/lock_screen_fingerprint_error_vibration_title"
+            android:summary="@string/lock_screen_fingerprint_error_vibration_summary"
             android:defaultValue="true" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="lockscreen_custom_category"
-        android:title="@string/udfps_custom_title">
+        android:key="lock_screen_power_menu_category"
+        android:title="@string/power_menu_title">
 
-        <Preference
-            android:key="udfps_cust"
-            android:title="@string/udfps_cust_title"
-            android:summary="@string/udfps_cust_summary"
-            android:fragment="org.mist.settings.fragments.lockscreen.UdfpsCust" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="lockscreen_misc_category"
-        android:title="@string/misc_title">
-
+        <!-- Hide power menu on secure lock screen -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
-               android:key="lockscreen_enable_power_menu"
-               android:title="@string/lockscreen_enable_power_menu_title"
-               android:summary="@string/lockscreen_enable_power_menu_summary"
-               android:defaultValue="true" />
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/power_menu_lock_screen_secure_title"
+            android:summary="@string/power_menu_lock_screen_secure_summary"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 

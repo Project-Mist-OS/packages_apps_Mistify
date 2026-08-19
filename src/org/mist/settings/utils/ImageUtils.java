@@ -55,7 +55,7 @@ public class ImageUtils {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
             String imageFileName = filePrefix + "_" + timeStamp + extension;
 
-            File directory = new File("/sdcard/Mist-OS/" + featurePath);
+            File directory = new File("/sdcard/MistOS/" + featurePath);
             if (!directory.exists() && !directory.mkdirs()) {
                 Log.e(TAG, "Failed to create directory: " + directory.getAbsolutePath());
                 return null;

@@ -76,6 +76,7 @@ class StatusBarLogoStylePreference @JvmOverloads constructor(
             val span = if (isLandscape) 2 else 1
             layoutManager = GridLayoutManager(ctx, span)
             adapter = IconAdapter(getCurrentValue())
+
             post {
                 val fraction = if (isLandscape) 0.75f else 0.6f
                 val maxHeight = (ctx.resources.displayMetrics.heightPixels * fraction).toInt()

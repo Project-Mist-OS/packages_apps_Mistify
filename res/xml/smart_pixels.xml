@@ -21,7 +21,9 @@
 
     <lineageos.preference.SecureSettingMainSwitchPreference
         android:key="smart_pixel_filter_enabled"
-        android:title="@string/enable" />
+        android:title="@string/smart_pixels_title"
+        android:summary="@string/smart_pixels_summary"
+        android:defaultValue="false" />
 
     <org.mist.settings.preferences.SecureSettingSeekBarPreference
         android:key="smart_pixel_filter_percent"

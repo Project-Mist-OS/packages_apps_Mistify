@@ -17,16 +17,17 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/qs_header_image_title">
+    android:title="@string/quick_settings_header_image_title">
 
     <lineageos.preference.SystemSettingMainSwitchPreference
         android:key="status_bar_custom_header"
-        android:title="@string/enable"
+        android:title="@string/quick_settings_header_image_title"
+        android:summary="@string/quick_settings_header_image_summary"
         android:defaultValue="false" />
 
     <ListPreference
         android:key="qs_header_provider"
-        android:title="@string/qs_header_provider_title"
+        android:title="@string/quick_settings_header_provider_title"
         android:persistent="false"
         android:entries="@array/qs_header_provider_entries"
         android:entryValues="@array/qs_header_provider_values"
@@ -34,14 +35,14 @@
 
     <ListPreference
         android:key="daylight_header_pack"
-        android:title="@string/qs_header_daylight_pack_title"
+        android:title="@string/quick_settings_header_daylight_pack_title"
         android:persistent="false"
         android:dependency="status_bar_custom_header" />
 
     <Preference
         android:key="custom_header_browse"
-        android:title="@string/qs_header_browse_title"
-        android:summary="@string/qs_header_browse_summary"
+        android:title="@string/quick_settings_header_browse_title"
+        android:summary="@string/quick_settings_header_browse_summary"
         android:persistent="false"
         android:dependency="status_bar_custom_header" >
         <intent android:action="android.intent.action.MAIN"
@@ -51,16 +52,16 @@
 
     <Preference
         android:key="file_header_select"
-        android:title="@string/qs_header_file_select_title"
-        android:summary="@string/qs_header_file_select_summary"
+        android:title="@string/quick_settings_header_file_select_title"
+        android:summary="@string/quick_settings_header_file_select_summary"
         android:persistent="false"
         android:dependency="status_bar_custom_header" >
     </Preference>
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="status_bar_custom_header_height"
-        android:title="@string/qs_header_offset_title"
-        android:summary="@string/qs_header_offset_summary"
+        android:title="@string/quick_settings_header_offset_title"
+        android:summary="@string/quick_settings_header_offset_summary"
         android:max="200"
         settings:min="100"
         android:defaultValue="142"
@@ -68,8 +69,8 @@
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="status_bar_custom_header_shadow"
-        android:title="@string/qs_header_shadow_title"
-        android:summary="@string/qs_header_shadow_summary"
+        android:title="@string/quick_settings_header_shadow_title"
+        android:summary="@string/quick_settings_header_shadow_summary"
         android:max="200"
         android:min="0"
         android:defaultValue="0" 

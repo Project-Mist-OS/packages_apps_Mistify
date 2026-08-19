@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2019-2024 TenX-OS
  * Copyright (C) 2016-2025 crDroid Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,19 +16,16 @@
  */
 package org.mist.settings.fragments.statusbar;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.UserHandle;
-import android.provider.Settings;
-import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.search.SearchIndexable;
 
-import com.android.internal.util.mist.VibrationUtils;
-
+@SearchIndexable
 public class BatteryBar extends SettingsPreferenceFragment {
 
     @Override
@@ -37,15 +35,10 @@ public class BatteryBar extends SettingsPreferenceFragment {
     }
 
     @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference != null && preference.getKey() != null) {
-            VibrationUtils.triggerVibration(getContext(), 3);
-        }
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.MIST;
     }
+
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider(R.xml.battery_bar);
 }

@@ -14,19 +14,20 @@
         android:title="@string/spoofing_integrity_category">
 
         <!-- TrickyStore -->
-        <Preference
-            android:key="tricky_store"
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="spoof_trickystore_enabled"
             android:title="@string/tricky_store_title"
             android:summary="@string/tricky_store_summary"
-            android:fragment="org.mist.settings.fragments.miscellaneous.TrickyStore" />
+            android:fragment="org.mist.settings.fragments.miscellaneous.TrickyStore"
+            android:defaultValue="true" />
 
         <!-- Play Integrity Fix -->
-        <Preference
-            android:key="play_integrity_fix"
+        <org.mist.settings.preferences.SystemSettingPrimarySwitchPreference
+            android:key="spoof_pif_enabled"
             android:title="@string/play_integrity_fix_title"
             android:summary="@string/play_integrity_fix_summary"
-            android:fragment="org.mist.settings.fragments.miscellaneous.PlayIntegrityFix" />
-
+            android:fragment="org.mist.settings.fragments.miscellaneous.PlayIntegrityFix"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
     <!-- Device Identity -->
@@ -42,11 +43,11 @@
             android:fragment="org.mist.settings.fragments.miscellaneous.UserSelectedAppSpoofSettings" />
 
         <!-- Pixel props -->
-        <org.mist.settings.preferences.SecureSettingSwitchPreference
+        <Preference
             android:key="pi_pp_spoof"
             android:title="@string/spoofing_pixel_props_title"
             android:summary="@string/spoofing_pixel_props_summary"
-            android:defaultValue="true" />
+            android:fragment="org.mist.settings.fragments.miscellaneous.PixelPropsSettings" />
     </PreferenceCategory>
 
     <!-- Features -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Mist AOSP
+ * Copyright (C) 2024-2025 Lunaris AOSP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ public class MediaUtils {
             }
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
             String fileName = filePrefix + "_" + timeStamp + extension;
-            File directory = new File("/sdcard/Mist-OS/" + featurePath);
+            File directory = new File("/sdcard/Lunaris-OS/" + featurePath);
             if (!directory.exists() && !directory.mkdirs()) {
                 Log.e(TAG, "Failed to create directory: " + directory.getAbsolutePath());
                 return null;
@@ -144,7 +144,7 @@ public class MediaUtils {
             }
         }
 
-        File directory = new File("/sdcard/Mist-OS/Wallpapers");
+        File directory = new File("/sdcard/Lunaris-OS/Wallpapers");
         if (!directory.exists()) {
             Log.d(TAG, "Wallpaper directory does not exist");
             return null;

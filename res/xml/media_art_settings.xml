@@ -15,14 +15,16 @@
      limitations under the License.
 -->
 
-<PreferenceScreen 
+<PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/ls_media_art_title" >
+    android:title="@string/ls_media_art_title">
 
     <lineageos.preference.SystemSettingMainSwitchPreference
         android:key="ls_media_art_enabled"
-        android:title="@string/enable" />
+        android:title="@string/ls_media_art_title"
+        android:summary="@string/ls_media_art_summary"
+        android:defaultValue="false" />
 
     <!-- AOD Toggle -->
     <org.mist.settings.preferences.SystemSettingSwitchPreference
@@ -43,17 +45,17 @@
 
     <org.mist.settings.preferences.SystemSettingListPreference
         android:key="ls_media_art_filter"
-        android:title="@string/lockscreen_media_art_filter_title"
-        android:summary="@string/lockscreen_media_art_filter_summary"
-        android:entries="@array/lockscreen_media_art_filter_entries"
-        android:entryValues="@array/lockscreen_media_art_filter_values"
+        android:title="@string/ls_media_art_filter_title"
+        android:summary="%s"
+        android:entries="@array/ls_media_art_filter_entries"
+        android:entryValues="@array/ls_media_art_filter_values"
         android:defaultValue="1"
         android:dependency="ls_media_art_enabled" />
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="ls_media_art_pixel_size"
-        android:title="@string/lockscreen_media_art_pixel_size_title"
-        android:summary="@string/lockscreen_media_art_pixel_size_summary"
+        android:title="@string/ls_media_art_pixel_size_title"
+        android:summary="@string/ls_media_art_pixel_size_summary"
         android:max="45"
         android:min="5"
         android:defaultValue="20"
@@ -61,8 +63,8 @@
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="ls_media_art_fade_level"
-        android:title="@string/lockscreen_media_art_fade_level_title"
-        android:summary="@string/lockscreen_media_art_fade_level_summary"
+        android:title="@string/ls_media_art_fade_level_title"
+        android:summary="@string/ls_media_art_fade_level_summary"
         android:max="100"
         android:min="0"
         android:defaultValue="40"
@@ -70,10 +72,11 @@
 
     <org.mist.settings.preferences.SystemSettingSeekBarPreference
         android:key="ls_media_art_blur_level"
-        android:title="@string/lockscreen_media_art_blur_level_title"
-        android:summary="@string/lockscreen_media_art_blur_level_summary"
+        android:title="@string/ls_media_art_blur_level_title"
+        android:summary="@string/ls_media_art_blur_level_summary"
         android:max="200"
         android:min="0"
         android:defaultValue="90"
         android:dependency="ls_media_art_enabled" />
+
 </PreferenceScreen>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2025 crDroid Android Project
+     Copyright (C) 2022 VoltageOS
+     Copyright (C) 2016-2026 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,17 +19,19 @@
 <PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/pulse_settings_title" >
+    android:title="@string/pulse_settings_title">
 
     <lineageos.preference.SecureSettingMainSwitchPreference
         android:key="lockscreen_pulse_enabled"
-        android:title="@string/enable" />
+        android:title="@string/pulse_settings_title"
+        android:summary="@string/pulse_settings_summary"
+        android:defaultValue="false" />
 
     <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="pulse_show_on_ambient"
         android:title="@string/pulse_show_on_ambient_title"
         android:summary="@string/pulse_show_on_ambient_summary"
-        android:defaultValue="true" 
+        android:defaultValue="true"
         android:dependency="lockscreen_pulse_enabled" />
 
     <org.mist.settings.preferences.SecureSettingListPreference
@@ -49,6 +52,16 @@
         android:entries="@array/pulse_renderer_entries"
         android:entryValues="@array/pulse_renderer_values"
         android:defaultValue="solid"
+        android:dependency="lockscreen_pulse_enabled" />
+
+    <org.mist.settings.preferences.SecureSettingListPreference
+        android:key="pulse_capture_mode"
+        android:title="@string/pulse_capture_mode_title"
+        android:summary="%s"
+        android:dialogTitle="@string/pulse_capture_mode_title"
+        android:entries="@array/pulse_capture_mode_entries"
+        android:entryValues="@array/pulse_capture_mode_values"
+        android:defaultValue="0"
         android:dependency="lockscreen_pulse_enabled" />
 
     <org.mist.settings.preferences.SecureSettingSwitchPreference

@@ -19,7 +19,7 @@
     <PreferenceCategory
         android:key="wallpaper_blur"
         android:title="@string/wallpaper_blur_title">
-        
+
         <org.mist.settings.preferences.SystemPropertyListPreference
             android:key="persist.sys.wallpaper.blur_enabled"
             android:title="@string/wallpaper_blur_title"
@@ -27,7 +27,7 @@
             android:entryValues="@array/wallpaper_blur_values"
             android:summary="%s"
             android:defaultValue="0" />
-            
+
         <org.mist.settings.preferences.SystemPropertyListPreference
             android:key="persist.sys.wallpaper.blur_type"
             android:title="@string/wallpaper_blur_filter"
@@ -101,7 +101,7 @@
     <PreferenceCategory
         android:key="wallpaper_dim"
         android:title="@string/wallpaper_dim_title">
-        
+
         <org.mist.settings.preferences.SystemPropertyListPreference
             android:key="persist.sys.wallpaper.dim_enabled"
             android:title="@string/wallpaper_dim_title"
@@ -109,7 +109,7 @@
             android:entryValues="@array/wallpaper_blur_values"
             android:summary="%s"
             android:defaultValue="0" />
-            
+
         <org.mist.settings.preferences.SystemSettingSeekBarPreference
             android:key="persist.sys.wallpaper.dim_level"
             android:title="@string/wallpaper_dim_level_title"

@@ -40,7 +40,7 @@ class LockClockFontsPreference @JvmOverloads constructor(
     private var dialog: AlertDialog? = null
     private var recyclerView: RecyclerView? = null
 
-    private val themeUtils = ThemeUtils(context)
+    private val themeUtils = ThemeUtils.getInstance(context)
     private val pkgs: List<String> = themeUtils.getOverlayPackagesForCategory(CATEGORY, "android")
 
     override fun onAttachedToHierarchy(preferenceManager: PreferenceManager) {
@@ -238,7 +238,7 @@ class LockClockFontsPreference @JvmOverloads constructor(
             androidx.appcompat.app.AlertDialog.Builder(ctx)
                 .setTitle(R.string.systemui_restart_title)
                 .setMessage(R.string.systemui_restart_message)
-                .setPositiveButton(R.string.systemui_restart_yes) { _, _ ->
+                .setPositiveButton(R.string.action_yes) { _, _ ->
                     onConfirm()
                 }
                 .setNegativeButton(R.string.systemui_restart_not_now) { _, _ ->

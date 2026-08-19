@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Evolution X
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package org.mist.settings.utils
 
 import android.graphics.Color as GraphicsColor

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Mist AOSP
+ * Copyright (C) 2024-2025 Lunaris AOSP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +25,11 @@ import com.android.settings.R
 import com.android.settings.SettingsPreferenceFragment
 import com.android.settings.search.BaseSearchIndexProvider
 import com.android.settingslib.search.SearchIndexable
-import com.android.internal.util.mist.VibrationUtils
 
 import org.mist.settings.preferences.SystemSettingSwitchPreference
 
 @SearchIndexable
-class NowplayingSettings : SettingsPreferenceFragment(),
+class NowPlayingSettings : SettingsPreferenceFragment(),
     Preference.OnPreferenceChangeListener {
 
     private var compactStylePref: SystemSettingSwitchPreference? = null
@@ -49,9 +48,6 @@ class NowplayingSettings : SettingsPreferenceFragment(),
     }
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
-        if (preference.key != null) {
-            VibrationUtils.triggerVibration(context, 3)
-        }
         return super.onPreferenceTreeClick(preference)
     }
 
@@ -77,7 +73,7 @@ class NowplayingSettings : SettingsPreferenceFragment(),
     }
 
     companion object {
-        const val TAG = "NowplayingSettings"
+        const val TAG = "NowPlayingSettings"
 
         /** For search */
         @JvmField
