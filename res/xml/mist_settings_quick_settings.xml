@@ -28,6 +28,18 @@
             android:summary="%s"
             android:defaultValue="0" />
 
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_ios_control_panel"
+            android:title="@string/ios_style"
+            android:summary="@string/ios_style_summary"
+            android:defaultValue="false" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_stock_media_player"
+            android:title="@string/stock_qs_media_player"
+            android:summary="@string/stock_qs_media_player_summary"
+            android:defaultValue="true" />
+
         <!-- Single Tone QS -->
         <!--<org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="single_qs_tone_enabled"
