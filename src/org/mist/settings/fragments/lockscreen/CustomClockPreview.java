@@ -117,8 +117,6 @@ public class CutomClockPreview extends SettingsPreferenceFragment implements Pre
             updateClockPrefs(mClockColorModePref, mClockColorModePref.getValue());
         }
 
-        updateClockPrefs(clockPreviewPref);
-
     }
 
     @Override
@@ -308,6 +306,7 @@ public class CutomClockPreview extends SettingsPreferenceFragment implements Pre
         });
 
         updateClockName(mClockPosition);
+        updateClockPrefs(clockPreviewPref);
     }
 
     private void updateClockName(int position) {
@@ -338,6 +337,7 @@ public class CutomClockPreview extends SettingsPreferenceFragment implements Pre
     public void onResume() {
         super.onResume();
         updateClockName(mClockPosition);
+        updateClockPrefs(clockPreviewPref);
         updateClockColorSummary();
         updateGradientColorSummary(mGradientColorStartPref, KEY_GRADIENT_COLOR_START, 0xFF00E5FF);
         updateGradientColorSummary(mGradientColorEndPref, KEY_GRADIENT_COLOR_END, 0xFFFF2DAA);
