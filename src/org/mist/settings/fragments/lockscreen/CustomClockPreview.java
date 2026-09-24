@@ -44,7 +44,7 @@ import com.android.settingslib.widget.LayoutPreference;
 
 import com.android.settings.core.SubSettingLauncher;
 import org.mist.settings.preferences.SecureSettingListPreference;
-import org.evolution.settings.utils.PreferenceUtils;
+import org.mist.settings.utils.PreferenceUtils;
 import org.mist.settings.utils.SystemUtils;
 
 import java.util.ArrayList;
