@@ -52,7 +52,7 @@ import java.util.List;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
-public class CutomClockPreview extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class CustomClockPreview extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "CustomClockPreview";
     private static final String PREF_FIRST_TIME = "first_time_clock_face_access";
