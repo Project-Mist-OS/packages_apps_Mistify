@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: Evolution X
+ * SPDX-FileCopyrightText: MistOS
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -15,14 +15,15 @@ import android.widget.Toast;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
-import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import java.util.List;
@@ -30,16 +31,14 @@ import java.util.List;
 import lineageos.providers.LineageSettings;
 
 import org.mist.settings.preferences.SecureSettingListPreference;
-import org.mist.settings.preferences.SystemSettingListPreference;
-import org.mist.settings.preferences.SystemSettingSwitchPreference;
 import org.mist.settings.utils.DeviceUtils;
 import org.mist.settings.utils.SystemUtils;
 
 @SearchIndexable
-public class QuickSettings extends SettingsPreferenceFragment implements
+public class PanelCustomisations extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
-    private static final String TAG = "QuickSettings";
+    private static final String TAG = "PanelCustomisations";
 
     private static final String QS_BRIGHTNESS_CATEGORY = "ax_qs_sliders_category";
 
@@ -51,12 +50,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
-    private static final String KEY_COMPACT_MEDIA_PLAYER_ENABLED = "qs_compact_media_player_mode";
-    private static final String KEY_MEDIA_WAVEFORM_SEEKBAR = "media_waveform_seekbar";
-    private static final String KEY_QS_HEADER_CLOCK_STYLE = "qs_header_clock_style";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
-    private static final String KEY_QS_STOCK_MEDIA_PLAYER = "qs_stock_media_player";
 
     private SecureSettingListPreference mQsPanelMode;
     private SecureSettingListPreference mQsQuickPanelOnLeft;
@@ -68,15 +63,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mShowBrightnessSlider;
     private SwitchPreferenceCompat mBrightnessSliderHaptic;
     private SwitchPreferenceCompat mShowAutoBrightness;
-    private SystemSettingListPreference mQsHeaderClockStyle;
-    private SystemSettingSwitchPreference mCompactMediaPlayer;
-    private SystemSettingSwitchPreference mMediaWaveformSeekBar;
-    private SystemSettingSwitchPreference mQsStockMediaPlayer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.mist_settings_quick_settings);
+        addPreferencesFromResource(R.xml.mist_settings_panel_customisations);
 
         final Context context = getContext();
         final ContentResolver resolver = context.getContentResolver();
@@ -104,11 +95,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mQsResetLayout = findPreference(KEY_QS_RESET_LAYOUT);
         if (mQsResetLayout != null) {
             mQsResetLayout.setOnPreferenceClickListener(this);
-        }
-
-        mMediaWaveformSeekBar = (SystemSettingSwitchPreference) findPreference(KEY_MEDIA_WAVEFORM_SEEKBAR);
-        if (mMediaWaveformSeekBar != null) {
-            mMediaWaveformSeekBar.setOnPreferenceChangeListener(this);
         }
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
@@ -142,14 +128,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 }
             }
         }
-
-        mCompactMediaPlayer = findPreference(KEY_COMPACT_MEDIA_PLAYER_ENABLED);
-        mCompactMediaPlayer.setOnPreferenceChangeListener(this);
-
-        mQsHeaderClockStyle = (SystemSettingListPreference) findPreference(KEY_QS_HEADER_CLOCK_STYLE);
-        if (mQsHeaderClockStyle != null) {
-            mQsHeaderClockStyle.setOnPreferenceChangeListener(this);
-        }
     }
 
     private void updateQuickPanelOnLeftState() {
@@ -165,7 +143,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mShowBrightnessSlider) {
             int value = Integer.parseInt((String) newValue);
-            mBrightnessSliderPosition.setEnabled(value > 0);
+            if (mBrightnessSliderPosition != null)
+                mBrightnessSliderPosition.setEnabled(value > 0);
             if (mBrightnessSliderHaptic != null)
                 mBrightnessSliderHaptic.setEnabled(value > 0);
             if (mShowAutoBrightness != null)
@@ -187,18 +166,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putIntForUser(getContext().getContentResolver(),
                     "ax_qs_volume_vertical_slider_style", val, UserHandle.USER_CURRENT);
             return true;
-        } else if (preference == mCompactMediaPlayer
-                || preference == mBrightnessSliderHaptic
-                || preference == mMediaWaveformSeekBar) {
-            SystemUtils.showSystemUiRestartDialog(getActivity());
-            return true;
-        } else if (preference == mQsHeaderClockStyle) {
-            String value = newValue.toString();
-            if ("0".equals(value)) {
-                SystemUtils.showSystemUiRestartDialog(getActivity());
-            }
-            return true;
-        } else if (preference == mQsStockMediaPlayer) {
+        } else if (preference == mBrightnessSliderHaptic) {
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
@@ -230,12 +198,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER = new BaseSearchIndexProvider(
-            R.xml.mist_settings_quick_settings) {
+            R.xml.mist_settings_panel_customisations) {
 
         @Override
         public List<String> getNonIndexableKeys(Context context) {
             List<String> keys = super.getNonIndexableKeys(context);
-            final ContentResolver resolver = context.getContentResolver();
 
             if (!context.getResources().getBoolean(
                     com.android.internal.R.bool.config_automatic_brightness_available)) {
