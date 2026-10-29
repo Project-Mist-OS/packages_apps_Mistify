@@ -1854,6 +1854,10 @@
 
     <!-- Axion Quick Settings -->
     <string name="qs_settings_category">QS Settings</string>
+    <string name="ax_qs_style_category">QS style</string>
+    <string name="ax_qs_style_title">Quick Settings style</string>
+    <string name="ax_qs_style_stock">Android 17 (default)</string>
+    <string name="ax_qs_style_custom">Mistify custom</string>
     <string name="ax_qs_panel_customisations_title">Panel Customisations</string>
     <string name="ax_qs_panel_customisations_summary">Customize the Quick Settings panel</string>
     <string name="ax_qs_panel_category">Panel</string>
@@ -1865,6 +1869,8 @@
     <string name="ax_qs_quick_panel_on_left_summary">Choose which side pulls down Quick Settings in separate mode</string>
     <string name="ax_qs_quick_panel_right">Right</string>
     <string name="ax_qs_quick_panel_left">Left</string>
+    <string name="ax_qs_header_top_margin_title">Header Top Margin</string>
+    <string name="ax_qs_header_top_margin_summary">Add space above the clock, network and battery row. Useful on devices where the header sits too close to the top edge</string>
 
     <string name="ax_qqs_category">Quick Quick Settings</string>
     <string name="ax_qqs_tile_columns_title">QQS Columns</string>

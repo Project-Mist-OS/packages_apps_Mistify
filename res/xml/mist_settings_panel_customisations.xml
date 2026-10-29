@@ -28,6 +28,16 @@
             android:entries="@array/ax_qs_quick_panel_on_left_entries"
             android:entryValues="@array/ax_qs_quick_panel_on_left_values"
             android:defaultValue="0" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="ax_qs_header_top_margin"
+            android:title="@string/ax_qs_header_top_margin_title"
+            android:summary="@string/ax_qs_header_top_margin_summary"
+            settings:units="dp"
+            settings:min="0"
+            android:max="40"
+            settings:interval="1"
+            android:defaultValue="0" />
     </PreferenceCategory>
 
     <!-- Quick Quick Settings (QQS) -->

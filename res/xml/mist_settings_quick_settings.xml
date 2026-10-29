@@ -8,6 +8,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/quick_settings_title">
 
+    <!-- QS Style -->
+    <PreferenceCategory
+        android:key="ax_qs_style_category"
+        android:title="@string/ax_qs_style_category">
+
+        <org.mist.settings.preferences.SecureSettingListPreference
+            android:key="ax_qs_style"
+            android:title="@string/ax_qs_style_title"
+            android:summary="%s"
+            android:entries="@array/ax_qs_style_entries"
+            android:entryValues="@array/ax_qs_style_values"
+            android:defaultValue="0" />
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:key="quick_settings_interface_category"
         android:title="@string/quick_settings_interface_category">

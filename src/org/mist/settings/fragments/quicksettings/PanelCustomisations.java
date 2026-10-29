@@ -9,6 +9,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lineageos.providers.LineageSettings;
@@ -199,6 +201,17 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER = new BaseSearchIndexProvider(
             R.xml.mist_settings_panel_customisations) {
+
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                boolean enabled) {
+            // These settings only apply to the Mistify custom QS style.
+            if (Settings.Secure.getIntForUser(context.getContentResolver(),
+                    "ax_qs_style", 0, UserHandle.USER_CURRENT) != 1) {
+                return new ArrayList<>();
+            }
+            return super.getXmlResourcesToIndex(context, enabled);
+        }
 
         @Override
         public List<String> getNonIndexableKeys(Context context) {

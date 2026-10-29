@@ -43,6 +43,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String QS_BRIGHTNESS_CATEGORY = "ax_qs_sliders_category";
 
+    private static final String KEY_AX_QS_STYLE = "ax_qs_style";
+    private static final String KEY_AX_QS_PANEL_CUSTOMISATIONS_CATEGORY =
+            "ax_qs_panel_customisations_category";
+    private static final String KEY_AX_QS_PANEL_CUSTOMISATIONS = "ax_qs_panel_customisations";
+    private static final int QS_STYLE_CUSTOM = 1;
+
     private static final String KEY_AX_QS_PANEL_MODE = "ax_qs_panel_mode";
     private static final String KEY_AX_QS_QUICK_PANEL_ON_LEFT = "ax_qs_quick_panel_on_left";
     private static final String KEY_AX_QS_BRIGHTNESS_SLIDER_STYLE = "ax_qs_brightness_vertical_slider_style";
@@ -58,6 +64,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
     private static final String KEY_QS_STOCK_MEDIA_PLAYER = "qs_stock_media_player";
 
+    private SecureSettingListPreference mQsStyle;
+    private PreferenceCategory mQsPanelCustomisationsCategory;
     private SecureSettingListPreference mQsPanelMode;
     private SecureSettingListPreference mQsQuickPanelOnLeft;
     private SecureSettingListPreference mQsBrightnessSliderStyle;
@@ -82,6 +90,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         final ContentResolver resolver = context.getContentResolver();
 
         final PreferenceCategory brightnessCategory = findPreference(QS_BRIGHTNESS_CATEGORY);
+
+        // Mistify custom QS settings are only shown when that style is selected; otherwise the
+        // device runs the stock Android QS.
+        mQsPanelCustomisationsCategory = findPreference(KEY_AX_QS_PANEL_CUSTOMISATIONS_CATEGORY);
+        mQsStyle = findPreference(KEY_AX_QS_STYLE);
+        if (mQsStyle != null) {
+            mQsStyle.setOnPreferenceChangeListener(this);
+        }
+        updateCustomStyleVisibility(isCustomStyleSelected(context));
 
         mQsPanelMode = findPreference(KEY_AX_QS_PANEL_MODE);
         if (mQsPanelMode != null) {
@@ -152,6 +169,17 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private static boolean isCustomStyleSelected(Context context) {
+        return Settings.Secure.getIntForUser(context.getContentResolver(),
+                KEY_AX_QS_STYLE, 0, UserHandle.USER_CURRENT) == QS_STYLE_CUSTOM;
+    }
+
+    private void updateCustomStyleVisibility(boolean customStyle) {
+        if (mQsPanelCustomisationsCategory != null) {
+            mQsPanelCustomisationsCategory.setVisible(customStyle);
+        }
+    }
+
     private void updateQuickPanelOnLeftState() {
         if (mQsQuickPanelOnLeft != null) {
             int panelMode = Settings.Secure.getIntForUser(
@@ -163,7 +191,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mShowBrightnessSlider) {
+        if (preference == mQsStyle) {
+            updateCustomStyleVisibility(Integer.parseInt((String) newValue) == QS_STYLE_CUSTOM);
+            return true;
+        } else if (preference == mShowBrightnessSlider) {
             int value = Integer.parseInt((String) newValue);
             mBrightnessSliderPosition.setEnabled(value > 0);
             if (mBrightnessSliderHaptic != null)
@@ -244,6 +275,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
             if (!DeviceUtils.hasVibrator(context)) {
                 keys.add(KEY_BRIGHTNESS_SLIDER_HAPTIC);
+            }
+
+            if (!isCustomStyleSelected(context)) {
+                keys.add(KEY_AX_QS_PANEL_CUSTOMISATIONS);
             }
 
             return keys;

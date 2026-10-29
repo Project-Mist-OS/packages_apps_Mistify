@@ -1784,6 +1784,16 @@
         <item>1</item>
     </string-array>
 
+    <string-array name="ax_qs_style_entries">
+        <item>@string/ax_qs_style_stock</item>
+        <item>@string/ax_qs_style_custom</item>
+    </string-array>
+
+    <string-array name="ax_qs_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
     <!-- Axion QS Slider Styles -->
     <string-array name="ax_qs_slider_style_entries">
         <item>@string/ax_qs_slider_style_m3</item>
