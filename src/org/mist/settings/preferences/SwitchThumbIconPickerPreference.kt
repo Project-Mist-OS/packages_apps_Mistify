@@ -83,7 +83,7 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
             adapter = this@SwitchThumbIconPickerPreference.adapter
             itemAnimator = null
         }
-        holder.findViewById(R.id.switch_icon_upload).setOnClickListener {
+        holder.findViewById(R.id.switch_icon_upload)?.setOnClickListener {
             onUploadRequested?.invoke()
         }
 

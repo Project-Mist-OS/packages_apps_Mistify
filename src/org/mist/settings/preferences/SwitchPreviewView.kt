@@ -38,10 +38,10 @@ class SwitchPreviewView @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rect = RectF()
 
-    private val trackOn = context.getColor(R.color.settingslib_materialColorPrimary)
-    private val thumbOn = context.getColor(R.color.settingslib_materialColorOnPrimary)
-    private val trackOff = context.getColor(R.color.settingslib_materialColorSurfaceContainerHighest)
-    private val outlineOff = context.getColor(R.color.settingslib_materialColorOutline)
+    private val trackOn = context.getColor(R.color.switch_icon_track_on)
+    private val thumbOn = context.getColor(R.color.switch_icon_thumb_on)
+    private val trackOff = context.getColor(R.color.switch_icon_track_off)
+    private val outlineOff = context.getColor(R.color.switch_icon_outline_off)
 
     private var onIcon: Drawable? = null
     private val offIcon: Drawable? =

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: MistOS
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Colors of the system expressive switch, aliased here so Kotlin code can read them through
+         the Settings R class (SettingsLib's own colors are only visible from XML). -->
+    <color name="switch_icon_track_on">@color/settingslib_materialColorPrimary</color>
+    <color name="switch_icon_thumb_on">@color/settingslib_materialColorOnPrimary</color>
+    <color name="switch_icon_track_off">@color/settingslib_materialColorSurfaceContainerHighest</color>
+    <color name="switch_icon_outline_off">@color/settingslib_materialColorOutline</color>
+</resources>
