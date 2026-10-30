@@ -11,6 +11,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -34,7 +35,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -254,27 +254,51 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
             return;
         }
 
-        final ContentResolver cr = getContext().getContentResolver();
-        final Uri saved = saveImageFill(cr, data.getData());
-        if (saved == null) {
-            Toast.makeText(getContext(), R.string.ax_qs_image_fill_failed, Toast.LENGTH_LONG).show();
-            return;
-        }
-        // Only switch to the new image once it was fully copied, and then drop the old copies.
-        Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, saved.toString(),
-                UserHandle.USER_CURRENT);
-        deleteImageFillCopies(cr, ContentUris.parseId(saved));
-        Toast.makeText(getContext(), R.string.ax_qs_image_fill_set, Toast.LENGTH_SHORT).show();
+        // Let the user choose which part of the image to show before anything is saved.
+        QsImageCropDialog.show(getActivity(), data.getData(), new QsImageCropDialog.Callback() {
+            @Override
+            public void onCropped(Bitmap bitmap) {
+                saveCroppedImageFill(bitmap);
+            }
+
+            @Override
+            public void onFailed() {
+                if (isAdded()) {
+                    Toast.makeText(getContext(), R.string.ax_qs_image_fill_failed,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
-    private Uri saveImageFill(ContentResolver cr, Uri source) {
-        String mime = cr.getType(source);
-        if (mime == null) mime = "image/*";
+    private void saveCroppedImageFill(Bitmap bitmap) {
+        final Context context = getContext().getApplicationContext();
+        final Activity activity = getActivity();
+        new Thread(() -> {
+            final ContentResolver cr = context.getContentResolver();
+            final Uri saved = saveImageFill(cr, bitmap);
+            if (saved != null) {
+                // Only switch to the new image once it was fully written, then drop old copies.
+                Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, saved.toString(),
+                        UserHandle.USER_CURRENT);
+                deleteImageFillCopies(cr, ContentUris.parseId(saved));
+            }
+            bitmap.recycle();
+            if (activity != null) {
+                activity.runOnUiThread(() -> Toast.makeText(context,
+                        saved != null ? R.string.ax_qs_image_fill_set
+                                : R.string.ax_qs_image_fill_failed,
+                        Toast.LENGTH_SHORT).show());
+            }
+        }).start();
+    }
 
+    /** Writes the crop losslessly, so no detail is lost compared to the original pixels. */
+    private Uri saveImageFill(ContentResolver cr, Bitmap bitmap) {
         ContentValues values = new ContentValues();
         values.put(MediaStore.MediaColumns.DISPLAY_NAME,
                 IMAGE_FILL_DISPLAY_NAME + "_" + System.currentTimeMillis());
-        values.put(MediaStore.MediaColumns.MIME_TYPE, mime);
+        values.put(MediaStore.MediaColumns.MIME_TYPE, "image/webp");
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, IMAGE_FILL_RELATIVE_PATH);
         values.put(MediaStore.MediaColumns.IS_PENDING, 1);
 
@@ -283,16 +307,10 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
             out = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
             if (out == null) return null;
 
-            try (InputStream in = cr.openInputStream(source);
-                 OutputStream os = cr.openOutputStream(out, "wt")) {
-                if (in == null || os == null) {
+            try (OutputStream os = cr.openOutputStream(out, "wt")) {
+                if (os == null || !bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, os)) {
                     cr.delete(out, null, null);
                     return null;
-                }
-                byte[] buf = new byte[8192];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    os.write(buf, 0, len);
                 }
                 os.flush();
             }

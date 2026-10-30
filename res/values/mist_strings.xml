@@ -1892,6 +1892,13 @@
     <string name="ax_qs_image_fill_pick_summary">Pick a picture from your gallery. It is fitted to each tile and slider</string>
     <string name="ax_qs_image_fill_clear_title">Remove image</string>
     <string name="ax_qs_image_fill_clear_summary">Go back to the primary color</string>
+    <string name="ax_qs_image_crop_hint">Drag the frame to choose the part of the image to show. The crop keeps the original quality</string>
+    <string name="ax_qs_image_crop_free">Free</string>
+    <string name="ax_qs_image_crop_square">Square</string>
+    <string name="ax_qs_image_crop_wide">Wide</string>
+    <string name="ax_qs_image_crop_tall">Tall</string>
+    <string name="ax_qs_image_crop_apply">Apply</string>
+    <string name="ax_qs_image_crop_saving">Saving…</string>
     <string name="ax_qs_image_fill_set">Image applied</string>
     <string name="ax_qs_image_fill_cleared">Image removed</string>
     <string name="ax_qs_image_fill_failed">Couldn\'t use that image. Try another one</string>
