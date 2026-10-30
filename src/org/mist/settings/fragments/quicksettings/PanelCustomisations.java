@@ -7,15 +7,12 @@ package org.mist.settings.fragments.quicksettings;
 
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.UserHandle;
-import android.provider.MediaStore;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
@@ -35,6 +32,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,10 +63,10 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
     private static final String SETTING_IMAGE_FILL_URI = "ax_qs_image_fill_uri";
     private static final int REQUEST_PICK_IMAGE_FILL = 20001;
 
-    // The image is copied into MediaStore so it outlives the picker's temporary grant, a reboot
-    // and a SystemUI restart. Only the uri is kept in secure settings.
-    private static final String IMAGE_FILL_RELATIVE_PATH = "Pictures/QSTileImage";
-    private static final String IMAGE_FILL_DISPLAY_NAME = "qs_tile_image";
+    // The cropped image is stored in /sdcard/MistOS/QSTileImage so it outlives the picker's
+    // temporary grant, a reboot and a SystemUI restart. Only its path is kept in secure settings.
+    private static final String IMAGE_FILL_DIR = "MistOS/QSTileImage";
+    private static final String IMAGE_FILL_PREFIX = "qs_tile_image";
 
     private static final String KEY_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
@@ -276,12 +275,12 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         new Thread(() -> {
             final ContentResolver cr = context.getContentResolver();
-            final Uri saved = saveImageFill(cr, bitmap);
+            final File saved = saveImageFill(bitmap);
             if (saved != null) {
                 // Only switch to the new image once it was fully written, then drop old copies.
-                Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, saved.toString(),
-                        UserHandle.USER_CURRENT);
-                deleteImageFillCopies(cr, ContentUris.parseId(saved));
+                Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI,
+                        saved.getAbsolutePath(), UserHandle.USER_CURRENT);
+                deleteImageFillCopies(saved);
             }
             bitmap.recycle();
             if (activity != null) {
@@ -294,59 +293,49 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
     }
 
     /** Writes the crop losslessly, so no detail is lost compared to the original pixels. */
-    private Uri saveImageFill(ContentResolver cr, Bitmap bitmap) {
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.DISPLAY_NAME,
-                IMAGE_FILL_DISPLAY_NAME + "_" + System.currentTimeMillis());
-        values.put(MediaStore.MediaColumns.MIME_TYPE, "image/webp");
-        values.put(MediaStore.MediaColumns.RELATIVE_PATH, IMAGE_FILL_RELATIVE_PATH);
-        values.put(MediaStore.MediaColumns.IS_PENDING, 1);
-
-        Uri out = null;
-        try {
-            out = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            if (out == null) return null;
-
-            try (OutputStream os = cr.openOutputStream(out, "wt")) {
-                if (os == null || !bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, os)) {
-                    cr.delete(out, null, null);
-                    return null;
-                }
-                os.flush();
-            }
-
-            ContentValues done = new ContentValues();
-            done.put(MediaStore.MediaColumns.IS_PENDING, 0);
-            cr.update(out, done, null, null);
-            return out;
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to save QS image", e);
-            if (out != null) {
-                try {
-                    cr.delete(out, null, null);
-                } catch (Exception ignored) {
-                }
-            }
+    private File saveImageFill(Bitmap bitmap) {
+        final File dir = new File(Environment.getExternalStorageDirectory(), IMAGE_FILL_DIR);
+        if (!dir.exists() && !dir.mkdirs()) {
+            Log.e(TAG, "Failed to create " + dir.getAbsolutePath());
             return null;
         }
+
+        // Write to a temporary name first so a half written file is never picked up.
+        final File temp = new File(dir, IMAGE_FILL_PREFIX + ".tmp");
+        final File target = new File(dir, IMAGE_FILL_PREFIX + "_" + System.currentTimeMillis()
+                + ".webp");
+        try (OutputStream os = new FileOutputStream(temp)) {
+            if (!bitmap.compress(Bitmap.CompressFormat.WEBP_LOSSLESS, 100, os)) {
+                temp.delete();
+                return null;
+            }
+            os.flush();
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to save QS image", e);
+            temp.delete();
+            return null;
+        }
+        if (!temp.renameTo(target)) {
+            temp.delete();
+            return null;
+        }
+        return target;
     }
 
     private void clearImageFill() {
         final ContentResolver cr = getContext().getContentResolver();
         Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, "", UserHandle.USER_CURRENT);
-        deleteImageFillCopies(cr, -1);
+        deleteImageFillCopies(null);
     }
 
-    private void deleteImageFillCopies(ContentResolver cr, long keepId) {
-        try {
-            cr.delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                    MediaStore.MediaColumns.RELATIVE_PATH + "=? AND "
-                            + MediaStore.MediaColumns.DISPLAY_NAME + " LIKE ? AND "
-                            + MediaStore.MediaColumns._ID + "!=?",
-                    new String[]{IMAGE_FILL_RELATIVE_PATH + "/", IMAGE_FILL_DISPLAY_NAME + "%",
-                            String.valueOf(keepId)});
-        } catch (Exception e) {
-            Log.w(TAG, "Failed to delete old QS images", e);
+    private void deleteImageFillCopies(File keep) {
+        final File dir = new File(Environment.getExternalStorageDirectory(), IMAGE_FILL_DIR);
+        final File[] files = dir.listFiles((d, name) -> name.startsWith(IMAGE_FILL_PREFIX));
+        if (files == null) return;
+        for (File file : files) {
+            if (!file.equals(keep) && !file.delete()) {
+                Log.w(TAG, "Failed to delete old QS image " + file.getName());
+            }
         }
     }
 
