@@ -110,6 +110,12 @@
             android:title="@string/ax_qs_show_weather_title"
             android:summary="@string/ax_qs_show_weather_summary"
             android:defaultValue="true" />
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="ax_qs_show_data_usage"
+            android:title="@string/ax_qs_show_data_usage_title"
+            android:summary="@string/ax_qs_show_data_usage_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <!-- Sliders & Appearance -->
