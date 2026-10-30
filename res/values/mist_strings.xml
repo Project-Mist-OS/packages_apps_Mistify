@@ -1719,6 +1719,8 @@
 
     <!-- Gestures -->
     <string name="three_fingers_swipe_title">Three-finger swipe</string>
+    <string name="gesture_deliberate_home_swipe_title">Ignore accidental pill touches</string>
+    <string name="gesture_deliberate_home_swipe_summary">Tapping or brushing the gesture pill won\'t send the app home. Only a longer, deliberate swipe will</string>
     <string name="shake_gestures_enabled_title">Shake gestures</string>
     <string name="shake_gestures_enabled_summary">Shake your device to perform actions</string>
     <string name="shake_gestures_action_title">Shake gesture action</string>

@@ -22,6 +22,12 @@
             android:persistent="false" />
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="gesture_deliberate_home_swipe"
+            android:title="@string/gesture_deliberate_home_swipe_title"
+            android:summary="@string/gesture_deliberate_home_swipe_summary"
+            android:defaultValue="true" />
+
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="shake_gestures_enabled"
             android:title="@string/shake_gestures_enabled_title"
             android:summary="@string/shake_gestures_enabled_summary"
