@@ -58,7 +58,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
     private static final String KEY_COMPACT_MEDIA_PLAYER_ENABLED = "qs_compact_media_player_mode";
-    private static final String KEY_MEDIA_WAVEFORM_SEEKBAR = "media_waveform_seekbar";
     private static final String KEY_QS_HEADER_CLOCK_STYLE = "qs_header_clock_style";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
@@ -78,7 +77,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mShowAutoBrightness;
     private SystemSettingListPreference mQsHeaderClockStyle;
     private SystemSettingSwitchPreference mCompactMediaPlayer;
-    private SystemSettingSwitchPreference mMediaWaveformSeekBar;
     private SystemSettingSwitchPreference mQsStockMediaPlayer;
 
     @Override
@@ -121,11 +119,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mQsResetLayout = findPreference(KEY_QS_RESET_LAYOUT);
         if (mQsResetLayout != null) {
             mQsResetLayout.setOnPreferenceClickListener(this);
-        }
-
-        mMediaWaveformSeekBar = (SystemSettingSwitchPreference) findPreference(KEY_MEDIA_WAVEFORM_SEEKBAR);
-        if (mMediaWaveformSeekBar != null) {
-            mMediaWaveformSeekBar.setOnPreferenceChangeListener(this);
         }
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
@@ -219,8 +212,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     "ax_qs_volume_vertical_slider_style", val, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mCompactMediaPlayer
-                || preference == mBrightnessSliderHaptic
-                || preference == mMediaWaveformSeekBar) {
+                || preference == mBrightnessSliderHaptic) {
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mQsHeaderClockStyle) {

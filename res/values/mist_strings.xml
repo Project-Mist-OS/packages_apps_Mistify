@@ -867,6 +867,11 @@
     <string name="qs_brightness_slider_shape_title">Brightness slider shape</string>
     <string name="media_waveform_seekbar_title">Waveform seekbar</string>
     <string name="media_waveform_seekbar_summary">Show an animated waveform effect for media playback progress</string>
+    <string name="media_seekbar_style_title">Media seekbar style</string>
+    <string name="media_seekbar_style_waveform">Waveform</string>
+    <string name="media_seekbar_style_glowing">Glowing</string>
+    <string name="media_seekbar_style_gradient_wave">Gradient wave</string>
+    <string name="media_seekbar_style_cos">COS</string>
     <string name="floating_rotation_button_title">Floating rotate button</string>
     <string name="floating_rotation_button_summary">Show a floating button to rotate when the device orientation changes</string>
 

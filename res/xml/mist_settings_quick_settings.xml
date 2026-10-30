@@ -48,12 +48,14 @@
             android:summary="@string/stock_qs_media_player_summary"
             android:defaultValue="false" />
 
-        <!-- Waveform seekbar -->
-        <org.mist.settings.preferences.SystemSettingSwitchPreference
+        <!-- Media seekbar style -->
+        <org.mist.settings.preferences.SystemSettingListPreference
             android:key="media_waveform_seekbar"
-            android:title="@string/media_waveform_seekbar_title"
-            android:summary="@string/media_waveform_seekbar_summary"
-            android:defaultValue="false" />
+            android:title="@string/media_seekbar_style_title"
+            android:entries="@array/media_seekbar_style_entries"
+            android:entryValues="@array/media_seekbar_style_values"
+            android:summary="%s"
+            android:defaultValue="0" />
 
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_compact_media_player_mode"
