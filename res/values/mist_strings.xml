@@ -1924,4 +1924,21 @@
     <string name="ax_qs_reset_layout_title">Reset Tile Layout</string>
     <string name="ax_qs_reset_layout_summary">Restore tile order and spans back to default</string>
     <string name="ax_qs_reset_layout_done">Tile layout restored to default</string>
+
+    <!-- Switch ON icon -->
+    <string name="switch_icon_title">Switch icon</string>
+    <string name="switch_icon_choose_title">Choose an icon</string>
+    <string name="switch_icon_default">Default</string>
+    <string name="switch_icon_custom">Custom</string>
+    <string name="switch_icon_bat">Bat</string>
+    <string name="switch_icon_shield">Shield</string>
+    <string name="switch_icon_pokeball">Poké Ball</string>
+    <string name="switch_icon_spider">Spider</string>
+    <string name="switch_icon_sharingan">Sharingan</string>
+    <string name="switch_icon_preview_off">Off</string>
+    <string name="switch_icon_preview_on">On · <xliff:g id="icon_name">%1$s</xliff:g></string>
+    <string name="switch_icon_upload">Upload your own icon</string>
+    <string name="switch_icon_hint">The icon only shows while a switch is on. Off switches always keep the default icon. Changes apply everywhere right away and are kept after a reboot or a SystemUI restart</string>
+    <string name="switch_icon_custom_set">Custom icon applied</string>
+    <string name="switch_icon_failed">Couldn\'t apply that icon. Try another one</string>
 </resources>

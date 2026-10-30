@@ -1,0 +1,199 @@
+/*
+ * SPDX-FileCopyrightText: MistOS
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package org.mist.settings.preferences
+
+import android.content.Context
+import android.graphics.Bitmap
+import android.os.Handler
+import android.os.Looper
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.preference.Preference
+import androidx.preference.PreferenceViewHolder
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.android.settings.R
+import com.android.settingslib.widget.SwitchThumbIconDrawable
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.materialswitch.MaterialSwitch
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import org.mist.settings.utils.SwitchThumbIconManager
+import org.mist.settings.utils.SwitchThumbIconManager.Preset
+
+/**
+ * Lets the user choose the icon shown inside switches when they are ON, with a live preview.
+ *
+ * The preview uses real switches: the OFF one always shows the stock icon, the ON one shows the
+ * highlighted choice. Picking an option applies it system wide right away.
+ */
+class SwitchThumbIconPickerPreference @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = androidx.preference.R.attr.preferenceStyle,
+) : Preference(context, attrs, defStyleAttr) {
+
+    /** Called when the user wants to upload their own image; the host fragment opens the picker. */
+    var onUploadRequested: (() -> Unit)? = null
+
+    private class Option(val key: String, val label: String)
+
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private var executor: ExecutorService = Executors.newSingleThreadExecutor()
+
+    private val options = ArrayList<Option>()
+    // Icon bitmaps by option key; the default option has none and shows the stock check mark.
+    private val icons = HashMap<String, Bitmap?>()
+    private var selectedKey = SwitchThumbIconManager.CHOICE_DEFAULT
+
+    private var switchOn: MaterialSwitch? = null
+    private var labelOn: TextView? = null
+    private var optionList: RecyclerView? = null
+    private val adapter = OptionAdapter()
+
+    init {
+        layoutResource = R.layout.preference_switch_icon_picker
+        isSelectable = false
+        isPersistent = false
+    }
+
+    override fun onBindViewHolder(holder: PreferenceViewHolder) {
+        super.onBindViewHolder(holder)
+
+        switchOn = holder.findViewById(R.id.preview_switch_on) as MaterialSwitch
+        labelOn = holder.findViewById(R.id.preview_label_on) as TextView
+        (holder.findViewById(R.id.preview_switch_off) as MaterialSwitch).apply {
+            isChecked = false
+            jumpDrawablesToCurrentState()
+        }
+        switchOn?.apply {
+            isChecked = true
+            jumpDrawablesToCurrentState()
+        }
+
+        optionList = (holder.findViewById(R.id.switch_icon_options) as RecyclerView).apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = this@SwitchThumbIconPickerPreference.adapter
+        }
+        (holder.findViewById(R.id.switch_icon_upload) as MaterialButton).setOnClickListener {
+            onUploadRequested?.invoke()
+        }
+
+        updatePreview()
+        refresh()
+    }
+
+    override fun onDetached() {
+        executor.shutdown()
+        super.onDetached()
+    }
+
+    /** Re-reads the saved choice and the icons from disk, e.g. after a new image was uploaded. */
+    fun refresh() {
+        if (executor.isShutdown) executor = Executors.newSingleThreadExecutor()
+        val ctx = context
+        executor.execute {
+            val choice = SwitchThumbIconManager.getChoice(ctx)
+            val loaded = HashMap<String, Bitmap?>()
+            val list = ArrayList<Option>()
+
+            list.add(Option(SwitchThumbIconManager.CHOICE_DEFAULT,
+                    ctx.getString(R.string.switch_icon_default)))
+            for (preset in Preset.entries) {
+                list.add(Option(preset.key, ctx.getString(preset.label)))
+                loaded[preset.key] = SwitchThumbIconManager.loadPreset(ctx, preset)
+            }
+            if (SwitchThumbIconManager.hasCustom()) {
+                list.add(Option(SwitchThumbIconManager.CHOICE_CUSTOM,
+                        ctx.getString(R.string.switch_icon_custom)))
+                loaded[SwitchThumbIconManager.CHOICE_CUSTOM] = SwitchThumbIconManager.loadCustom()
+            }
+
+            mainHandler.post {
+                options.clear()
+                options.addAll(list)
+                icons.clear()
+                icons.putAll(loaded)
+                selectedKey = choice
+                adapter.notifyDataSetChanged()
+                updatePreview()
+            }
+        }
+    }
+
+    private fun select(key: String) {
+        if (key == selectedKey) return
+        val previous = selectedKey
+        selectedKey = key
+        adapter.notifyDataSetChanged()
+        updatePreview()
+
+        val ctx = context
+        executor.execute {
+            val ok = when (key) {
+                SwitchThumbIconManager.CHOICE_DEFAULT -> {
+                    SwitchThumbIconManager.applyDefault(ctx)
+                    true
+                }
+                SwitchThumbIconManager.CHOICE_CUSTOM -> SwitchThumbIconManager.applyCustom(ctx)
+                else -> Preset.fromKey(key)?.let { SwitchThumbIconManager.applyPreset(ctx, it) } ?: false
+            }
+            if (!ok) {
+                mainHandler.post {
+                    selectedKey = previous
+                    adapter.notifyDataSetChanged()
+                    updatePreview()
+                    Toast.makeText(ctx, R.string.switch_icon_failed, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun updatePreview() {
+        val icon = icons[selectedKey]
+        // The default has no bitmap: the preview then falls back to the stock check mark.
+        switchOn?.thumbIconDrawable = SwitchThumbIconDrawable.createPreview(context, icon)
+        labelOn?.text = context.getString(R.string.switch_icon_preview_on,
+                options.firstOrNull { it.key == selectedKey }?.label
+                        ?: context.getString(R.string.switch_icon_default))
+    }
+
+    private inner class OptionAdapter : RecyclerView.Adapter<OptionAdapter.Holder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder =
+            Holder(LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_switch_icon_option, parent, false))
+
+        override fun onBindViewHolder(holder: Holder, position: Int) {
+            val option = options[position]
+            val bitmap = icons[option.key]
+
+            if (bitmap != null) {
+                holder.icon.setImageBitmap(bitmap)
+            } else {
+                // Default option: the stock check mark.
+                holder.icon.setImageResource(R.drawable.ic_switch_icon_check)
+            }
+            holder.label.text = option.label
+            holder.ring.isActivated = option.key == selectedKey
+            holder.itemView.contentDescription = option.label
+            holder.itemView.setOnClickListener { select(option.key) }
+        }
+
+        override fun getItemCount(): Int = options.size
+
+        inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val ring: View = itemView.findViewById(R.id.option_ring)
+            val icon: ImageView = itemView.findViewById(R.id.option_icon)
+            val label: TextView = itemView.findViewById(R.id.option_label)
+        }
+    }
+}

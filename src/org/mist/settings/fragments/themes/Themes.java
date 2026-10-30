@@ -35,6 +35,7 @@ import org.mist.settings.preferences.SystemPropertyListPreference;
 import org.mist.settings.preferences.SystemPropertySwitchPreference;
 import org.mist.settings.utils.DeviceUtils;
 import org.mist.settings.utils.PreferenceUtils;
+import org.mist.settings.utils.SwitchThumbIconManager;
 
 @SearchIndexable
 public class Themes extends SettingsPreferenceFragment implements
@@ -53,6 +54,7 @@ public class Themes extends SettingsPreferenceFragment implements
     private static final String KEY_LAUNCHER_CATEGORY = "themes_launcher_category";
     private static final String KEY_LAUNCHER_SEARCH_BAR = "persist.sys.velvet.force_onesearch";
     private static final String KEY_NAVBAR_ICONS = "android.theme.customization.navbar";
+    private static final String KEY_SWITCH_ICON = "switch_icon";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
     private static final String KEY_UDFPS_ICON = "udfps_icon";
     private static final String KEY_FLUID_ANIMATION = "mist_fluid_animation_enabled";
@@ -128,6 +130,7 @@ public class Themes extends SettingsPreferenceFragment implements
         }
 
         updateIconShapeSummary();
+        updateSwitchIconSummary();
     }
 
     @Override
@@ -142,6 +145,14 @@ public class Themes extends SettingsPreferenceFragment implements
         return false;
     }
 
+    private void updateSwitchIconSummary() {
+        Preference pref = findPreference(KEY_SWITCH_ICON);
+        if (pref == null) return;
+        final Context context = getContext();
+        // Reads secure settings only, so it is cheap enough for the main thread.
+        pref.setSummary(SwitchThumbIconManager.INSTANCE.getChoiceLabel(context));
+    }
+
     private void updateIconShapeSummary() {
         Preference pref = findPreference(KEY_ICON_SHAPE);
         if (pref == null) return;
@@ -152,6 +163,7 @@ public class Themes extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateIconShapeSummary();
+        updateSwitchIconSummary();
         PreferenceUtils.reloadCustomPrimarySwitches(getPreferenceScreen());
     }
 

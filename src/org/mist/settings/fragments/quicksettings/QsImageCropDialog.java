@@ -35,7 +35,7 @@ import java.util.concurrent.Executors;
  * The frame is drawn on a screen sized preview, but the crop itself is decoded from the original
  * file at full resolution, so choosing a small area of a large photo does not lose detail.
  */
-final class QsImageCropDialog {
+public final class QsImageCropDialog {
 
     private static final String TAG = "QsImageCropDialog";
 
@@ -46,7 +46,10 @@ final class QsImageCropDialog {
     private static final float ASPECT_WIDE = 2f;
     private static final float ASPECT_TALL = 0.5f;
 
-    interface Callback {
+    /** Aspect ratio value for {@link #show(Activity, Uri, float, Callback)} that locks a square. */
+    public static final float INITIAL_ASPECT_SQUARE = ASPECT_SQUARE;
+
+    public interface Callback {
         /** Called on the main thread with the full resolution crop. */
         void onCropped(Bitmap bitmap);
 
@@ -58,21 +61,27 @@ final class QsImageCropDialog {
 
     private QsImageCropDialog() {}
 
-    static void show(Activity activity, Uri source, Callback callback) {
+    public static void show(Activity activity, Uri source, Callback callback) {
+        show(activity, source, QsImageCropView.ASPECT_FREE, callback);
+    }
+
+    /** Like {@link #show(Activity, Uri, Callback)}, but starts with the crop locked to an aspect. */
+    public static void show(Activity activity, Uri source, float initialAspect,
+            Callback callback) {
         EXECUTOR.execute(() -> {
             final Bitmap preview = decodePreview(activity, source);
             activity.runOnUiThread(() -> {
                 if (preview == null) {
                     callback.onFailed();
                 } else if (!activity.isFinishing() && !activity.isDestroyed()) {
-                    showDialog(activity, source, preview, callback);
+                    showDialog(activity, source, preview, initialAspect, callback);
                 }
             });
         });
     }
 
     private static void showDialog(Activity activity, Uri source, Bitmap preview,
-            Callback callback) {
+            float initialAspect, Callback callback) {
         final Dialog dialog = new Dialog(activity,
                 android.R.style.Theme_DeviceDefault_NoActionBar_Fullscreen);
 
@@ -104,7 +113,12 @@ final class QsImageCropDialog {
         final Button wide = addPreset(activity, presets, R.string.ax_qs_image_crop_wide);
         final Button tall = addPreset(activity, presets, R.string.ax_qs_image_crop_tall);
         final Button[] all = {free, square, wide, tall};
-        selectPreset(all, free);
+        if (initialAspect == ASPECT_SQUARE) {
+            cropView.setAspect(ASPECT_SQUARE);
+            selectPreset(all, square);
+        } else {
+            selectPreset(all, free);
+        }
         free.setOnClickListener(v -> {
             cropView.setAspect(QsImageCropView.ASPECT_FREE);
             selectPreset(all, free);
