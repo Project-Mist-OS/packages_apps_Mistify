@@ -43,6 +43,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String KEY_FP_ERROR = "fp_error_vibrate";
     private static final String KEY_FP_SUCCESS = "fp_success_vibrate";
     private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
+    private static final String KEY_UNLOCK_ANIMATION = "lockscreen_unlock_animation";
+    private static final String KEY_UNLOCK_EFFECT_HFR = "lockscreen_unlock_effect_hfr";
+    private static final String KEY_WATER_RIPPLE_FULLSCREEN = "lockscreen_water_ripple_fullscreen";
     private static final String KEY_SMARTSPACE = "lockscreen_smartspace_enabled";
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
     private static final String LOCKSCREEN_GESTURES_CATEGORY = "lockscreen_gestures_category";
@@ -77,6 +80,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
         boolean hasFingerprint = DeviceUtils.hasFingerprint(context);
         if (!hasFingerprint) {
             gestCategory.removePreference(mRippleEffect);
+            gestCategory.removePreference(findPreference(KEY_UNLOCK_ANIMATION));
+            gestCategory.removePreference(findPreference(KEY_UNLOCK_EFFECT_HFR));
+            gestCategory.removePreference(findPreference(KEY_WATER_RIPPLE_FULLSCREEN));
         }
 
         if (!hasFingerprint || !DeviceUtils.hasVibrator(context)) {
@@ -164,6 +170,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
                     boolean hasFingerprint = DeviceUtils.hasFingerprint(context);
                     if (!hasFingerprint) {
                         keys.add(KEY_RIPPLE_EFFECT);
+                        keys.add(KEY_UNLOCK_ANIMATION);
+                        keys.add(KEY_UNLOCK_EFFECT_HFR);
+                        keys.add(KEY_WATER_RIPPLE_FULLSCREEN);
                     }
 
                     if (!hasFingerprint || !DeviceUtils.hasVibrator(context)) {

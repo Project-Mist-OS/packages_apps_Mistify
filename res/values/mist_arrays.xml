@@ -858,6 +858,23 @@
         <item>4</item>
     </string-array>
 
+    <!-- Fingerprint unlock animations -->
+    <string-array name="lockscreen_unlock_animation_entries">
+        <item>@string/default_value</item>
+        <item>@string/lockscreen_unlock_animation_water</item>
+        <item>@string/lockscreen_unlock_animation_watercolor</item>
+        <item>@string/lockscreen_unlock_animation_glow</item>
+        <item>@string/lockscreen_unlock_animation_rainbow_glow</item>
+    </string-array>
+
+    <string-array name="lockscreen_unlock_animation_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <!-- Media seekbar styles -->
     <string-array name="media_seekbar_style_entries">
         <item>@string/default_value</item>

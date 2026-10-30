@@ -173,6 +173,15 @@
     <string name="lock_screen_fingerprint_category">Fingerprint</string>
     <string name="lock_screen_fingerprint_ripple_title">Ripple animation</string>
     <string name="lock_screen_fingerprint_ripple_summary">Show ripple animation when unlocked with fingerprint</string>
+    <string name="lockscreen_unlock_animation_title">Fingerprint unlock animation</string>
+    <string name="lockscreen_unlock_animation_water">Water</string>
+    <string name="lockscreen_unlock_animation_watercolor">Watercolor</string>
+    <string name="lockscreen_unlock_animation_glow">Soft glow wave</string>
+    <string name="lockscreen_unlock_animation_rainbow_glow">Rainbow glow</string>
+    <string name="lockscreen_unlock_effect_hfr_title">High frame rate</string>
+    <string name="lockscreen_unlock_effect_hfr_summary">Animate the selected effect at the display refresh rate</string>
+    <string name="lockscreen_water_ripple_fullscreen_title">Fullscreen water ripple</string>
+    <string name="lockscreen_water_ripple_fullscreen_summary">Let water waves fill the screen and bounce off its edges</string>
     <string name="lock_screen_fingerprint_success_vibration_title">Authentication success vibration</string>
     <string name="lock_screen_fingerprint_success_vibration_summary">Vibrate when fingerprint authentication is successful</string>
     <string name="lock_screen_fingerprint_error_vibration_title">Authentication error vibration</string>
