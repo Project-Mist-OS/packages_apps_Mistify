@@ -52,8 +52,8 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     private val icons = HashMap<String, Bitmap?>()
     private var selectedKey = SwitchThumbIconManager.CHOICE_DEFAULT
 
-    private var switchOn: SwitchPreviewView? = null
-    private var labelOn: TextView? = null
+    private var afterOn: SwitchPreviewView? = null
+    private var afterTitle: TextView? = null
     private var optionList: RecyclerView? = null
     private val adapter = OptionAdapter()
 
@@ -66,11 +66,17 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        switchOn = (holder.findViewById(R.id.preview_switch_on) as SwitchPreviewView).apply {
+        // Before: the stock switch. After: the highlighted choice. OFF is the same in both.
+        (holder.findViewById(R.id.preview_before_on) as SwitchPreviewView).apply {
+            isOn = true
+            setOnIcon(null)
+        }
+        (holder.findViewById(R.id.preview_before_off) as SwitchPreviewView).isOn = false
+        (holder.findViewById(R.id.preview_after_off) as SwitchPreviewView).isOn = false
+        afterOn = (holder.findViewById(R.id.preview_after_on) as SwitchPreviewView).apply {
             isOn = true
         }
-        labelOn = holder.findViewById(R.id.preview_label_on) as TextView
-        (holder.findViewById(R.id.preview_switch_off) as SwitchPreviewView).isOn = false
+        afterTitle = holder.findViewById(R.id.preview_after_title) as TextView
 
         optionList = (holder.findViewById(R.id.switch_icon_options) as RecyclerView).apply {
             layoutManager = GridLayoutManager(context, GRID_COLUMNS)
@@ -154,8 +160,8 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     private fun updatePreview() {
         val icon = icons[selectedKey]
         // The default has no bitmap: the preview then falls back to the stock check mark.
-        switchOn?.setOnIcon(icon)
-        labelOn?.text = context.getString(R.string.switch_icon_preview_on,
+        afterOn?.setOnIcon(icon)
+        afterTitle?.text = context.getString(R.string.switch_icon_preview_after,
                 options.firstOrNull { it.key == selectedKey }?.label
                         ?: context.getString(R.string.switch_icon_default))
     }

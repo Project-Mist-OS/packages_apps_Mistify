@@ -1936,7 +1936,9 @@
     <string name="switch_icon_spider">Spider</string>
     <string name="switch_icon_sharingan">Sharingan</string>
     <string name="switch_icon_preview_off">Off</string>
-    <string name="switch_icon_preview_on">On · <xliff:g id="icon_name">%1$s</xliff:g></string>
+    <string name="switch_icon_preview_on">On</string>
+    <string name="switch_icon_preview_before">Before</string>
+    <string name="switch_icon_preview_after">After · <xliff:g id="icon_name">%1$s</xliff:g></string>
     <string name="switch_icon_upload">Upload your own icon</string>
     <string name="switch_icon_hint">The icon only shows while a switch is on. Off switches always keep the default icon. Changes apply everywhere right away and are kept after a reboot or a SystemUI restart</string>
     <string name="switch_icon_custom_set">Custom icon applied</string>

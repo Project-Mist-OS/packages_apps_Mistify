@@ -12,15 +12,17 @@
     android:paddingEnd="12dp"
     android:paddingBottom="16dp">
 
-    <!-- Live preview. Drawn by the same code as the real switches, so it looks identical -->
+    <!-- Live before/after preview. Drawn by the same code as the real switches, so it looks identical.
+         Before is always the stock icon; After shows the highlighted choice. OFF never changes. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/switch_icon_preview_bg"
         android:orientation="horizontal"
-        android:paddingVertical="28dp"
+        android:paddingVertical="20dp"
         android:weightSum="2">
 
+        <!-- Before -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,21 +30,48 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <org.mist.settings.preferences.SwitchPreviewView
-                android:id="@+id/preview_switch_off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
             <TextView
-                android:id="@+id/preview_label_off"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:text="@string/switch_icon_preview_before"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
+
+            <org.mist.settings.preferences.SwitchPreviewView
+                android:id="@+id/preview_before_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/switch_icon_preview_on"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
+
+            <org.mist.settings.preferences.SwitchPreviewView
+                android:id="@+id/preview_before_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/switch_icon_preview_off"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                 android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/settingslib_materialColorOutlineVariant" />
+
+        <!-- After -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,20 +79,42 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <org.mist.settings.preferences.SwitchPreviewView
-                android:id="@+id/preview_switch_on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
             <TextView
-                android:id="@+id/preview_label_on"
+                android:id="@+id/preview_after_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textColor="@color/settingslib_materialColorOnSurface" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                android:textColor="@color/settingslib_materialColorPrimary" />
+
+            <org.mist.settings.preferences.SwitchPreviewView
+                android:id="@+id/preview_after_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/switch_icon_preview_on"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
+
+            <org.mist.settings.preferences.SwitchPreviewView
+                android:id="@+id/preview_after_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/switch_icon_preview_off"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
         </LinearLayout>
     </LinearLayout>
 
