@@ -85,6 +85,20 @@
             android:summary="@string/lock_screen_stacked_notifications_summary"
             android:defaultValue="false" />
 
+        <!-- Moto compact notification design -->
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_moto_compact_notifications"
+            android:title="@string/lock_screen_moto_compact_notifications_title"
+            android:summary="@string/lock_screen_moto_compact_notifications_summary"
+            android:defaultValue="false" />
+
+        <!-- Center-aligned compact notification icons -->
+        <org.mist.settings.preferences.SystemSettingSwitchPreference
+            android:key="notification_icons_center_aligned"
+            android:title="@string/notification_icons_center_aligned_title"
+            android:summary="@string/notification_icons_center_aligned_summary"
+            android:defaultValue="false" />
+
         <!-- Bottom-aligned notifications -->
         <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="lock_screen_notifications_bottom_anchored"

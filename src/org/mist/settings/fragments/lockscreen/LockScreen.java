@@ -56,6 +56,8 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mSmartspace;
     private SwitchPreferenceCompat mWeather;
     private Preference mStackedNotifications;
+    private Preference mMotoCompactNotifications;
+    private Preference mCenterAlignedIcons;
     private final ContentObserver mCompactNotificationsObserver =
             new ContentObserver(new Handler(Looper.getMainLooper())) {
                 @Override
@@ -98,6 +100,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
         mStackedNotifications = findPreference(
                 Settings.Secure.LOCK_SCREEN_STACKED_NOTIFICATIONS);
+        mMotoCompactNotifications = findPreference(
+                Settings.Secure.LOCK_SCREEN_MOTO_COMPACT_NOTIFICATIONS);
+        mCenterAlignedIcons = findPreference(Settings.System.NOTIFICATION_ICONS_CENTER_ALIGNED);
         updateStackedNotificationsPreference();
 
         updateWeatherSettings();
@@ -136,6 +141,15 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mStackedNotifications.setSummary(compactEnabled
                 ? R.string.lock_screen_stacked_notifications_compact_summary
                 : R.string.lock_screen_stacked_notifications_summary);
+        if (mMotoCompactNotifications != null) {
+            mMotoCompactNotifications.setEnabled(compactEnabled);
+            mMotoCompactNotifications.setSummary(compactEnabled
+                    ? R.string.lock_screen_moto_compact_notifications_summary
+                    : R.string.lock_screen_moto_compact_notifications_disabled_summary);
+        }
+        if (mCenterAlignedIcons != null) {
+            mCenterAlignedIcons.setEnabled(compactEnabled);
+        }
     }
 
     @Override
