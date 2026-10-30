@@ -118,6 +118,30 @@
             android:defaultValue="false" />
     </PreferenceCategory>
 
+    <!-- Optional image instead of the primary color on active tiles and sliders -->
+    <PreferenceCategory
+        android:key="ax_qs_image_fill_category"
+        android:title="@string/ax_qs_image_fill_category">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="ax_qs_image_fill_enabled"
+            android:title="@string/ax_qs_image_fill_title"
+            android:summary="@string/ax_qs_image_fill_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="ax_qs_image_fill_pick"
+            android:title="@string/ax_qs_image_fill_pick_title"
+            android:summary="@string/ax_qs_image_fill_pick_summary"
+            android:dependency="ax_qs_image_fill_enabled" />
+
+        <Preference
+            android:key="ax_qs_image_fill_clear"
+            android:title="@string/ax_qs_image_fill_clear_title"
+            android:summary="@string/ax_qs_image_fill_clear_summary"
+            android:dependency="ax_qs_image_fill_enabled" />
+    </PreferenceCategory>
+
     <!-- Sliders & Appearance -->
     <PreferenceCategory
         android:key="ax_qs_sliders_category"

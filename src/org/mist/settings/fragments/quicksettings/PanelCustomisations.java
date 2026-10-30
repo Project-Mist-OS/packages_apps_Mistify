@@ -5,12 +5,19 @@
 
 package org.mist.settings.fragments.quicksettings;
 
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.MediaStore;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.preference.ListPreference;
@@ -27,6 +34,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +59,16 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
     private static final String KEY_AX_QS_VOLUME_SLIDER_STYLE = "ax_qs_volume_vertical_slider_style";
     private static final String KEY_QS_RESET_LAYOUT = "qs_reset_layout";
 
+    private static final String KEY_IMAGE_FILL_PICK = "ax_qs_image_fill_pick";
+    private static final String KEY_IMAGE_FILL_CLEAR = "ax_qs_image_fill_clear";
+    private static final String SETTING_IMAGE_FILL_URI = "ax_qs_image_fill_uri";
+    private static final int REQUEST_PICK_IMAGE_FILL = 20001;
+
+    // The image is copied into MediaStore so it outlives the picker's temporary grant, a reboot
+    // and a SystemUI restart. Only the uri is kept in secure settings.
+    private static final String IMAGE_FILL_RELATIVE_PATH = "Pictures/QSTileImage";
+    private static final String IMAGE_FILL_DISPLAY_NAME = "qs_tile_image";
+
     private static final String KEY_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
@@ -60,6 +79,8 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
     private SecureSettingListPreference mQsBrightnessSliderStyle;
     private SecureSettingListPreference mQsVolumeSliderStyle;
     private Preference mQsResetLayout;
+    private Preference mImageFillPick;
+    private Preference mImageFillClear;
 
     private ListPreference mBrightnessSliderPosition;
     private ListPreference mShowBrightnessSlider;
@@ -97,6 +118,15 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
         mQsResetLayout = findPreference(KEY_QS_RESET_LAYOUT);
         if (mQsResetLayout != null) {
             mQsResetLayout.setOnPreferenceClickListener(this);
+        }
+
+        mImageFillPick = findPreference(KEY_IMAGE_FILL_PICK);
+        if (mImageFillPick != null) {
+            mImageFillPick.setOnPreferenceClickListener(this);
+        }
+        mImageFillClear = findPreference(KEY_IMAGE_FILL_CLEAR);
+        if (mImageFillClear != null) {
+            mImageFillClear.setOnPreferenceClickListener(this);
         }
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
@@ -190,8 +220,116 @@ public class PanelCustomisations extends SettingsPreferenceFragment implements
             Settings.Secure.putStringForUser(resolver, "ax_qs_control_positions", "", userId);
             Toast.makeText(getContext(), R.string.ax_qs_reset_layout_done, Toast.LENGTH_SHORT).show();
             return true;
+        } else if (preference == mImageFillPick) {
+            pickImageFill();
+            return true;
+        } else if (preference == mImageFillClear) {
+            clearImageFill();
+            Toast.makeText(getContext(), R.string.ax_qs_image_fill_cleared, Toast.LENGTH_SHORT).show();
+            return true;
         }
         return false;
+    }
+
+    private void pickImageFill() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_MIME_TYPES,
+                    new String[]{"image/jpeg", "image/png", "image/webp"});
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivityForResult(intent, REQUEST_PICK_IMAGE_FILL);
+        } catch (Exception e) {
+            Toast.makeText(getContext(), R.string.ax_qs_image_fill_needs_gallery,
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != REQUEST_PICK_IMAGE_FILL || resultCode != Activity.RESULT_OK
+                || data == null || data.getData() == null) {
+            return;
+        }
+
+        final ContentResolver cr = getContext().getContentResolver();
+        final Uri saved = saveImageFill(cr, data.getData());
+        if (saved == null) {
+            Toast.makeText(getContext(), R.string.ax_qs_image_fill_failed, Toast.LENGTH_LONG).show();
+            return;
+        }
+        // Only switch to the new image once it was fully copied, and then drop the old copies.
+        Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, saved.toString(),
+                UserHandle.USER_CURRENT);
+        deleteImageFillCopies(cr, ContentUris.parseId(saved));
+        Toast.makeText(getContext(), R.string.ax_qs_image_fill_set, Toast.LENGTH_SHORT).show();
+    }
+
+    private Uri saveImageFill(ContentResolver cr, Uri source) {
+        String mime = cr.getType(source);
+        if (mime == null) mime = "image/*";
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME,
+                IMAGE_FILL_DISPLAY_NAME + "_" + System.currentTimeMillis());
+        values.put(MediaStore.MediaColumns.MIME_TYPE, mime);
+        values.put(MediaStore.MediaColumns.RELATIVE_PATH, IMAGE_FILL_RELATIVE_PATH);
+        values.put(MediaStore.MediaColumns.IS_PENDING, 1);
+
+        Uri out = null;
+        try {
+            out = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            if (out == null) return null;
+
+            try (InputStream in = cr.openInputStream(source);
+                 OutputStream os = cr.openOutputStream(out, "wt")) {
+                if (in == null || os == null) {
+                    cr.delete(out, null, null);
+                    return null;
+                }
+                byte[] buf = new byte[8192];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    os.write(buf, 0, len);
+                }
+                os.flush();
+            }
+
+            ContentValues done = new ContentValues();
+            done.put(MediaStore.MediaColumns.IS_PENDING, 0);
+            cr.update(out, done, null, null);
+            return out;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to save QS image", e);
+            if (out != null) {
+                try {
+                    cr.delete(out, null, null);
+                } catch (Exception ignored) {
+                }
+            }
+            return null;
+        }
+    }
+
+    private void clearImageFill() {
+        final ContentResolver cr = getContext().getContentResolver();
+        Settings.Secure.putStringForUser(cr, SETTING_IMAGE_FILL_URI, "", UserHandle.USER_CURRENT);
+        deleteImageFillCopies(cr, -1);
+    }
+
+    private void deleteImageFillCopies(ContentResolver cr, long keepId) {
+        try {
+            cr.delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    MediaStore.MediaColumns.RELATIVE_PATH + "=? AND "
+                            + MediaStore.MediaColumns.DISPLAY_NAME + " LIKE ? AND "
+                            + MediaStore.MediaColumns._ID + "!=?",
+                    new String[]{IMAGE_FILL_RELATIVE_PATH + "/", IMAGE_FILL_DISPLAY_NAME + "%",
+                            String.valueOf(keepId)});
+        } catch (Exception e) {
+            Log.w(TAG, "Failed to delete old QS images", e);
+        }
     }
 
     @Override
