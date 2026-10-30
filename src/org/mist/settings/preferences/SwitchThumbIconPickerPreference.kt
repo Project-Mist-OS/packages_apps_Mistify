@@ -18,12 +18,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.settings.R
-import com.android.settingslib.widget.SwitchThumbIconDrawable
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.materialswitch.MaterialSwitch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import org.mist.settings.utils.SwitchThumbIconManager
@@ -32,8 +29,9 @@ import org.mist.settings.utils.SwitchThumbIconManager.Preset
 /**
  * Lets the user choose the icon shown inside switches when they are ON, with a live preview.
  *
- * The preview uses real switches: the OFF one always shows the stock icon, the ON one shows the
- * highlighted choice. Picking an option applies it system wide right away.
+ * The preview shows an OFF and an ON switch: the OFF one always has the stock icon, the ON one shows
+ * the highlighted choice. Picking an option applies it system wide right away; the upload button
+ * adds the user's own image as the "Custom" option.
  */
 class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     context: Context,
@@ -54,7 +52,7 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     private val icons = HashMap<String, Bitmap?>()
     private var selectedKey = SwitchThumbIconManager.CHOICE_DEFAULT
 
-    private var switchOn: MaterialSwitch? = null
+    private var switchOn: SwitchPreviewView? = null
     private var labelOn: TextView? = null
     private var optionList: RecyclerView? = null
     private val adapter = OptionAdapter()
@@ -68,22 +66,18 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        switchOn = holder.findViewById(R.id.preview_switch_on) as MaterialSwitch
+        switchOn = (holder.findViewById(R.id.preview_switch_on) as SwitchPreviewView).apply {
+            isOn = true
+        }
         labelOn = holder.findViewById(R.id.preview_label_on) as TextView
-        (holder.findViewById(R.id.preview_switch_off) as MaterialSwitch).apply {
-            isChecked = false
-            jumpDrawablesToCurrentState()
-        }
-        switchOn?.apply {
-            isChecked = true
-            jumpDrawablesToCurrentState()
-        }
+        (holder.findViewById(R.id.preview_switch_off) as SwitchPreviewView).isOn = false
 
         optionList = (holder.findViewById(R.id.switch_icon_options) as RecyclerView).apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = GridLayoutManager(context, GRID_COLUMNS)
             adapter = this@SwitchThumbIconPickerPreference.adapter
+            itemAnimator = null
         }
-        (holder.findViewById(R.id.switch_icon_upload) as MaterialButton).setOnClickListener {
+        holder.findViewById(R.id.switch_icon_upload).setOnClickListener {
             onUploadRequested?.invoke()
         }
 
@@ -160,13 +154,17 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
     private fun updatePreview() {
         val icon = icons[selectedKey]
         // The default has no bitmap: the preview then falls back to the stock check mark.
-        switchOn?.thumbIconDrawable = SwitchThumbIconDrawable.createPreview(context, icon)
+        switchOn?.setOnIcon(icon)
         labelOn?.text = context.getString(R.string.switch_icon_preview_on,
                 options.firstOrNull { it.key == selectedKey }?.label
                         ?: context.getString(R.string.switch_icon_default))
     }
 
-    private inner class OptionAdapter : RecyclerView.Adapter<OptionAdapter.Holder>() {
+    private companion object {
+        const val GRID_COLUMNS = 3
+    }
+
+    private inner class OptionAdapter :RecyclerView.Adapter<OptionAdapter.Holder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder =
             Holder(LayoutInflater.from(parent.context)
@@ -182,8 +180,11 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
                 // Default option: the stock check mark.
                 holder.icon.setImageResource(R.drawable.ic_switch_icon_check)
             }
+            val selected = option.key == selectedKey
             holder.label.text = option.label
-            holder.ring.isActivated = option.key == selectedKey
+            // The tile and the icon copy this state, which drives the selected look.
+            holder.itemView.isActivated = selected
+            holder.badge.visibility = if (selected) View.VISIBLE else View.GONE
             holder.itemView.contentDescription = option.label
             holder.itemView.setOnClickListener { select(option.key) }
         }
@@ -191,7 +192,7 @@ class SwitchThumbIconPickerPreference @JvmOverloads constructor(
         override fun getItemCount(): Int = options.size
 
         inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val ring: View = itemView.findViewById(R.id.option_ring)
+            val badge: View = itemView.findViewById(R.id.option_badge)
             val icon: ImageView = itemView.findViewById(R.id.option_icon)
             val label: TextView = itemView.findViewById(R.id.option_label)
         }
