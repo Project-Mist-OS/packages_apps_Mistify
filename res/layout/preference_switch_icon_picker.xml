@@ -44,6 +44,7 @@
                     style="?expressiveSwitchStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:showText="false"
                     android:scaleX="1.5"
                     android:scaleY="1.5" />
 
@@ -70,6 +71,7 @@
                     style="?expressiveSwitchStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:showText="false"
                     android:scaleX="1.5"
                     android:scaleY="1.5" />
 
