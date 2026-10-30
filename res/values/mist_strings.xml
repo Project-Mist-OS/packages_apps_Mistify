@@ -1073,6 +1073,13 @@
     <string name="notification_row_transparency_summary">Use a translucent background for notifications in quick settings</string>
     <string name="notification_row_transparency_lockscreen_title">Translucent lock screen notifications</string>
     <string name="notification_row_transparency_lockscreen_summary">Use a translucent background for notifications on the lock screen</string>
+    <string name="lock_screen_stacked_notifications_title">Stacked lock screen notifications</string>
+    <string name="lock_screen_stacked_notifications_summary">Layer lock screen notifications into rounded cards. Tap the stack to expand; tap empty space to collapse.</string>
+    <string name="lock_screen_stacked_notifications_compact_summary">Turn off compact lock screen notifications to use stacked cards</string>
+    <string name="lock_screen_notifications_bottom_anchored_title">Bottom-aligned lock screen notifications</string>
+    <string name="lock_screen_notifications_bottom_anchored_summary">Align all notification styles at your chosen position near the bottom of the lock screen</string>
+    <string name="lock_screen_notifications_anchor_position_title">Notification anchor position</string>
+    <string name="lock_screen_notifications_anchor_position_summary">Position of the bottom edge, measured from the top of the screen. Higher values move notifications lower.</string>
     <string name="notification_bubble_apps_title">Bubble notifications</string>
     <string name="notification_bubble_apps_summary">Open apps in a floating bubble when tapping their notifications</string>
     <string name="media_squiggle_animation_title">Squiggle animation</string>

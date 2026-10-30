@@ -7,7 +7,10 @@ package org.mist.settings.fragments.lockscreen;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.UserHandle;
 import android.provider.Settings;
 
@@ -18,6 +21,7 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.util.android.OmniJawsClient;
+import com.android.server.notification.Flags;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.SettingsPreferenceFragment;
@@ -48,6 +52,14 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mFpSuccessVib;
     private SwitchPreferenceCompat mSmartspace;
     private SwitchPreferenceCompat mWeather;
+    private Preference mStackedNotifications;
+    private final ContentObserver mCompactNotificationsObserver =
+            new ContentObserver(new Handler(Looper.getMainLooper())) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    updateStackedNotificationsPreference();
+                }
+            };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +90,10 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mWeather = findPreference(KEY_WEATHER);
         mWeather.setOnPreferenceChangeListener(this);
 
+        mStackedNotifications = findPreference(
+                Settings.Secure.LOCK_SCREEN_STACKED_NOTIFICATIONS);
+        updateStackedNotificationsPreference();
+
         updateWeatherSettings();
     }
 
@@ -102,11 +118,35 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 : R.string.lockscreen_weather_enabled_info);
     }
 
+    private void updateStackedNotificationsPreference() {
+        if (mStackedNotifications == null) {
+            return;
+        }
+        boolean compactEnabled = Flags.notificationMinimalism()
+                && Settings.Secure.getIntForUser(getContentResolver(),
+                        Settings.Secure.LOCK_SCREEN_NOTIFICATION_MINIMALISM, 1,
+                        UserHandle.USER_CURRENT) == 1;
+        mStackedNotifications.setEnabled(!compactEnabled);
+        mStackedNotifications.setSummary(compactEnabled
+                ? R.string.lock_screen_stacked_notifications_compact_summary
+                : R.string.lock_screen_stacked_notifications_summary);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
+        getContentResolver().registerContentObserver(
+                Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_NOTIFICATION_MINIMALISM),
+                false, mCompactNotificationsObserver, UserHandle.USER_CURRENT);
+        updateStackedNotificationsPreference();
         updateWeatherSettings();
         PreferenceUtils.reloadCustomPrimarySwitches(getPreferenceScreen());
+    }
+
+    @Override
+    public void onPause() {
+        getContentResolver().unregisterContentObserver(mCompactNotificationsObserver);
+        super.onPause();
     }
 
     @Override

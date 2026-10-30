@@ -78,6 +78,32 @@
             android:summary="@string/doze_always_on_wallpaper_summary"
             android:defaultValue="@*android:bool/config_dozeSupportsAodWallpaper" />
 
+        <!-- Stacked notifications -->
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_stacked_notifications"
+            android:title="@string/lock_screen_stacked_notifications_title"
+            android:summary="@string/lock_screen_stacked_notifications_summary"
+            android:defaultValue="false" />
+
+        <!-- Bottom-aligned notifications -->
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_notifications_bottom_anchored"
+            android:title="@string/lock_screen_notifications_bottom_anchored_title"
+            android:summary="@string/lock_screen_notifications_bottom_anchored_summary"
+            android:defaultValue="false" />
+
+        <!-- Notification anchor position -->
+        <org.mist.settings.preferences.SystemSettingSeekBarPreference
+            android:key="lock_screen_notifications_anchor_position"
+            android:title="@string/lock_screen_notifications_anchor_position_title"
+            android:summary="@string/lock_screen_notifications_anchor_position_summary"
+            android:dependency="lock_screen_notifications_bottom_anchored"
+            android:defaultValue="88"
+            settings:min="10"
+            android:max="100"
+            settings:interval="1"
+            settings:units="%" />
+
         <!-- Charging stats -->
         <org.mist.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_battery_info"
