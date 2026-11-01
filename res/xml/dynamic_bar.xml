@@ -29,6 +29,15 @@
         android:summary="@string/dynamic_bar_summary"
         android:defaultValue="false" />
 
+    <org.mist.settings.preferences.SecureSettingListPreference
+        android:key="ax_dynamic_bar_chip_style"
+        android:title="@string/dynamic_bar_chip_style_title"
+        android:summary="%s"
+        android:entries="@array/dynamic_bar_chip_style_entries"
+        android:entryValues="@array/dynamic_bar_chip_style_values"
+        android:defaultValue="0"
+        android:dependency="ax_dynamic_bar_enabled" />
+
     <org.mist.settings.preferences.SecureSettingSwitchPreference
         android:key="ax_dynamic_bar_keyguard_enabled"
         android:title="@string/dynamic_bar_keyguard_enable"
@@ -54,6 +63,13 @@
             android:title="@string/dynamic_bar_event_audio_recording"
             android:summary="@string/dynamic_bar_event_audio_recording_summary"
             android:icon="@drawable/ic_mic"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="event_call"
+            android:title="@string/dynamic_bar_event_call"
+            android:summary="@string/dynamic_bar_event_call_summary"
+            android:icon="@drawable/ic_call_ring"
             android:defaultValue="true" />
 
         <SwitchPreferenceCompat
