@@ -158,6 +158,11 @@ public class CustomSeekBarPreference extends SliderPreference {
         if (mDefaultValueExists && mDefaultValueTextExists && v == mDefaultValue) {
             return mDefaultValueText;
         }
+        return getTextValue(v);
+    }
+
+    /** Text shown for a slider value; subclasses override to customise the formatting. */
+    protected String getTextValue(int v) {
         String s = String.valueOf(v);
         if (mShowSign && v > 0) s = "+" + s;
         if (mUnits != null && !mUnits.isEmpty()) s = s + " " + mUnits;

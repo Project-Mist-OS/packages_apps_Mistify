@@ -203,7 +203,7 @@ abstract class MistBarPreferenceFragment : SettingsPreferenceFragment() {
             is CustomSeekBarPreference -> {
                 preference.setMax(option.max)
                 preference.setMin(option.min)
-                preference.setDefaultValue(option.default, false)
+                preference.setDefaultValue(option.default)
                 preference.setValue(value)
             }
         }
