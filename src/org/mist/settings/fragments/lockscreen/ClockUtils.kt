@@ -103,6 +103,16 @@ object ClockUtils {
         R.layout.keyguard_clock_space_age, // 90
         R.layout.keyguard_clock_polyline, // 91
         R.layout.keyguard_clock_oppo, // 92
+        R.layout.keyguard_clock_hyperos, // 93
+        R.layout.keyguard_clock_hyperos, // 94
+        R.layout.keyguard_clock_hyperos, // 95
+        R.layout.keyguard_clock_hyperos, // 96
+        R.layout.keyguard_clock_hyperos, // 97
+        R.layout.keyguard_clock_hyperos, // 98
+        R.layout.keyguard_clock_hyperos, // 99
+        R.layout.keyguard_clock_graffiti, // 100
+        R.layout.keyguard_clock_graffiti, // 101
+        R.layout.keyguard_clock_graffiti // 102
     )
 
     fun getClockNames(): Array<String> {
@@ -199,7 +209,17 @@ object ClockUtils {
             "Badeen",
             "Space age",
             "Poly line",
-            "Big clock"
+            "Big clock",
+            "HyperOS art2",
+            "HyperOS art4",
+            "HyperOS duo",
+            "HyperOS tall",
+            "HyperOS tall2",
+            "HyperOS tall3",
+            "HyperOS stack",
+            "Graffiti art",
+            "Graffiti stack",
+            "Graffiti compact"
         )
     }
 }

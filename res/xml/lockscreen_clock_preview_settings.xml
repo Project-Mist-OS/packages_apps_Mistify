@@ -55,6 +55,12 @@
             android:summary="@string/custom_color_summary"
             android:persistent="false" />
 
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_custom_clock_hyper_blur"
+            android:title="@string/lock_screen_custom_clock_hyper_blur_title"
+            android:summary="@string/lock_screen_custom_clock_hyper_blur_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -104,6 +110,73 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="lock_screen_custom_clock_text_glass_category"
+        android:title="@string/lockscreen_custom_clock_text_glass_category_title">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_custom_clock_text_glass"
+            android:title="@string/lockscreen_custom_clock_text_glass_title"
+            android:summary="@string/lockscreen_custom_clock_text_glass_summary"
+            android:defaultValue="false" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_text_glass_intensity"
+            android:title="@string/lockscreen_custom_clock_text_glass_intensity_title"
+            android:defaultValue="100"
+            android:max="100"
+            settings:min="0"
+            settings:units="%"
+            android:dependency="lock_screen_custom_clock_text_glass" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_text_glass_lift"
+            android:title="@string/lockscreen_custom_clock_text_glass_lift_title"
+            android:defaultValue="25"
+            android:max="100"
+            settings:min="0"
+            settings:units="%"
+            android:dependency="lock_screen_custom_clock_text_glass" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lock_screen_custom_clock_shadow_category"
+        android:title="@string/lockscreen_custom_clock_shadow_category_title">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="lock_screen_custom_clock_shadow_enabled"
+            android:title="@string/lockscreen_custom_clock_shadow_enabled_title"
+            android:summary="@string/lockscreen_custom_clock_shadow_enabled_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="lock_screen_custom_clock_shadow_color"
+            android:title="@string/lockscreen_custom_clock_shadow_color_title"
+            android:summary="@string/custom_color_summary"
+            android:persistent="false"
+            android:dependency="lock_screen_custom_clock_shadow_enabled" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_shadow_softness"
+            android:title="@string/lockscreen_custom_clock_shadow_softness_title"
+            android:defaultValue="8"
+            android:max="30"
+            settings:min="0"
+            settings:units="@string/unit_pixels"
+            android:dependency="lock_screen_custom_clock_shadow_enabled" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_shadow_opacity"
+            android:title="@string/lockscreen_custom_clock_shadow_opacity_title"
+            android:defaultValue="35"
+            android:max="100"
+            settings:min="0"
+            settings:units="%"
+            android:dependency="lock_screen_custom_clock_shadow_enabled" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="lock_screen_custom_clock_layout_category"
         android:title="@string/lockscreen_custom_clock_layout_category_title">
 
@@ -142,6 +215,30 @@
             android:max="200"
             settings:min="-200"
             settings:units="@string/unit_pixels" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_rotation"
+            android:title="@string/custom_clock_rotation_title"
+            android:defaultValue="0"
+            android:max="180"
+            settings:min="-180"
+            settings:units="°" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_tilt_y"
+            android:title="@string/clock_tilt_y_title"
+            android:defaultValue="0"
+            android:max="75"
+            settings:min="-75"
+            settings:units="°" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="lock_screen_custom_clock_tilt_x"
+            android:title="@string/clock_tilt_x_title"
+            android:defaultValue="0"
+            android:max="75"
+            settings:min="-75"
+            settings:units="°" />
 
     </PreferenceCategory>
 

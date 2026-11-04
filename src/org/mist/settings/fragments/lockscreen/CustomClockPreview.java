@@ -62,6 +62,8 @@ public class CustomClockPreview extends SettingsPreferenceFragment implements Pr
     private static final String KEY_GRADIENT_ENABLED = "lock_screen_custom_clock_gradient_enabled";
     private static final String KEY_GRADIENT_COLOR_START = "lock_screen_custom_clock_gradient_color_start";
     private static final String KEY_GRADIENT_COLOR_END = "lock_screen_custom_clock_gradient_color_end";
+    private static final String KEY_SHADOW_COLOR = "lock_screen_custom_clock_shadow_color";
+    private static final int DEFAULT_SHADOW_COLOR = 0xFF000000;
     private static final String KEY_CLOCK_FONT = "lock_clock_font";
 
     private static final String KEY_CLOCK_COLOR_MODE = "lock_screen_custom_clock_color_mode";
@@ -78,6 +80,7 @@ public class CustomClockPreview extends SettingsPreferenceFragment implements Pr
     private SecureSettingListPreference mClockColorModePref;
     private Preference mGradientColorStartPref;
     private Preference mGradientColorEndPref;
+    private Preference mShadowColorPref;
 
     List<Preference> persistentPrefs = new ArrayList<>();
     List<Preference> customOnlyPrefs = new ArrayList<>();
@@ -202,6 +205,17 @@ public class CustomClockPreview extends SettingsPreferenceFragment implements Pr
                 showGradientColorDialog(KEY_GRADIENT_COLOR_END, 0xFFFF2DAA,
                         getString(R.string.lockscreen_custom_clock_gradient_end_title),
                         mGradientColorEndPref);
+                return true;
+            });
+        }
+
+        mShadowColorPref = findPreference(KEY_SHADOW_COLOR);
+        updateGradientColorSummary(mShadowColorPref, KEY_SHADOW_COLOR, DEFAULT_SHADOW_COLOR);
+        if (mShadowColorPref != null) {
+            mShadowColorPref.setOnPreferenceClickListener(pref -> {
+                showGradientColorDialog(KEY_SHADOW_COLOR, DEFAULT_SHADOW_COLOR,
+                        getString(R.string.lockscreen_custom_clock_shadow_color_title),
+                        mShadowColorPref);
                 return true;
             });
         }
@@ -341,6 +355,7 @@ public class CustomClockPreview extends SettingsPreferenceFragment implements Pr
         updateClockColorSummary();
         updateGradientColorSummary(mGradientColorStartPref, KEY_GRADIENT_COLOR_START, 0xFF00E5FF);
         updateGradientColorSummary(mGradientColorEndPref, KEY_GRADIENT_COLOR_END, 0xFFFF2DAA);
+        updateGradientColorSummary(mShadowColorPref, KEY_SHADOW_COLOR, DEFAULT_SHADOW_COLOR);
     }
 
     private class ClockPagerAdapter extends PagerAdapter {
