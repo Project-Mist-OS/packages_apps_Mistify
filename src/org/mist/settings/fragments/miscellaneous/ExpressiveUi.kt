@@ -93,10 +93,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.semantics
@@ -125,6 +127,16 @@ import com.android.settingslib.spa.widget.ui.CategoryTitle
 enum class ExpressiveTone { Positive, Warning, Negative, Neutral }
 
 /**
+ * Hands this subtree's scrolling to the Settings page's collapsing app bar. Pages sit under a
+ * CoordinatorLayout whose content frame is taller than the screen by the app bar's collapsible
+ * range; only nested scrolling collapses the bar, so without this the bottom of the page stays
+ * off-screen and a short page does not scroll at all.
+ */
+@Composable
+fun Modifier.expressiveAppBarNestedScroll(): Modifier =
+    nestedScroll(rememberNestedScrollInteropConnection())
+
+/**
  * [verticalScroll] with the Material 3 alpha23 scrollbar. The scrollbar is chained ahead of the
  * scroll so it stays put while the content moves.
  */
@@ -132,6 +144,7 @@ enum class ExpressiveTone { Positive, Warning, Negative, Neutral }
 fun Modifier.expressiveVerticalScroll(): Modifier {
     val state = rememberScrollState()
     return this
+        .expressiveAppBarNestedScroll()
         .scrollbar(state.scrollIndicatorState, Orientation.Vertical)
         .verticalScroll(state)
 }

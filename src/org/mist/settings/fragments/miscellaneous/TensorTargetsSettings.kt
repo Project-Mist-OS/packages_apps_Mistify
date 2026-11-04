@@ -309,6 +309,7 @@ private fun TensorTargetsContent(context: android.content.Context) {
                             state = listState,
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .expressiveAppBarNestedScroll()
                                 .scrollbar(listState.scrollIndicatorState, Orientation.Vertical),
                             verticalArrangement = Arrangement.spacedBy(SettingsSpace.extraSmall1),
                         ) {

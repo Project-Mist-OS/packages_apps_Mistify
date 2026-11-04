@@ -437,6 +437,7 @@ private fun PixelPropsContent(context: android.content.Context) {
                             state = listState,
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .expressiveAppBarNestedScroll()
                                 .scrollbar(listState.scrollIndicatorState, Orientation.Vertical),
                             verticalArrangement = Arrangement.spacedBy(SettingsSpace.extraSmall1),
                         ) {
