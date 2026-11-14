@@ -48,6 +48,7 @@ import androidx.compose.material.icons.rounded.PhoneAndroid
 import androidx.compose.ui.text.input.VisualTransformation
 import android.graphics.Typeface
 import android.provider.Settings
+import android.view.SoundEffectConstants
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -98,6 +99,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.disabled
@@ -281,6 +283,16 @@ fun expressiveButtonShapes(): ButtonShapes = ButtonDefaults.shapes(
     pressedShape = RoundedCornerShape(SettingsRadius.large2),
 )
 
+/**
+ * Click sound for Compose controls. Compose does not play the system click effect on its own, so
+ * rows, switches and buttons call this to match the AOSP preferences around them.
+ */
+@Composable
+internal fun rememberClickSound(): () -> Unit {
+    val view = LocalView.current
+    return remember(view) { { view.playSoundEffect(SoundEffectConstants.CLICK) } }
+}
+
 /** Shapes for the row currently being drawn by a [ExpressiveGroup]; null outside of a group. */
 private val LocalExpressiveRowShapes = compositionLocalOf<ListItemShapes?> { null }
 
@@ -387,6 +399,7 @@ fun ExpressiveGroup(
     content: ExpressiveGroupScope.() -> Unit,
 ) {
     var expanded by rememberSaveable(title) { mutableStateOf(initiallyExpanded) }
+    val clickSound = rememberClickSound()
     val items = ExpressiveGroupScope().apply(content).items
     Column(
         modifier = modifier.padding(
@@ -399,7 +412,7 @@ fun ExpressiveGroup(
                 modifier = Modifier
                     .fillMaxWidth()
                     .insetFocusRing(MaterialTheme.shapes.medium)
-                    .clickable { expanded = !expanded },
+                    .clickable { clickSound(); expanded = !expanded },
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(modifier = Modifier.weight(1f)) { CategoryTitle(title) }
@@ -440,13 +453,14 @@ private fun ExpressiveListItem(
     headline: @Composable () -> Unit,
 ) {
     val shapes = currentExpressiveRowShapes()
+    val clickSound = rememberClickSound()
     val container = MaterialTheme.colorScheme.surfaceBright
     val trailingFrame: (@Composable () -> Unit)? = trailing?.let { t ->
         { ExpressiveTrailingFrame(t) }
     }
     if (onClick != null) {
         SegmentedListItem(
-            onClick = onClick,
+            onClick = { clickSound(); onClick() },
             shapes = shapes,
             modifier = modifier
                 .fillMaxWidth()
@@ -684,8 +698,10 @@ fun ExpressivePrimaryAction(
     inset: Boolean = true,
 ) {
     val haptic = LocalHapticFeedback.current
+    val clickSound = rememberClickSound()
     Button(
         onClick = {
+            clickSound()
             haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
             onClick()
         },
@@ -732,6 +748,7 @@ fun ExpressiveActionRow(
     modifier: Modifier = Modifier,
     inset: Boolean = true,
 ) {
+    val clickSound = rememberClickSound()
     Row(
         modifier = modifier
             .then(if (inset) Modifier.expressiveInset() else Modifier)
@@ -760,7 +777,7 @@ fun ExpressiveActionRow(
                 val shapes = ToggleButtonDefaults.shapes()
                 TonalToggleButton(
                     checked = checked,
-                    onCheckedChange = { action.onClick() },
+                    onCheckedChange = { clickSound(); action.onClick() },
                     enabled = action.enabled,
                     modifier = Modifier
                         .weight(1f)
@@ -776,7 +793,7 @@ fun ExpressiveActionRow(
                 )
             } else {
                 FilledTonalButton(
-                    onClick = action.onClick,
+                    onClick = { clickSound(); action.onClick() },
                     enabled = action.enabled,
                     modifier = Modifier
                         .weight(1f)
@@ -891,6 +908,7 @@ fun ExpressiveSwitchNavRow(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val clickSound = rememberClickSound()
     ExpressiveRow(
         title = title,
         modifier = modifier,
@@ -900,7 +918,10 @@ fun ExpressiveSwitchNavRow(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 VerticalDivider(modifier = Modifier.height(SettingsDimension.itemDividerHeight))
                 Spacer(Modifier.width(SettingsSpace.extraSmall6))
-                CheckCloseSwitch(checked = checked, onCheckedChange = onCheckedChange)
+                CheckCloseSwitch(
+                    checked = checked,
+                    onCheckedChange = { clickSound(); onCheckedChange(it) },
+                )
             }
         },
     )
@@ -926,7 +947,7 @@ fun ExpressiveSwitchRow(
         trailing = {
             CheckCloseSwitch(
                 checked = isChecked,
-                onCheckedChange = onChange,
+                onCheckedChange = null,
                 enabled = isEnabled,
             )
         },
