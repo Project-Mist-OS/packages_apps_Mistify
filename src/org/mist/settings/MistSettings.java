@@ -5,9 +5,13 @@
 
 package org.mist.settings;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -29,6 +33,28 @@ public class MistSettings extends DashboardFragment implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     private static final String TAG = "MistSettings";
+    private static final String KEY_HOME_STYLE = "mist_settings_home_style";
+    private static final int STYLE_FREEFLOW = 1;
+    private static final String FREEFLOW_MISTIFY = "com.mist.freeflow.FreeFlowMistifyActivity";
+    private static final String HOMEPAGE = "com.android.settings.homepage.SettingsHomepageActivity";
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        final Activity activity = getActivity();
+        if (activity == null || HOMEPAGE.equals(activity.getClass().getName())
+                || Settings.System.getInt(activity.getContentResolver(), KEY_HOME_STYLE, 0)
+                        != STYLE_FREEFLOW) {
+            return;
+        }
+        final Intent intent = new Intent().setClassName(activity, FREEFLOW_MISTIFY);
+        if (activity.getPackageManager().resolveActivity(intent,
+                PackageManager.MATCH_DEFAULT_ONLY) != null) {
+            startActivity(intent);
+            activity.finish();
+            activity.overridePendingTransition(0, 0);
+        }
+    }
 
     @Override
     protected int getPreferenceScreenResId() {
