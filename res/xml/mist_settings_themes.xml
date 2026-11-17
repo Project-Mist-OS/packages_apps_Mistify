@@ -9,6 +9,20 @@
     android:title="@string/themes_title">
 
     <PreferenceCategory
+        android:key="themes_settings_app_category"
+        android:title="@string/themes_settings_app_category">
+
+        <org.mist.settings.preferences.SystemSettingListPreference
+            android:key="mist_settings_home_style"
+            android:title="@string/settings_home_style_title"
+            android:summary="%s"
+            android:entries="@array/settings_home_style_entries"
+            android:entryValues="@array/settings_home_style_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="themes_fonts_category"
         android:title="@string/themes_fonts_category">
 

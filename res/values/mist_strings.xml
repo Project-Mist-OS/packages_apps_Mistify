@@ -45,6 +45,10 @@
     <string name="themes_audio_category">Audio</string>
     <string name="themes_lock_sound_title">Lock sound</string>
     <string name="themes_unlock_sound_title">Unlock sound</string>
+    <string name="themes_settings_app_category">Settings app</string>
+    <string name="settings_home_style_title">Settings style</string>
+    <string name="settings_home_style_tabs">Tabs</string>
+    <string name="settings_home_style_freeflow">FreeFlow Material</string>
     <string name="themes_fonts_category">Fonts</string>
     <string name="themes_system_font_title">System font</string>
     <string name="themes_system_font_summary">Set system font style</string>
