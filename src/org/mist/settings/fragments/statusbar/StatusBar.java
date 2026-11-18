@@ -65,6 +65,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String CARRIER_NAME = "lockscreen_show_carrier";
     private static final String CUSTOM_CARRIER_LABEL = "lockscreen_show_custom_carrier_text";
     private static final String DYNAMIC_ISLAND = "status_bar_dynamic_island";
+    private static final String KEY_HEADS_UP_DROP = "mist_heads_up_drop_enabled";
     private static final String LOGO_ENABLED = "status_bar_logo";
     private static final String LOGO_POSITION = "status_bar_logo_position";
     private static final String LOGO_COLOR = "status_bar_logo_color";
@@ -141,6 +142,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
         } else if (DeviceUtils.hasCenteredCutout(context)) {
             mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch);
             mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch);
+        }
+
+        Preference headsUpDrop = findPreference(KEY_HEADS_UP_DROP);
+        if (headsUpDrop != null) {
+            headsUpDrop.setOnPreferenceChangeListener(this);
         }
 
         mDynamicIsland = findPreference(DYNAMIC_ISLAND);
@@ -334,6 +340,9 @@ public class StatusBar extends SettingsPreferenceFragment implements
         } else if (preference == mCarrierMode) {
             int value = Integer.parseInt((String) newValue);
             updateCustomCarrierTextPrefVisibility(value);
+            return true;
+        } else if (KEY_HEADS_UP_DROP.equals(preference.getKey())) {
+            SystemUtils.showSystemUiRestartDialog(getContext());
             return true;
 //        } else if (preference == mColoredIcons) {
 //            SystemUtils.showSystemUiRestartDialog(getContext());

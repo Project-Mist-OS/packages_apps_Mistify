@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: MistOS
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:key="heads_up_drop_settings"
+    android:title="@string/heads_up_drop_title">
+
+    <lineageos.preference.SecureSettingMainSwitchPreference
+        android:key="mist_heads_up_drop_enabled"
+        android:title="@string/heads_up_drop_title"
+        android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="heads_up_drop_position_category"
+        android:title="@string/heads_up_drop_position_category">
+
+        <org.mist.settings.preferences.SecureSettingListPreference
+            android:key="mist_heads_up_drop_origin"
+            android:title="@string/heads_up_drop_origin_title"
+            android:summary="%s"
+            android:entries="@array/heads_up_drop_origin_entries"
+            android:entryValues="@array/heads_up_drop_origin_values"
+            android:defaultValue="0"
+            android:dependency="mist_heads_up_drop_enabled" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="mist_heads_up_drop_custom_x"
+            android:title="@string/heads_up_drop_custom_x_title"
+            android:summary="@string/heads_up_drop_custom_x_summary"
+            android:max="100"
+            settings:min="0"
+            settings:interval="1"
+            settings:units="%"
+            android:defaultValue="50"
+            android:dependency="mist_heads_up_drop_enabled" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="mist_heads_up_drop_offset_y"
+            android:title="@string/heads_up_drop_offset_y_title"
+            android:summary="@string/heads_up_drop_offset_y_summary"
+            android:max="40"
+            settings:min="-20"
+            settings:interval="1"
+            settings:units=" dp"
+            android:defaultValue="0"
+            android:dependency="mist_heads_up_drop_enabled" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="heads_up_drop_motion_category"
+        android:title="@string/heads_up_drop_motion_category">
+
+        <org.mist.settings.preferences.SecureSettingSwitchPreference
+            android:key="mist_heads_up_drop_exit"
+            android:title="@string/heads_up_drop_exit_title"
+            android:summary="@string/heads_up_drop_exit_summary"
+            android:defaultValue="true"
+            android:dependency="mist_heads_up_drop_enabled" />
+
+        <org.mist.settings.preferences.SecureSettingSeekBarPreference
+            android:key="mist_heads_up_drop_speed"
+            android:title="@string/heads_up_drop_speed_title"
+            android:max="200"
+            settings:min="50"
+            settings:interval="10"
+            settings:units="%"
+            android:defaultValue="100"
+            android:dependency="mist_heads_up_drop_enabled" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="heads_up_drop_footer_category">
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="heads_up_drop_footer"
+            android:title="@string/heads_up_drop_footer"
+            android:icon="@drawable/ic_info"
+            android:selectable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

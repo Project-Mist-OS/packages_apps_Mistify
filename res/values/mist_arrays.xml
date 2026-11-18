@@ -1857,4 +1857,24 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+
+    <string-array name="heads_up_drop_origin_entries" translatable="false">
+        <item>@string/heads_up_drop_origin_auto</item>
+        <item>@string/heads_up_drop_origin_cutout</item>
+        <item>@string/heads_up_drop_origin_island</item>
+        <item>@string/heads_up_drop_origin_left</item>
+        <item>@string/heads_up_drop_origin_center</item>
+        <item>@string/heads_up_drop_origin_right</item>
+        <item>@string/heads_up_drop_origin_custom</item>
+    </string-array>
+
+    <string-array name="heads_up_drop_origin_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
