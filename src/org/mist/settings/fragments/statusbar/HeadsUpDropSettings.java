@@ -37,11 +37,12 @@ public class HeadsUpDropSettings extends SettingsPreferenceFragment
     private static final String KEY_OFFSET_Y = "mist_heads_up_drop_offset_y";
     private static final String KEY_EXIT = "mist_heads_up_drop_exit";
     private static final String KEY_SPEED = "mist_heads_up_drop_speed";
+    private static final String KEY_STYLE = "mist_heads_up_drop_style";
 
     private static final int ORIGIN_CUSTOM = 6;
 
     private static final String[] RESTART_KEYS = {
-            KEY_ENABLED, KEY_ORIGIN, KEY_CUSTOM_X, KEY_OFFSET_Y, KEY_EXIT, KEY_SPEED
+            KEY_ENABLED, KEY_ORIGIN, KEY_CUSTOM_X, KEY_OFFSET_Y, KEY_EXIT, KEY_SPEED, KEY_STYLE
     };
 
     private Preference mCustomX;

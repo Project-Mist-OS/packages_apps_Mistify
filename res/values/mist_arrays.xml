@@ -1868,6 +1868,18 @@
         <item>@string/heads_up_drop_origin_custom</item>
     </string-array>
 
+    <string-array name="heads_up_drop_style_entries" translatable="false">
+        <item>@string/heads_up_drop_style_classic</item>
+        <item>@string/heads_up_drop_style_glossy</item>
+        <item>@string/heads_up_drop_style_blur</item>
+    </string-array>
+
+    <string-array name="heads_up_drop_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <string-array name="heads_up_drop_origin_values" translatable="false">
         <item>0</item>
         <item>1</item>

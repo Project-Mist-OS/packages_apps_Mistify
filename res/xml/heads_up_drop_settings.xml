@@ -55,6 +55,15 @@
         android:key="heads_up_drop_motion_category"
         android:title="@string/heads_up_drop_motion_category">
 
+        <org.mist.settings.preferences.SecureSettingListPreference
+            android:key="mist_heads_up_drop_style"
+            android:title="@string/heads_up_drop_style_title"
+            android:summary="%s"
+            android:entries="@array/heads_up_drop_style_entries"
+            android:entryValues="@array/heads_up_drop_style_values"
+            android:defaultValue="0"
+            android:dependency="mist_heads_up_drop_enabled" />
+
         <org.mist.settings.preferences.SecureSettingSwitchPreference
             android:key="mist_heads_up_drop_exit"
             android:title="@string/heads_up_drop_exit_title"
@@ -65,11 +74,12 @@
         <org.mist.settings.preferences.SecureSettingSeekBarPreference
             android:key="mist_heads_up_drop_speed"
             android:title="@string/heads_up_drop_speed_title"
+            android:summary="@string/heads_up_drop_speed_summary"
             android:max="200"
-            settings:min="50"
-            settings:interval="10"
+            settings:min="25"
+            settings:interval="5"
             settings:units="%"
-            android:defaultValue="100"
+            android:defaultValue="50"
             android:dependency="mist_heads_up_drop_enabled" />
 
     </PreferenceCategory>
