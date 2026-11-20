@@ -34,16 +34,8 @@ public class HeadsUpDropSettings extends SettingsPreferenceFragment
     private static final String KEY_ENABLED = "mist_heads_up_drop_enabled";
     private static final String KEY_ORIGIN = "mist_heads_up_drop_origin";
     private static final String KEY_CUSTOM_X = "mist_heads_up_drop_custom_x";
-    private static final String KEY_OFFSET_Y = "mist_heads_up_drop_offset_y";
-    private static final String KEY_EXIT = "mist_heads_up_drop_exit";
-    private static final String KEY_SPEED = "mist_heads_up_drop_speed";
-    private static final String KEY_STYLE = "mist_heads_up_drop_style";
 
     private static final int ORIGIN_CUSTOM = 6;
-
-    private static final String[] RESTART_KEYS = {
-            KEY_ENABLED, KEY_ORIGIN, KEY_CUSTOM_X, KEY_OFFSET_Y, KEY_EXIT, KEY_SPEED, KEY_STYLE
-    };
 
     private Preference mCustomX;
 
@@ -52,7 +44,7 @@ public class HeadsUpDropSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.heads_up_drop_settings);
 
-        for (String key : RESTART_KEYS) {
+        for (String key : new String[] { KEY_ENABLED, KEY_ORIGIN }) {
             Preference pref = findPreference(key);
             if (pref != null) {
                 pref.setOnPreferenceChangeListener(this);
@@ -60,20 +52,21 @@ public class HeadsUpDropSettings extends SettingsPreferenceFragment
         }
 
         mCustomX = findPreference(KEY_CUSTOM_X);
-        int origin = Settings.Secure.getIntForUser(getContentResolver(), KEY_ORIGIN, 0,
-                UserHandle.USER_CURRENT);
-        updateCustomXVisibility(origin);
+        updateCustomXVisibility(Settings.Secure.getIntForUser(getContentResolver(), KEY_ORIGIN,
+                0, UserHandle.USER_CURRENT));
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (KEY_ORIGIN.equals(preference.getKey())) {
+        String key = preference.getKey();
+        if (KEY_ENABLED.equals(key)) {
+            SystemUtils.showSystemUiRestartDialog(getContext());
+        } else if (KEY_ORIGIN.equals(key)) {
             try {
                 updateCustomXVisibility(Integer.parseInt(String.valueOf(newValue)));
             } catch (NumberFormatException ignored) {
             }
         }
-        SystemUtils.showSystemUiRestartDialog(getContext());
         return true;
     }
 

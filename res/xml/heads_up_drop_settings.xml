@@ -79,7 +79,7 @@
             settings:min="25"
             settings:interval="5"
             settings:units="%"
-            android:defaultValue="50"
+            android:defaultValue="75"
             android:dependency="mist_heads_up_drop_enabled" />
 
     </PreferenceCategory>

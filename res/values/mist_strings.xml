@@ -1867,8 +1867,8 @@
     </string>
 
     <!-- Dynamic island -->
-    <string name="status_bar_dynamic_island_title">Dynamic island</string>
-    <string name="status_bar_dynamic_island_summary">Configure the island and choose which features can appear</string>
+    <string name="status_bar_dynamic_island_title">Mist Bar</string>
+    <string name="status_bar_dynamic_island_summary">Configure the island and choose which features can appear based on Lunaris Bar</string>
     <string name="dynamic_island_footer_title">About Dynamic Island</string>
     <string name="dynamic_island_intro">Turn on Dynamic island and choose the features you want in the centered chip.</string>
     <string name="dynamic_island_features_title">Features</string>
@@ -2031,12 +2031,12 @@
     <string name="heads_up_drop_exit_title">Absorb on dismiss</string>
     <string name="heads_up_drop_exit_summary">The notification shrinks back into a drop and gets pulled back up when it goes away</string>
     <string name="heads_up_drop_speed_title">Animation speed</string>
-    <string name="heads_up_drop_speed_summary">Lower is slower and easier to follow. 50% is the default</string>
+    <string name="heads_up_drop_speed_summary">Lower is slower and easier to follow. 75% is the default</string>
     <string name="heads_up_drop_style_title">Drop style</string>
     <string name="heads_up_drop_style_classic">Classic</string>
     <string name="heads_up_drop_style_glossy">Glossy</string>
     <string name="heads_up_drop_style_blur">Blur</string>
-    <string name="heads_up_drop_footer">When this is off, heads-up notifications use the standard AOSP slide animation. Auto picks the Dynamic Island or Mistify bar when one is on, otherwise the camera cutout, otherwise the top center. Changes apply after SystemUI restarts.</string>
+    <string name="heads_up_drop_footer">When this is off, heads-up notifications use the standard AOSP slide animation. Auto picks the Dynamic Island or Mistify bar when one is on, otherwise the camera cutout, otherwise the top center.</string>
     <string name="heads_up_drop_origin_auto">Auto</string>
     <string name="heads_up_drop_origin_cutout">Camera cutout</string>
     <string name="heads_up_drop_origin_island">Dynamic Island / Mistify bar</string>
