@@ -1855,10 +1855,6 @@
     <string name="ios_style">iOS-style control panel</string>
     <string name="ios_style_summary">Show iOS-style brightness, volume sliders and music player in expanded quick settings</string>
 
-    <!-- Stock Music Player -->
-    <string name="stock_qs_media_player">Disable Stock QS media player</string>
-    <string name="stock_qs_media_player_summary">Show the default Android media player carousel in Quick Settings</string>
-
     <!-- QuickSwitch -->
     <string name="quickswitch_launcher_title">Quick Switch</string>
     <string name="quickswitch_launcher_summary">Switch default launcher</string>

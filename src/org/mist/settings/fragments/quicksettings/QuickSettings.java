@@ -61,7 +61,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_HEADER_CLOCK_STYLE = "qs_header_clock_style";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
-    private static final String KEY_QS_STOCK_MEDIA_PLAYER = "qs_stock_media_player";
 
     private SecureSettingListPreference mQsStyle;
     private PreferenceCategory mQsPanelCustomisationsCategory;
@@ -77,7 +76,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mShowAutoBrightness;
     private SystemSettingListPreference mQsHeaderClockStyle;
     private SystemSettingSwitchPreference mCompactMediaPlayer;
-    private SystemSettingSwitchPreference mQsStockMediaPlayer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -220,9 +218,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             if ("0".equals(value)) {
                 SystemUtils.showSystemUiRestartDialog(getActivity());
             }
-            return true;
-        } else if (preference == mQsStockMediaPlayer) {
-            SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
         return false;

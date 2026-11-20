@@ -1718,8 +1718,6 @@
     <string name="depth_wallpaper_offset_y_title">Вертикальное смещение объемных обоев</string>
     <string name="ios_style">Панель управления в стиле iOS</string>
     <string name="ios_style_summary">Отображение ползунков яркости, громкости и музыкального проигрывателя в стиле iOS в расширенных быстрых настройках.</string>
-    <string name="stock_qs_media_player">Отключить стандартный медиаплеер в панели QS</string>
-    <string name="stock_qs_media_player_summary">Отображать карусель медиаплеера Android по умолчанию в быстрых настройках</string>
     <string name="volume_dialog_type_ios">Mistify Style</string>
     <string name="ios_volume_expand_on_key_title">Автоматическое расширение при нажатии клавиши громкости</string>
     <string name="ios_volume_expand_on_key_summary">Развернуть все потоки при нажатии клавиши регулировки громкости</string>
