@@ -22,6 +22,18 @@
             android:defaultValue="0" />
     </PreferenceCategory>
 
+     <!-- Panel Customisations -->
+    <PreferenceCategory
+        android:key="ax_qs_panel_customisations_category"
+        android:title="@string/ax_qs_panel_customisations_category">
+
+        <Preference
+            android:key="ax_qs_panel_customisations"
+            android:title="@string/ax_qs_panel_customisations_title"
+            android:summary="@string/ax_qs_panel_customisations_summary"
+            android:fragment="org.mist.settings.fragments.quicksettings.PanelCustomisations" />
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:key="quick_settings_interface_category"
         android:title="@string/quick_settings_interface_category">
@@ -62,17 +74,6 @@
             android:title="@string/qs_compact_media_player_mode_title"
             android:summary="@string/qs_compact_media_player_mode_summary"
             android:defaultValue="false" />
-    </PreferenceCategory>
-
-    <!-- Panel Customisations -->
-    <PreferenceCategory
-        android:key="ax_qs_panel_customisations_category">
-
-        <Preference
-            android:key="ax_qs_panel_customisations"
-            android:title="@string/ax_qs_panel_customisations_title"
-            android:summary="@string/ax_qs_panel_customisations_summary"
-            android:fragment="org.mist.settings.fragments.quicksettings.PanelCustomisations" />
     </PreferenceCategory>
 
     <!-- Lock screen -->

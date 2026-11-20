@@ -1918,6 +1918,7 @@
     <string name="ax_qs_style_title">Quick Settings style</string>
     <string name="ax_qs_style_stock">Android 17 (default)</string>
     <string name="ax_qs_style_custom">Mistify custom</string>
+    <string name="ax_qs_panel_customisations_category">QS Panel Customisations</string>
     <string name="ax_qs_panel_customisations_title">Panel Customisations</string>
     <string name="ax_qs_panel_customisations_summary">Customize the Quick Settings panel</string>
     <string name="ax_qs_panel_category">Panel</string>
