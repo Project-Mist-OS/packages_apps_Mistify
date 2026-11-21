@@ -2088,4 +2088,7 @@
     <string name="pif_device_suggested">%1$s · Suggested</string>
 
     <string name="ts_keybox_extract_failed">Could not read a keybox from that file: %s</string>
+
+    <string name="ts_keybox_exported">Keybox saved</string>
+    <string name="action_export">Export</string>
 </resources>
